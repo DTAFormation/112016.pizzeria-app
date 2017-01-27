@@ -1,13 +1,14 @@
 import angular from 'angular';
-import HomeController from './home.controller';
 
-export default angular.module('pizzeria.home', [])
-    .config(($routeProvider) => {
-        $routeProvider.when('/', {
-            template: require('./home.html'),
-            controller: 'HomeController',
-            controllerAs: 'ctrl'
-        })
-    })
-    .controller('HomeController', HomeController)
-    .name;
+import { Home } from './home.component'
+import { Product } from'../product/product.component'
+
+//import HomeController from './home.controller';
+
+export default angular.module('PizzeriaHome', [])
+  
+.component('home', Home)
+    
+.component('product', Product)
+
+.name;

@@ -1,5 +1,15 @@
 export default class HomeController {
-    constructor() {
-        this.helloText = "Title Pizzeria";
+    constructor() {}
+
+    $onInit(){
+        this.pizzas =  [
+                    {
+                        name: "Margherita"
+                    },{
+                        name: "Peperoni"
+                    },{
+                        name: "Reine"
+                    }
+                ]
     }
 }
