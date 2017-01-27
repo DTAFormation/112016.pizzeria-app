@@ -13,4 +13,8 @@ export default class HomeController {
             src: "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg"
         }]
     }
+
+    ajouterPanier(pizza) {
+        console.log('pizza', pizza);
+    }
 }

@@ -2,10 +2,9 @@ class ProductController {
 
     constructor() {}
 
-    $onInit() {
-        console.log('produit', this.product);
+    ajouterPanier() {
+        this.onSelect();
     }
-
 }
 
 export const Product = {

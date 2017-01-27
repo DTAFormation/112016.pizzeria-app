@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza">
+        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPanier(pizza)">
         </product>
     </div>
 </div>
