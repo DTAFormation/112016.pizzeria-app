@@ -1,13 +1,21 @@
-class ProductController{
+class ProductController {
 
-    constructor(){}
-    
-  
+    constructor() {}
+
+    $onInit() {
+        console.log('produit', this.product);
+    }
+
 }
 
 export const Product = {
+    bindings: {
+        product: '<',
+        onSelect: '&'
+    },
 
-    template: `<div></div>`,
+    template: require('./product.component.html'),
+
     controller: ProductController
 
 };

@@ -1,3 +1,8 @@
-<product ng-repeat=" pizza in $ctrl.pizzas track by $index" pizza="pizza">
+<h3>Dernières Pizza</h3>
 
-</product>
+<div class="container">
+    <div class="row">
+        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza">
+        </product>
+    </div>
+</div>

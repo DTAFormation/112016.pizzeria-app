@@ -1,7 +1,7 @@
 import angular from 'angular'
 import ngRoute from 'angular-route'
 
-import HomeModule from './home'
+import home from './home'
 
 
 angular.module('pizzeria', [ngRoute, home])
