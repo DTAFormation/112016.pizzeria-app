@@ -1,23 +1,44 @@
 import angular from 'angular'
 import ngRoute from 'angular-route'
+import ngStorage from 'ngstorage';
 
 import home from './home'
 
 
 angular.module('pizzeria', [
     ngRoute,
+    'ngStorage',
     home
 ])
 
-.config(function($routeProvider, $locationProvider) {
+    .controller('lsCtrl', function (
+        $scope,
+        $localStorage,
+        $sessionStorage
+    ) {
 
-    $locationProvider.html5Mode(true);
+        $scope.$localStorage = $localStorage;
+        $scope.$sessionStorage = $sessionStorage;
 
-    $routeProvider
+        if ($localStorage.jsonPanier === undefined) {
+            $localStorage.jsonPanier = {};
+            $localStorage.jsonPanier['pizza'] = [];
+            $localStorage.jsonPanier['boisson'] = [];
+            $localStorage.jsonPanier['dessert'] = [];
+            $localStorage.jsonPanier['menus'] = [];
+        }
 
-        .when('/', {
-        template: `<home><home>`
     })
 
-    .otherwise('/')
-});
+    .config(function ($routeProvider, $locationProvider) {
+
+        $locationProvider.html5Mode(true);
+
+        $routeProvider
+
+            .when('/', {
+                template: `<home><home>`
+            })
+
+            .otherwise('/')
+    });
