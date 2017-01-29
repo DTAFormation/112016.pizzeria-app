@@ -6,8 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Livreur {
-
+public class Administrateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -16,11 +15,11 @@ public class Livreur {
 	private String email;
 	private String mot_de_passe;
 
-	public Livreur() {
+	public Administrateur() {
 
 	}
 
-	public Livreur(String nom, String prenom, String email, String mot_de_passe) {
+	public Administrateur(String nom, String prenom, String email, String mot_de_passe) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;

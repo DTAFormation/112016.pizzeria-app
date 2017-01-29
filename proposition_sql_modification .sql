@@ -54,6 +54,7 @@ CREATE TABLE administrateur (
     url  varchar(5000) NOT NULL,
     prix  decimal NOT NULL,
     note int  NOT NULL,
+    nbr_note int NOT NUll,
   	categorie varchar(5000) NOT NULL
    );
 
@@ -94,12 +95,8 @@ CREATE TABLE commande (
 ALTER TABLE pizza_commande add constraint foreign key (id_pizza) REFERENCES pizza(id);
 ALTER TABLE pizza_commande add constraint foreign key (id_commande) REFERENCES commande(id);
 
-
 ALTER TABLE menu_commande add constraint foreign key (id_pizza) REFERENCES pizza(id);
 ALTER TABLE menu_commande add constraint foreign key (id_commande) REFERENCES commande(id);
-   
-
-   
    
 
 ALTER TABLE commande add constraint foreign key (id_livreur) REFERENCES livreur(id);
