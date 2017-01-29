@@ -15,6 +15,10 @@ export default class HomeController {
     }
 
     ajouterPanier(pizza) {
-        console.log('pizza', pizza);
+        console.log('ajouterPanier', pizza);
+    }
+
+    afficherModale(pizza) {
+        console.log('afficherModale', pizza);
     }
 }

@@ -5,12 +5,18 @@ class ProductController {
     ajouterPanier() {
         this.onSelect();
     }
+
+    afficherModale() {
+        this.onAfficherModale();
+    }
+
 }
 
 export const Product = {
     bindings: {
         product: '<',
-        onSelect: '&'
+        onSelect: '&',
+        onAfficherModale: '&'
     },
 
     template: require('./product.component.html'),
