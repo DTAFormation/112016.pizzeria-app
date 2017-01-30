@@ -2,7 +2,6 @@ const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it 
 
 export class PizzaService {
     constructor($localStorage, $http) {
-
         this.$localStorage = $localStorage;
         this.$http = $http;
 
@@ -16,7 +15,7 @@ export class PizzaService {
     }
 
     ajouterPanier(pizza) {
-
+   console.log('ici')
         let pizzas = this.$localStorage.jsonPanier['pizza'];
         let exist = pizzas.find(p => p.id === pizza.id);
 

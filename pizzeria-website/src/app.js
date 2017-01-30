@@ -1,13 +1,15 @@
 import angular from 'angular'
 import ngRoute from 'angular-route'
-import ngStorage from 'ngstorage';
+import ngStorage from 'ngstorage'
 
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
 import { PizzaService } from './shared/service/pizza.service'
-import { Panier } from './panier/panier.component';
-import { Pizza } from './pizza/pizza.component';
+import { BoissonService } from './shared/service/boisson.service'
+import { Panier } from './panier/panier.component'
+import { Pizza } from './pizza/pizza.component'
+import { Boisson } from './boisson/boisson.component'
 
 angular.module('pizzeria', [
         ngRoute,
@@ -18,7 +20,9 @@ angular.module('pizzeria', [
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
     .component('pizza', Pizza)
+    .component('boisson', Boisson)
     .service('PizzaService', PizzaService)
+    .service('BoissonService', BoissonService)
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
@@ -32,6 +36,9 @@ angular.module('pizzeria', [
             })
              .when('/pizzas', {
                 template: `<pizza></pizza>`
+            })
+            .when('/boissons', {
+                template: `<boisson></boisson>`
             })
             .otherwise('/')
     });
