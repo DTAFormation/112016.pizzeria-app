@@ -13,7 +13,7 @@
                 class="form-control" required> 
                 <p 
                 class="text-danger" 
-                ng-if="userForm.email.$error && userForm.email.$dirty">
+                ng-if="userForm.email.$error.required && userForm.email.$dirty">
                 Obligatoire
                 </p>
         </div>
@@ -29,7 +29,7 @@
                 class="form-control" required> 
                 <p 
                 class="text-danger" 
-                ng-if="userForm.nom.$error && userForm.nom.$dirty">
+                ng-if="userForm.nom.$error.required && userForm.nom.$dirty">
                 Obligatoire
                 </p>
         </div>
@@ -45,7 +45,7 @@
                 class="form-control" required> 
                 <p 
                 class="text-danger" 
-                ng-if="userForm.prenom.$error && userForm.prenom.$dirty">
+                ng-if="userForm.prenom.$error.required && userForm.prenom.$dirty">
                 Obligatoire
                 </p>
         </div>
@@ -61,10 +61,14 @@
                 class="form-control" required> 
                 <p 
                 class="text-danger" 
-                ng-if="userForm.adresse.$error && userForm.adresse.$dirty">
+                ng-if="userForm.adresse.$error.required && userForm.adresse.$dirty">
                 Obligatoire
                 </p>
         </div>
-        <button ng-if="$ctrl.disable" ng-click="$ctrl.updateInfo()">Mettre à jour les Informations</button>
+        <button ng-if="$ctrl.disable" ng-click="$ctrl.updateInfo()" class="btn btn-primary">Mettre à jour les Informations</button>
+        <span>
+                <button ng-if="!$ctrl.disable" type="submit"  class="btn btn-primary">Valider Info</button> 
+                <button ng-if="!$ctrl.disable" ng-click="$ctrl.annulerUpdate()" class="btn btn-warning">Annuler</button>
+        </span>
     </form>
 </div>

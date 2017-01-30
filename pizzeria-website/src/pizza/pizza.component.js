@@ -12,6 +12,11 @@ class PizzaController{
        
     }
 
+  afficherModale(pizza) {
+
+        this.currentPizza = pizza;
+
+    }
 }
 
  export const Pizza = {

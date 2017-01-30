@@ -7,10 +7,10 @@ export class UserService {
        this.$q = $q;
    }
 
-   getUser(id) {
-       return this.$http.get(`${ api }/${ id }`)
-           .then(response => response.data)
-   }
+  getUser(id) {
+       return this.$http.get( ` ${ api }/${ id }`)
+            .then(response => response.data)
+    }
 
    saveUser(user){
        return this.$http.post(api,user)
