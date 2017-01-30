@@ -5,7 +5,6 @@ import ngStorage from 'ngstorage';
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
-
 import { PizzaService } from './shared/service/pizza.service'
 import { Panier } from './panier/panier.component';
 
