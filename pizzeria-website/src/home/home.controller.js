@@ -14,7 +14,7 @@ export default class HomeController {
 
     ajouterPizzaPanier(pizza) {
 
-        this.PanierService.ajouterPizza(pizza);
+        this.PanierService.addProduct(pizza);
 
     }
 
