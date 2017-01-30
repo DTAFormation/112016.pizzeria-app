@@ -1,7 +1,7 @@
 <h3>Dernières Pizza</h3>
 <div class="container">
     <div class="row">
-        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPizzaPanier(pizza)" on-afficher-modale="$ctrl.afficherModale(pizza)">
+        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-afficher-modale="$ctrl.afficherModale(pizza)">
         </product>
     </div>
     <modal-pizza pizza="$ctrl.currentPizza">
