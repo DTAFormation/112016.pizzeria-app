@@ -16,6 +16,8 @@ import { Pizza } from './pizza/pizza.component';
 
 
 
+
+
 angular.module('pizzeria', [
         ngRoute,
         'ngStorage'
@@ -50,6 +52,9 @@ angular.module('pizzeria', [
                          .when('/pizzas', {
                 template: `<pizza></pizza>`
 
+            })
+               .when('/nouveaucompte', {
+            template: `<inscription></inscription>`
             })
             .otherwise('/')
     });
