@@ -5,6 +5,7 @@ import ngStorage from 'ngstorage';
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
+import { Inscription } from './inscription/inscription.component'
 
 angular.module('pizzeria', [
     ngRoute,
@@ -14,6 +15,7 @@ angular.module('pizzeria', [
 .component('home', Home)
 .component('product', Product)
 .component('modalPizza', ModalPizza)
+.component('inscription',Inscription)
 
 .controller('lsCtrl', function (
     $scope,
@@ -41,8 +43,13 @@ angular.module('pizzeria', [
     $routeProvider
 
         .when('/', {
-            template: `<home><home>`
+            template: `<home></home>`
         })
+
+        .when('/nouveaucompte', {
+            template: `<inscription></inscription>`
+        })
+     
 
         .otherwise('/')
 });
