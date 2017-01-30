@@ -1,13 +1,20 @@
 class ProductController {
 
-    constructor() {}
+    constructor(PanierService) {
 
-    ajouterPanier() {
-        this.onSelect();
+        this.PanierService = PanierService;
+    }
+
+    ajouterPanier(product) {
+
+        this.PanierService.ajouterElement(product);
+
     }
 
     afficherModale() {
+        
         this.onAfficherModale();
+
     }
 
 }
@@ -15,7 +22,6 @@ class ProductController {
 export const Product = {
     bindings: {
         product: '<',
-        onSelect: '&',
         onAfficherModale: '&'
     },
 
