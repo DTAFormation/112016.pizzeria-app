@@ -2,6 +2,10 @@ export default class HomeController {
     constructor() {}
 
     $onInit() {
+        /* $('#pizzaModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+         })
+*/
         this.pizzas = [{
             id: 0,
             name: "Margherita",
