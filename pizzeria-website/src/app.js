@@ -4,7 +4,6 @@ import ngStorage from 'ngstorage';
 
 import { Home } from './home/home.component';
 import { Product } from './product/product.component';
-import { Panier } from './panier/panier.component';
 import { MonCompte } from './moncompte/moncompte.component';
 import { ModalPizza } from './modal/modal.component';
 import { Inscription } from './inscription/inscription.component';
