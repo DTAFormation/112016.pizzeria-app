@@ -1,4 +1,4 @@
-const api = 'API_URL'; // Fill the api URL here and use it everywhere
+const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it everywhere
 
 export class PizzaService {
     constructor($localStorage, $http) {
