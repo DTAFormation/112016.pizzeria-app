@@ -55,5 +55,19 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>Dev</id>
+			<properties>
+				<post.construct.mode>dev</post.construct.mode>
+			</properties>
+		</profile>
+		<profile>
+			<id>Prod</id>
+			<properties>
+				<post.construct.mode>prod</post.construct.mode>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

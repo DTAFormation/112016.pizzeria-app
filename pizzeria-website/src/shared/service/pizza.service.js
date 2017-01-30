@@ -1,9 +1,10 @@
-const api = 'API_URL'; // Fill the api URL here and use it everywhere
+const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it everywhere
 
 export class PizzaService {
-    constructor($localStorage) {
+    constructor($localStorage, $http) {
 
         this.$localStorage = $localStorage;
+        this.$http = $http;
 
         if ($localStorage.jsonPanier === undefined) {
             $localStorage.jsonPanier = {};
@@ -31,5 +32,9 @@ export class PizzaService {
 
         delete this.$localStorage.jsonPanier.pizza;
         
+    }
+
+    getPizzas(){
+        return this.$http.get(api).then((response)=> response.data);
     }
 }
