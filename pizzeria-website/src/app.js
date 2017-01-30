@@ -7,6 +7,7 @@ import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
 import { PizzaService } from './shared/service/pizza.service'
 import { Panier } from './panier/panier.component';
+import { Pizza } from './pizza/pizza.component';
 
 angular.module('pizzeria', [
         ngRoute,
@@ -16,6 +17,7 @@ angular.module('pizzeria', [
     .component('product', Product)
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
+    .component('pizza', Pizza)
     .service('PizzaService', PizzaService)
     .config(function ($routeProvider, $locationProvider) {
 
@@ -27,6 +29,9 @@ angular.module('pizzeria', [
             })
             .when('/panier', {
                 template: `<panier></panier>`
+            })
+             .when('/pizzas', {
+                template: `<pizza></pizza>`
             })
             .otherwise('/')
     });
