@@ -6,43 +6,28 @@ import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
 
+import { PizzaService } from './shared/service/pizza.service'
+import { Panier } from './panier/panier.component';
+
 angular.module('pizzeria', [
-    ngRoute,
-    'ngStorage'
-])
+        ngRoute,
+        'ngStorage'
+    ])
+    .component('home', Home)
+    .component('product', Product)
+    .component('modalPizza', ModalPizza)
+    .component('panier', Panier)
+    .service('PizzaService', PizzaService)
+    .config(function ($routeProvider, $locationProvider) {
 
-.component('home', Home)
-.component('product', Product)
-.component('modalPizza', ModalPizza)
+        $locationProvider.html5Mode(true);
 
-.controller('lsCtrl', function (
-    $scope,
-    $localStorage,
-    $sessionStorage
-) {
-
-    $scope.$localStorage = $localStorage;
-    $scope.$sessionStorage = $sessionStorage;
-
-    if ($localStorage.jsonPanier === undefined) {
-        $localStorage.jsonPanier = {};
-        $localStorage.jsonPanier['pizza'] = [];
-        $localStorage.jsonPanier['boisson'] = [];
-        $localStorage.jsonPanier['dessert'] = [];
-        $localStorage.jsonPanier['menus'] = [];
-    }
-
-})
-
-.config(function ($routeProvider, $locationProvider) {
-
-    $locationProvider.html5Mode(true);
-
-    $routeProvider
-
-        .when('/', {
-            template: `<home><home>`
-        })
-
-        .otherwise('/')
-});
+        $routeProvider
+            .when('/', {
+                template: `<home></home>`
+            })
+            .when('/panier', {
+                template: `<panier></panier>`
+            })
+            .otherwise('/')
+    });

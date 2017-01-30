@@ -1,5 +1,8 @@
 export default class HomeController {
-    constructor() {}
+    constructor(PizzaService) {
+
+        this.PizzaService = PizzaService;
+    }
 
     $onInit() {
         this.pizzas = [{
@@ -17,18 +20,12 @@ export default class HomeController {
         }]
     }
 
-    ajouterPanier(pizza, $localStorage) {
+    /** 
+     ** Use PizzeriaService.displayPanier() from PizzaService to display the data in the console
+     **/
+    ajouterPizzaPanier(pizza) {
 
-        let pizzas = $localStorage.jsonPanier['pizza'];
-        let exist = pizzas.find(p => p.id === pizza.id);
-
-        if (exist !== undefined) {
-            exist.quantité += 1;
-        } else {
-            pizza.quantité = 1;
-            pizzas.push(pizza);
-        }
-
+        this.PizzaService.ajouterPanier(pizza);
     }
 
     afficherModale(pizza) {
