@@ -5,6 +5,7 @@ import ngStorage from 'ngstorage';
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
+import { Login } from './login/login.component'
 
 import { PizzaService } from './shared/service/pizza.service'
 import { Panier } from './panier/panier.component';
@@ -17,6 +18,7 @@ angular.module('pizzeria', [
     .component('product', Product)
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
+    .component('login', Login)
     .service('PizzaService', PizzaService)
     .config(function ($routeProvider, $locationProvider) {
 
@@ -29,5 +31,9 @@ angular.module('pizzeria', [
             .when('/panier', {
                 template: `<panier></panier>`
             })
+            .when('/login', {
+                template: `<login></login>`
+        })
             .otherwise('/')
     });
+
