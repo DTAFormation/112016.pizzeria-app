@@ -1,0 +1,53 @@
+<form  name ="inscriptionForm" novalidate ng-submit="$ctrl.saveUser()" class= "well">
+<div class="form-group row">
+    <h2>Création d'un compte</h2>
+    <label>email</label>
+    <input 
+    ng-model ="$ctrl.user.email"
+    name='email'
+    id="email"
+    type="text"
+    class="form-control">
+    </div>
+<div class="form-group row">
+    <label>Mot de passe</label>
+    <input 
+    ng-model ="$ctrl.user.motDePasse"
+    name='motDePasse'
+    id="motDePasse"
+    type="text"
+    class="form-control">
+    </div>
+
+<div class="form-group row">
+    <label>Nom</label>
+    <input 
+    ng-model ="$ctrl.user.nom"
+    name='nom'
+    id="nom"
+    type="text"
+    class="form-control">
+    </div> 
+
+<div class="form-group row">
+    <label>Prénom</label>
+    <input 
+    ng-model ="$ctrl.user.prenom"
+    name='prenom'
+    id="prenom"
+    type="text"
+    class="form-control"> 
+    </div> 
+
+<div class="form-group row">
+    <label>Adresse</label>
+    <input 
+    ng-model ="$ctrl.user.adresse"
+    name='adresse'
+    id="adresse"
+    type="text"
+    class="form-control"> 
+
+</div>
+    <button type="submit" class="btn btn-primary" >Créer un compte</button>
+</form>
