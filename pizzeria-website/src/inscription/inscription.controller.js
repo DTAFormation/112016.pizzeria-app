@@ -1,6 +1,7 @@
  export default class InscriptionController{
     constructor(UserService){
         this.UserService = UserService;
+        this.UserService.getUser
         
     }
 
@@ -11,7 +12,8 @@ $onChanges(changes){
 }
 
     saveUser(){
-        this.UserService.saveUser(user);
+        console.log(this.user)
+        this.UserService.saveUser(this.user);
     }
 
 }
