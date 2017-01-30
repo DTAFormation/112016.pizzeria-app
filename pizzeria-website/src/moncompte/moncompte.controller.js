@@ -9,15 +9,13 @@ export default class MonCompteController {
         this.id = $routeParams.id;
         this.$location = $location;
 
-    }
-
-    $onInit() {
-
-        this.disable = true;
-        this.commandes = [];
         this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
+    }
+    $onInit() {
+
+        this.disable = true;
         this.CommandeService.getCommandeByUserId(this.id)
             .then(commandes =>{
                 lodash(commandes.map(commande => {
@@ -29,8 +27,8 @@ export default class MonCompteController {
 
     }
 
-    updateInfo(){
-        
+    updateInfo() {
+
         this.disable = false;
 
     }
@@ -45,7 +43,8 @@ export default class MonCompteController {
 
     annulerUpdate() {
 
-         this.UserService.getUser(this.id)
+       
+        this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
         this.disable = true;
