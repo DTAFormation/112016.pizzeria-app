@@ -1,40 +1,41 @@
 const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it everywhere
 
 export class PizzaService {
-    constructor($localStorage, $http) {
 
-        this.$localStorage = $localStorage;
+    constructor($q, $http) {
+
+        this.$q = $q;
         this.$http = $http;
 
-        if ($localStorage.jsonPanier === undefined) {
-            $localStorage.jsonPanier = {};
-        }
-        if ($localStorage.jsonPanier.pizza === undefined) {
-            $localStorage.jsonPanier['pizza'] = [];
-        }
-
     }
 
-    ajouterPanier(pizza) {
+    findAll() {
 
-        let pizzas = this.$localStorage.jsonPanier['pizza'];
-        let exist = pizzas.find(p => p.id === pizza.id);
+        const pizzas = [{
+            id: 0,
+            type: 'pizza',
+            name: "Margherita",
+            urlImage: "http://mister-check.e-monsite.com/medias/images/pizza2.jpg"
+        }, {
+            id: 1,
+            type: 'pizza',
+            name: "Peperoni",
+            urlImage: "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg"
+        }, {
+            id: 2,
+            type: 'pizza',
+            name: "Reine",
+            urlImage: "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg"
+        }];
 
-        if (exist !== undefined) {
-            exist.quantité += 1;
-        } else {
-            pizza.quantité = 1;
-            pizzas.push(pizza);
-        }
+        return this.$q.resolve(pizzas);
     }
 
-    resetPizzaPanier() {
+    getPizzas() {
+        return this.$http.get(api)
+            .then((response) =>
+                response.data
+            );
 
-        delete this.$localStorage.jsonPanier.pizza;
-        
-    }
-
-    getPizzas(){
-        return this.$http.get(api).then((response)=> response.data);
     }
 }

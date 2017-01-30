@@ -10,6 +10,7 @@ import { Inscription } from './inscription/inscription.component'
 import { UserService } from './shared/service/user.service'
 import { Login } from './login/login.component'
 import { PizzaService } from './shared/service/pizza.service'
+import { PanierService } from './shared/service/panier.service'
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 
@@ -30,6 +31,7 @@ angular.module('pizzeria', [
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .component('inscription',Inscription)
+    .service('PanierService', PanierService)
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
