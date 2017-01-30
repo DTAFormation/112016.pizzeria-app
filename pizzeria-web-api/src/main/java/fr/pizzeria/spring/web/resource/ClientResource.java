@@ -14,7 +14,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.spring.web.repository.IClientRepository;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/client")
 public class ClientResource {
 
 	@Autowired

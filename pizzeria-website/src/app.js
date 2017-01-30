@@ -49,13 +49,11 @@ angular.module('pizzeria', [
             .when('/inscription', {
             template: `<inscription></inscription>`
             })
-                         .when('/pizzas', {
+            .when('/pizzas', {
                 template: `<pizza></pizza>`
 
             })
-               .when('/nouveaucompte', {
-            template: `<inscription></inscription>`
-            })
+
             .otherwise('/')
     });
 

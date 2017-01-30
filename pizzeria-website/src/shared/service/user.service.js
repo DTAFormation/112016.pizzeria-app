@@ -1,6 +1,6 @@
 
+const api = 'http://localhost:3000/client';
 
-const api = 'http://localhost:3000/user';
 
 
 export class UserService {
