@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const api = 'http://localhost:3000/client';
+=======
+const api = 'http://localhost:3000/users';
+>>>>>>> USW004 #21
 
 export class UserService {
    constructor($http, $timeout, $q) {

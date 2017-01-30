@@ -16,7 +16,6 @@ import { Pizza } from './pizza/pizza.component';
 
 
 
-
 angular.module('pizzeria', [
         ngRoute,
         'ngStorage'
@@ -54,3 +53,4 @@ angular.module('pizzeria', [
             })
             .otherwise('/')
     });
+
