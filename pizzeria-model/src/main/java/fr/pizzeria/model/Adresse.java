@@ -14,21 +14,21 @@ public class Adresse {
 	private String adresse1;
 	private String adresse2;
 	private String adresse3;
-	private Integer code_postal;
+	private Integer codePostal;
 	private String ville;
 
 	public Adresse() {
 
 	}
 
-	public Adresse(Integer numero, String adresse1, String adresse2, String adresse3, Integer code_postal,
+	public Adresse(Integer numero, String adresse1, String adresse2, String adresse3, Integer codePostal,
 			String ville) {
 		super();
 		this.numero = numero;
 		this.adresse1 = adresse1;
 		this.adresse2 = adresse2;
 		this.adresse3 = adresse3;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
 	}
 
@@ -72,12 +72,12 @@ public class Adresse {
 		this.adresse3 = adresse3;
 	}
 
-	public Integer getCode_postal() {
-		return code_postal;
+	public Integer getcodePostal() {
+		return codePostal;
 	}
 
-	public void setCode_postal(Integer code_postal) {
-		this.code_postal = code_postal;
+	public void setcodePostal(Integer codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	public String getVille() {

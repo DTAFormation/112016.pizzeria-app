@@ -15,7 +15,7 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String motDePasse;
-	private Adresse adresse;
+	// private Adresse adresse;
 
 	public Client() {
 		super();
@@ -27,7 +27,7 @@ public class Client {
 		this.prenom = prenom;
 		this.email = email;
 		this.motDePasse = motDePasse;
-		this.adresse = adresse;
+		// this.adresse = adresse;
 	}
 
 	public Integer getId() {
@@ -68,14 +68,6 @@ public class Client {
 
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
-	}
-
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
 	}
 
 }
