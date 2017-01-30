@@ -1,7 +1,8 @@
  export default class InscriptionController{
-    constructor(UserService){
+    constructor(UserService, $location){
         this.UserService = UserService;
-        this.UserService.getUser
+        this.UserService.getUser;
+        this.$location = $location;
         
     }
 
@@ -12,8 +13,8 @@ $onChanges(changes){
 }
 
     saveUser(){
-        console.log(this.user)
         this.UserService.saveUser(this.user);
+        this.$location.path('/');
     }
 
 }

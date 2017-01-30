@@ -39,7 +39,7 @@ angular.module('pizzeria', [
             .when('/login', {
                 template: `<login></login>`
             })
-            .when('/nouveaucompte', {
+            .when('/inscription', {
             template: `<inscription></inscription>`
             })
             .otherwise('/')

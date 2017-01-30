@@ -14,7 +14,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.spring.web.repository.IClientRepository;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/client")
 public class ClientResource {
 
 	@Autowired
@@ -37,10 +37,4 @@ public class ClientResource {
 	public void ajoutClient(@RequestBody Client user) {
 		ClientDao.save(user);
 	}
-
-	// @RequestMapping(method = RequestMethod.POST)
-	// public void DeleteClient(@ModelAttribute("user") Client user) {
-	// ClientDao.delete(user);
-	// }
-
 }

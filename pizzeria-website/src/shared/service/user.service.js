@@ -1,4 +1,4 @@
-const api = 'http://localhost:3000/user';
+const api = 'http://localhost:3000/client';
 
 export class UserService {
    constructor($http, $timeout, $q) {
