@@ -38,6 +38,18 @@ public class Pizza {
 		this.categorie = categorie;
 	}
 
+	public Pizza(String code_pizza, String nom, String urlImage, BigDecimal prix, Integer note, Integer nbre_note,
+			CategoriePizza categorie) {
+		super();
+		this.code_pizza = code_pizza;
+		this.nom = nom;
+		this.urlImage = urlImage;
+		this.prix = prix;
+		this.note = note;
+		this.nbre_note = nbre_note;
+		this.categorie = categorie;
+	}
+
 	public Integer getId() {
 		return id;
 	}

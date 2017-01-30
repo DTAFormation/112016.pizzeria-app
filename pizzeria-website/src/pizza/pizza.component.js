@@ -1,7 +1,6 @@
 class PizzaController{
 
     constructor(PizzaService){
-        console.log(PizzaService);
         this.PizzaService = PizzaService;
     }
 
@@ -9,7 +8,6 @@ class PizzaController{
         this.PizzaService.getPizzas()
         .then(pizzas =>{
             this.pizzas = pizzas
-            console.log(pizzas)
         } );
        
     }
