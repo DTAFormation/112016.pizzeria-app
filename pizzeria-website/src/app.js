@@ -8,6 +8,7 @@ import { ModalPizza } from './modal/modal.component'
 import { Login } from './login/login.component'
 
 import { PizzaService } from './shared/service/pizza.service'
+import { PanierService } from './shared/service/panier.service'
 import { Panier } from './panier/panier.component';
 
 angular.module('pizzeria', [
@@ -20,6 +21,7 @@ angular.module('pizzeria', [
     .component('panier', Panier)
     .component('login', Login)
     .service('PizzaService', PizzaService)
+    .service('PanierService', PanierService)
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
