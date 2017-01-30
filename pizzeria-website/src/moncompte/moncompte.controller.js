@@ -13,6 +13,7 @@ export default class MonCompteController {
     }
 
     $onInit() {
+        this.disable = true;
         this.commandes = [];
         this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
@@ -25,13 +26,11 @@ export default class MonCompteController {
                 }))
                 .flatten()
             })
-            
-        this.disable = true;
 
     }
 
-    updateInfo() {
-
+    updateInfo(){
+        
         this.disable = false;
 
     }
@@ -52,7 +51,4 @@ export default class MonCompteController {
 
     }
 
-    voirCommande(idCommande){
-        console.log(idCommande)
-    }
 }

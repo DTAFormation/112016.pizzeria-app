@@ -17,6 +17,7 @@ import { PanierService } from './shared/service/panier.service';
 import { UserService } from './shared/service/user.service';
 import { CommandeService } from './shared/service/commande.service';
 
+
 angular.module('pizzeria', [
         ngRoute,
         'ngStorage'
