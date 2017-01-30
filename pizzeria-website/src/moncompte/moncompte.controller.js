@@ -6,13 +6,13 @@ export default class MonCompteController {
 
         this.UserService = UserService;
         this.CommandeService = CommandeService;
-
         this.id = $routeParams.id;
         this.$location = $location;
 
     }
 
     $onInit() {
+
         this.disable = true;
         this.commandes = [];
         this.UserService.getUser(this.id)
@@ -45,10 +45,11 @@ export default class MonCompteController {
 
     annulerUpdate() {
 
-        this.disable = true;
          this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
+        this.disable = true;
     }
-
+ 
+    
 }

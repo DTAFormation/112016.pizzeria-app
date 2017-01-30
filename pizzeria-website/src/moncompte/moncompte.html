@@ -7,6 +7,17 @@
                 <input ng-model="$ctrl.user.email" name="email" placeholder="$ctrl.user.email" ng-disabled="$ctrl.disable" type="email" class="form-control" required>
                 <p class="text-danger" ng-if="userForm.email.$error.required && userForm.email.$dirty">
                     Obligatoire
+                <input 
+                ng-model="$ctrl.user.email" 
+                name="email" 
+                placeholder="$ctrl.user.email" 
+                ng-disabled="$ctrl.disable"
+                type="email" 
+                class="form-control" required> 
+                <p 
+                class="text-danger" 
+                ng-if="userForm.email.$error.required && userForm.email.$dirty">
+                Obligatoire
                 </p>
             </div>
 
@@ -15,6 +26,17 @@
                 <input ng-model="$ctrl.user.nom" name="nom" placeholder="$ctrl.user.nom" ng-disabled="$ctrl.disable" type="nom" class="form-control" required>
                 <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">
                     Obligatoire
+                <input 
+                ng-model="$ctrl.user.nom" 
+                name="nom" 
+                placeholder="$ctrl.user.nom" 
+                ng-disabled="$ctrl.disable"
+                type="nom" 
+                class="form-control" required> 
+                <p 
+                class="text-danger" 
+                ng-if="userForm.nom.$error.required && userForm.nom.$dirty">
+                Obligatoire
                 </p>
             </div>
 
@@ -28,6 +50,7 @@
 
             <div class="form-group">
                 <label>Adresse</label>
+
                 <input ng-model="$ctrl.user.adresse" name="adresse" placeholder="$ctrl.user.adresse" ng-disabled="$ctrl.disable" type="adresse" class="form-control" required>
                 <p class="text-danger" ng-if="userForm.adresse.$error.required && userForm.adresse.$dirty">
                     Obligatoire
@@ -39,6 +62,8 @@
                 <button ng-if="!$ctrl.disable" ng-click="$ctrl.annulerUpdate()" class="btn btn-warning">Annuler</button>
         </span>
         </form>
+    </div>
+</div>
 
         <table class="table table-striped">
             <thead>
@@ -67,3 +92,4 @@
             </tbody>
         </table>
     </div>
+       

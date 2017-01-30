@@ -2,13 +2,11 @@ const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it 
 
 export class PizzaService {
 
-    constructor($q, $http) {
+    constructor( $http) {
 
-        this.$q = $q;
         this.$http = $http;
 
     }
-
 
     getPizzas() {
         return this.$http.get(api)

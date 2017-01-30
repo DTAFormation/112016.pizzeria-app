@@ -7,8 +7,9 @@ export class UserService {
         this.$q = $q;
     }
 
-    getUser(id) {
-        return this.$http.get(`${ api }/${ id }`)
+
+  getUser(id) {
+       return this.$http.get( ` ${ api }/${ id }`)
             .then(response => response.data)
     }
 
