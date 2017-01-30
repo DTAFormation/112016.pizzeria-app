@@ -14,6 +14,8 @@ import { Panier } from './panier/panier.component';
 
 
 
+
+
 angular.module('pizzeria', [
         ngRoute,
         'ngStorage'
