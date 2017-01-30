@@ -1,0 +1,34 @@
+<div>
+    <h2>Votre commande</h2>
+<div>
+
+
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               
+            </th>
+            <td> Nom & Ingerdients </td>
+            <td> Prix  </td>
+            <td> Quantité  </td>
+        </tr>
+
+    </thead>
+        <tbody>
+            <tr>
+                
+                <th><img src="{{$ctrl.$localStorage.jsonPanier.pizza[0].src}}" class="img-thumbnail" width="250" alt="{{$ctrl.$localStorage.jsonPanier.pizza[0].src}}"></th>
+                
+             <td> {{$ctrl.$localStorage.jsonPanier.pizza[0].name}} </td>
+            <td> Prix  </td>
+            <td> {{$ctrl.$localStorage.jsonPanier.pizza[0].quantite}} </td>
+            </tr>
+        </tbody>
+    
+    </table>
+
+</div>
+
+</div>

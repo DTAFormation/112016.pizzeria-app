@@ -1,18 +1,20 @@
-import angular from 'angular'
-import ngRoute from 'angular-route'
+import angular from 'angular';
+import ngRoute from 'angular-route';
 import ngStorage from 'ngstorage';
 
-import { Home } from './home/home.component'
-import { Product } from './product/product.component'
-import { ModalPizza } from './modal/modal.component'
+import { Home } from './home/home.component';
+import { Product } from './product/product.component';
+import { ModalPizza } from './modal/modal.component';
 
-import { Inscription } from './inscription/inscription.component'
-import { UserService } from './shared/service/user.service'
-import { Login } from './login/login.component'
-import { PizzaService } from './shared/service/pizza.service'
-import { PanierService } from './shared/service/panier.service'
+import { Inscription } from './inscription/inscription.component';
+import { UserService } from './shared/service/user.service';
+import { Login } from './login/login.component';
+import { PizzaService } from './shared/service/pizza.service';
+import { PanierService } from './shared/service/panier.service';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
+
+import { Commande } from './commande/commande.component';
 
 
 
@@ -32,6 +34,7 @@ angular.module('pizzeria', [
     .service('UserService', UserService)
     .component('inscription',Inscription)
     .service('PanierService', PanierService)
+    .component('commande',Commande)
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
@@ -54,6 +57,9 @@ angular.module('pizzeria', [
 
              .when('/pizzas', {
                 template: `<pizza></pizza>`
+            })
+            .when('/commande',{
+                template: `<commande></commande>` 
             })
 
             .otherwise('/')
