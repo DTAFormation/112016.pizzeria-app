@@ -1,5 +1,5 @@
-import angular from 'angular'
-import ngRoute from 'angular-route'
+import angular from 'angular';
+import ngRoute from 'angular-route';
 import ngStorage from 'ngstorage';
 
 import { Home } from './home/home.component'
@@ -11,10 +11,9 @@ import { Login } from './login/login.component'
 import { PizzaService } from './shared/service/pizza.service'
 import { LoginService } from './shared/service/login.service'
 import { PanierService } from './shared/service/panier.service'
+import { MonCompte } from './moncompte/moncompte.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
-
-
 
 
 
@@ -29,11 +28,15 @@ angular.module('pizzeria', [
     .component('panier', Panier)
     .component('login', Login)
     .component('pizza', Pizza)
+    .component('inscription',Inscription)
+    .component('moncompte', MonCompte)
+    .service('PanierService', PanierService)
+    .service('PizzaService', PizzaService)
+    .service('UserService', UserService)
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('LoginService', LoginService)
-    .component('inscription',Inscription)
-    .service('PanierService', PanierService)
+
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
@@ -51,11 +54,13 @@ angular.module('pizzeria', [
             .when('/inscription', {
             template: `<inscription></inscription>`
             })
-            .when('/pizzas', {
+             .when('/pizzas', {
                 template: `<pizza></pizza>`
 
             })
-
+            .when('/moncompte/:id?',{
+                template: `<moncompte></moncompte>`
+            })
             .otherwise('/')
     });
 
