@@ -32,6 +32,6 @@ export default class HomeController {
     }
 
     afficherModale(pizza) {
-        console.log('afficherModale', pizza);
+        this.currentPizza = pizza;
     }
 }
