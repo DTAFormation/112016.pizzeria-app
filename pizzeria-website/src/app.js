@@ -11,6 +11,7 @@ import { Login } from './login/login.component'
 import { PizzaService } from './shared/service/pizza.service'
 import { LoginService } from './shared/service/login.service'
 import { Panier } from './panier/panier.component';
+import { Pizza } from './pizza/pizza.component';
 
 
 
@@ -25,6 +26,7 @@ angular.module('pizzeria', [
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
     .component('login', Login)
+    .component('pizza', Pizza)
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('LoginService', LoginService)
@@ -45,6 +47,10 @@ angular.module('pizzeria', [
             })
             .when('/inscription', {
             template: `<inscription></inscription>`
+            })
+                         .when('/pizzas', {
+                template: `<pizza></pizza>`
+
             })
             .otherwise('/')
     });
