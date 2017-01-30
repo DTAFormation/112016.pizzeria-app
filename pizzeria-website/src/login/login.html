@@ -8,15 +8,16 @@
 			    	<form accept-charset="UTF-8" role="form">
                     <fieldset>
 			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="E-mail" name="email" type="text">
+			    		    <input class="form-control" placeholder="E-mail" name="email" type="text" ng-model ="$ctrl.email">
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="">
+			    			<input class="form-control" placeholder="Password" name="password" type="password" ng-model ="$ctrl.mdp">
 			    		</div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login" ng-click="$ctrl.test()">
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login" ng-click="$ctrl.login()">
 			    	</fieldset>
 			      	</form>
 			    </div>
 			</div>
 		</div>
 	</div>
+	<div ng-if="$ctrl.loguer"><p>Erreur d'authentification</p></div>

@@ -1,8 +1,19 @@
 class LoginController {
-    constructor(){}
+    constructor(LoginService){
+        this.LoginService = LoginService
+    }
 
-    test(){
-        console.log('test');
+    login(){
+        this.LoginService.loginControl(this.email,this.mdp)
+            .then(response => {
+                if(!response){
+                    this.loguer = true
+                } 
+                else {
+                     this.loguer = false
+                }
+            })
+
     }
 }
 
