@@ -21,7 +21,7 @@ public class Client {
 		super();
 	}
 
-	public Client(String nom, String prenom, String email, String motDePasse, Adresse adresse) {
+	public Client(String nom, String prenom, String email, String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;

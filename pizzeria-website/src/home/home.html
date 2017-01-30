@@ -1,13 +1,7 @@
-<script>
-    $('#pizzaModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
-</script>
-
 <h3>Dernières Pizza</h3>
-<div class="container" ng-controller="lsCtrl">
+<div class="container">
     <div class="row">
-        <product data-toggle="modal" data-target="#pizzaModal" ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPanier(pizza, $localStorage)" on-afficher-modale="$ctrl.afficherModale(pizza)">
+        <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPizzaPanier(pizza)" on-afficher-modale="$ctrl.afficherModale(pizza)">
         </product>
     </div>
     <modal-pizza pizza="$ctrl.currentPizza">

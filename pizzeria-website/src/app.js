@@ -5,6 +5,7 @@ import ngStorage from 'ngstorage';
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
+<<<<<<< HEAD
 import { Inscription } from './inscription/inscription.component'
 
 angular.module('pizzeria', [
@@ -44,8 +45,41 @@ angular.module('pizzeria', [
 
         .when('/', {
             template: `<home></home>`
-        })
+=======
+import { Login } from './login/login.component'
 
+import { PizzaService } from './shared/service/pizza.service'
+import { Panier } from './panier/panier.component';
+
+angular.module('pizzeria', [
+        ngRoute,
+        'ngStorage'
+    ])
+    .component('home', Home)
+    .component('product', Product)
+    .component('modalPizza', ModalPizza)
+    .component('panier', Panier)
+    .component('login', Login)
+    .service('PizzaService', PizzaService)
+    .config(function ($routeProvider, $locationProvider) {
+
+        $locationProvider.html5Mode(true);
+
+        $routeProvider
+            .when('/', {
+                template: `<home></home>`
+            })
+            .when('/panier', {
+                template: `<panier></panier>`
+            })
+            .when('/login', {
+                template: `<login></login>`
+>>>>>>> 5736e7aa404857aad6e38439c9fbb7ada69c5a76
+        })
+            .otherwise('/')
+    });
+
+<<<<<<< HEAD
         .when('/nouveaucompte', {
             template: `<inscription></inscription>`
         })
@@ -53,3 +87,5 @@ angular.module('pizzeria', [
 
         .otherwise('/')
 });
+=======
+>>>>>>> 5736e7aa404857aad6e38439c9fbb7ada69c5a76

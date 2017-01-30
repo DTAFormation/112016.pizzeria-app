@@ -1,9 +1,3 @@
-class ModalController {
-    constructor() {
-
-    }
-}
-
 export const ModalPizza = {
     bindings: {
         pizza: '<'
