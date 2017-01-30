@@ -15,19 +15,19 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String motDePasse;
-	// private Adresse adresse;
+	private String adresse;
 
 	public Client() {
 		super();
 	}
 
-	public Client(String nom, String prenom, String email, String motDePasse, Adresse adresse) {
+	public Client(String nom, String prenom, String email, String motDePasse, String adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.motDePasse = motDePasse;
-		// this.adresse = adresse;
+		this.adresse = adresse;
 	}
 
 	public Integer getId() {
@@ -68,6 +68,14 @@ public class Client {
 
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 
 }
