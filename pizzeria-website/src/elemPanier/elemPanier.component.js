@@ -1,8 +1,14 @@
 class ElemPanierController {
 
-    constructor(PanierService) {
+    constructor(PanierService, PizzaService) {
 
         this.PanierService = PanierService;
+        this.PizzaService = PizzaService;
+
+    }
+
+    $onInit() {
+
     }
 
     ajouterQuantite(element) { // Todo
@@ -13,7 +19,7 @@ class ElemPanierController {
 
 export const ElemPanier = {
     bindings: {
-        element: '<',
+        produit: '<',
     },
 
     template: require('./elemPanier.component.html'),

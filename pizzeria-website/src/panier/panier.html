@@ -1,5 +1,4 @@
 <h3>Votre Panier</h3>
 <div>{{ $ctrl.panier }}</div>
 </br>
-<elem-panier ng-repeat="element in $ctrl.panier track by $index" element="element">
-</elem-panier>
+<elem-panier ng-repeat="produit in $ctrl.produitList track by $index" produit="produit" />
