@@ -14,7 +14,7 @@ export default class HomeController {
                 this.pizzas = pizzas
             );
 
-
+            
     }
 
     ajouterPizzaPanier(pizza) {

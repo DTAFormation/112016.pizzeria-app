@@ -19,19 +19,19 @@ public class Boisson {
 	private BigDecimal prix;
 	private String urlImage;
 	@Enumerated(EnumType.STRING)
-	private CategorieBoisson categBoisson;
+	private CategorieBoisson categorie;
 
 	public Boisson() {
 
 	}
 
-	public Boisson(String nom, BigDecimal prix, String urlImage, CategorieBoisson categBoisson) {
+	public Boisson(String nom, BigDecimal prix, String urlImage, CategorieBoisson categorie) {
 		super();
 
 		this.nom = nom;
 		this.prix = prix;
 		this.urlImage = urlImage;
-		this.categBoisson = categBoisson;
+		this.categorie = categorie;
 	}
 
 	public int getId() {
@@ -66,12 +66,12 @@ public class Boisson {
 		this.urlImage = urlImage;
 	}
 
-	public CategorieBoisson getCategBoisson() {
-		return categBoisson;
+	public CategorieBoisson getCategorie() {
+		return categorie;
 	}
 
-	public void setCategBoisson(CategorieBoisson categBoisson) {
-		this.categBoisson = categBoisson;
+	public void setCategorie(CategorieBoisson categorie) {
+		this.categorie = categorie;
 	}
 
 }

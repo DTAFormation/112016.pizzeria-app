@@ -37,6 +37,11 @@ angular.module('pizzeria', [
     .service('BoissonService', BoissonService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
+    .filter('unique', function() {
+    return function (array) {
+        return _.uniq(array, _.isEquals);
+    };
+})
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
@@ -60,7 +65,7 @@ angular.module('pizzeria', [
              .when('/pizzas', {
                 template: `<pizza></pizza>`
             })
-            
+
             .when('/boissons', {
                 template: `<boisson></boisson>`
             })

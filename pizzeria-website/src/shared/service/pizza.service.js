@@ -17,17 +17,17 @@ export class PizzaService {
         const pizzas = [{
             id: 0,
             type: 'pizza',
-            name: "Margherita",
+            nom: "Margherita",
             urlImage: "http://mister-check.e-monsite.com/medias/images/pizza2.jpg"
         }, {
             id: 1,
             type: 'pizza',
-            name: "Peperoni",
+            nom: "Peperoni",
             urlImage: "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg"
         }, {
             id: 2,
             type: 'pizza',
-            name: "Reine",
+            nom: "Reine",
             urlImage: "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg"
         }];
 

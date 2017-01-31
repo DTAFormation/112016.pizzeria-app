@@ -33,8 +33,11 @@ public class BoissonResource {
 			Boisson boisson2 = new Boisson("oasis tropical", new BigDecimal(2.0),
 					"http://medine-distribution.fr/219-home_default/oasis-tropical-50cl-x-24.jpg",
 					CategorieBoisson.SANS_GAZ);
+			Boisson boisson3 = new Boisson("evian", new BigDecimal(1.5),
+					"http://www.galerieculinaireparis.com/755-home_default/o4-evian-1l.jpg", CategorieBoisson.SANS_GAZ);
 			boissonDao.save(boisson);
 			boissonDao.save(boisson2);
+			boissonDao.save(boisson3);
 		}
 	}
 

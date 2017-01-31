@@ -2,6 +2,13 @@
 
 <div class="container">
     <div class="row">
+         <nav class="navbar">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="categ in $ctrl.categs"><a href="#" ng-click="$ctrl.sort(categ.nom)">{{categ.nom}} ({{categ.nb}})</a></li>
+            </ul>
+        </nav>
+    </div>     
+    <div class="row">
         <product  ng-repeat=" boisson in $ctrl.boissons track by $index" product="boisson" on-select="$ctrl.ajouterPanier(boisson, $localStorage)" on-afficher-modale="$ctrl.afficherModale(boisson)">
         </product>
     </div>
