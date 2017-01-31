@@ -80,6 +80,13 @@ public class PizzeriaApp {
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
 							new BigDecimal(9.9), 3, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
+			pizzaResource.ajoutPizza(
+					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
+							new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
+
+			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
+					new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
+
 			List<Pizza> pizzas = pizzaResource.listAllPizzas();
 
 			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
