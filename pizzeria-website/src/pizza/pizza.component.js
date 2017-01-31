@@ -6,16 +6,10 @@ class PizzaController{
 
     $onInit(){
         this.PizzaService.getPizzas()
+
         .then(pizzas => this.pizzas = pizzas);  
     }
 
-     ajouterPizzaPanier(pizza) {
-         this.PizzaService.ajouterPanier(pizza);
-     }
-
-      afficherModale(pizza) {
-        this.currentPizza = pizza;
-    }
 
 }
 
