@@ -11,9 +11,10 @@ import { Login } from './login/login.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 
-import { PizzaService } from './shared/service/pizza.service'
-import { PanierService } from './shared/service/panier.service'
-import { UserService } from './shared/service/user.service'
+import { PizzaService } from './shared/service/pizza.service';
+import { PanierService } from './shared/service/panier.service';
+import { UserService } from './shared/service/user.service';
+import { CommandeService } from './shared/service/commande.service';
 
 angular.module('pizzeria', [
         ngRoute,
@@ -31,6 +32,7 @@ angular.module('pizzeria', [
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
+    .service('CommandeService', CommandeService)
     
     .config(function ($routeProvider, $locationProvider) {
 
