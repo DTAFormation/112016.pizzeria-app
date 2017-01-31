@@ -6,7 +6,7 @@ export class PizzaService {
         this.$q = $q;
         this.$http = $http;
     }
-
+    
     findAll() {
 
         const pizzas = [{
@@ -29,6 +29,7 @@ export class PizzaService {
 
         return this.$q.resolve(pizzas);
     }
+
 
     getPizzas(){
         return this.$http.get(api).then((response)=> response.data);
