@@ -1,18 +1,31 @@
+import lodash from 'lodash';
+
 export default class MonCompteController {
 
-    constructor(UserService, $routeParams, $location) {
+    constructor(UserService, $routeParams, $location, CommandeService) {
 
         this.UserService = UserService;
+        this.CommandeService = CommandeService;
+
         this.id = $routeParams.id;
         this.$location = $location;
-
-        this.UserService.getUser(this.id)
-            .then(user => this.user = user[0]);
 
     }
 
     $onInit() {
+        this.commandes = [];
+        this.UserService.getUser(this.id)
+            .then(user => this.user = user[0]);
 
+        this.CommandeService.getCommandeByUserId(this.id)
+            .then(commandes =>{
+                lodash(commandes.map(commande => {
+                   commande.date = Date(commande.date)
+                   this.commandes.push(commande)
+                }))
+                .flatten()
+            })
+            
         this.disable = true;
 
     }
@@ -34,8 +47,12 @@ export default class MonCompteController {
     annulerUpdate() {
 
         this.disable = true;
-        this.UserService.getUser(this.id)
-            .then(user => this.user = user);
+         this.UserService.getUser(this.id)
+            .then(user => this.user = user[0]);
 
+    }
+
+    voirCommande(idCommande){
+        console.log(idCommande)
     }
 }

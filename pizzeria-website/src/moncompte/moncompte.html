@@ -45,18 +45,24 @@
                 <tr>
                     <th>Commande</th>
                     <th>Date</th>
-                    <th>Contenu</th>
                     <th>Statut</th>
                     <th>Total</th>
+                    <th>Voir Commande</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr ng-repeat="commande in $ctrl.commandes">
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.date }}</td>
+                    <td>{{ commande.statut }}</td>
+                    <td>{{ commande.total }}</td>
+                    <td>
+                        <button 
+                        class="btn btn-primary" 
+                        ng-click="$ctrl.voirCommande(commande.id)">
+                            Voir la Commande
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

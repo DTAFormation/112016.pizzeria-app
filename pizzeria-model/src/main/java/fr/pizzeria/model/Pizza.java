@@ -1,53 +1,96 @@
 package fr.pizzeria.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
+@Table(name = "pizza")
 public class Pizza {
+
+	/*
+	 * CREATE TABLE pizza ( id int PRIMARY KEY, code_pizza varchar(15) NOT NULL,
+	 * nom varchar(5000) NOT NULL, url varchar(5000) NOT NULL, prix decimal NOT
+	 * NULL, note int NOT NULL, categorie varchar(5000) NOT NULL );
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
-	private String code_pizza;
+	@Column(name = "code", length = 3, nullable = false, unique = true)
+	private String code;
+	@Column(name = "nom", length = 5000, nullable = false)
 	private String nom;
-	private String urlImage;
+	@Column(name = "prix", nullable = false)
 	private BigDecimal prix;
-	private Integer note;
-	private Integer nbre_note;
 	@Enumerated(EnumType.STRING)
+	@Column(name = "categorie", nullable = false)
 	private CategoriePizza categorie;
+	@Column(name = "url", length = 5000)
+	private String urlImage;
+	@Column(name = "note", nullable = false)
+	private Integer note;
+	@Column(name = "nb_votant", nullable = true)
+	private Integer nbVotant;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date")
+	private Date date;
 
 	public Pizza() {
+
 	}
 
-	public Pizza(String code_pizza, String nom, String urlImage, BigDecimal prix, CategoriePizza categorie) {
-		super();
-		this.code_pizza = code_pizza;
+	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza cat, String url) {
+		this();
+		this.code = code;
 		this.nom = nom;
-		this.urlImage = urlImage;
 		this.prix = prix;
-		this.categorie = categorie;
+		this.categorie = cat;
+		this.urlImage = url;
 	}
 
-	public Pizza(String code_pizza, String nom, String urlImage, BigDecimal prix, Integer note, Integer nbre_note,
-			CategoriePizza categorie) {
-		super();
-		this.code_pizza = code_pizza;
+	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza cat, String url, Date date) {
+		this();
+		this.code = code;
 		this.nom = nom;
-		this.urlImage = urlImage;
+		this.prix = prix;
+		this.categorie = cat;
+		this.urlImage = url;
+		this.note = 0;
+		this.date = date;
+	}
+
+	public Pizza(String code, String nom, String url, BigDecimal prix, int note, int nbVotant,
+			CategoriePizza categoriePizza, Date date) {
+		this.code = code;
+		this.nom = nom;
+		this.urlImage = url;
 		this.prix = prix;
 		this.note = note;
-		this.nbre_note = nbre_note;
-		this.categorie = categorie;
+		this.nbVotant = nbVotant;
+		this.categorie = categoriePizza;
+		this.date = date;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Integer getId() {
@@ -58,12 +101,20 @@ public class Pizza {
 		this.id = id;
 	}
 
-	public String getCode_pizza() {
-		return code_pizza;
+	public Integer getNote() {
+		return note;
 	}
 
-	public void setCode_pizza(String code_pizza) {
-		this.code_pizza = code_pizza;
+	public void setNote(Integer note) {
+		this.note = note;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getNom() {
@@ -74,14 +125,6 @@ public class Pizza {
 		this.nom = nom;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
-	}
-
 	public BigDecimal getPrix() {
 		return prix;
 	}
@@ -90,28 +133,28 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	public Integer getNote() {
-		return note;
-	}
-
-	public void setNote(Integer note) {
-		this.note = note;
-	}
-
-	public Integer getNbre_note() {
-		return nbre_note;
-	}
-
-	public void setNbre_note(Integer nbre_note) {
-		this.nbre_note = nbre_note;
-	}
-
 	public CategoriePizza getCategorie() {
 		return categorie;
 	}
 
 	public void setCategorie(CategoriePizza categorie) {
 		this.categorie = categorie;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public Integer getNbVotant() {
+		return nbVotant;
+	}
+
+	public void setNbVotant(Integer nbVotant) {
+		this.nbVotant = nbVotant;
 	}
 
 	@Override
@@ -126,7 +169,7 @@ public class Pizza {
 			return false;
 		}
 		Pizza rhs = (Pizza) obj;
-		return new EqualsBuilder().append(code_pizza, rhs.code_pizza).isEquals();
+		return new EqualsBuilder().append(code, rhs.code).isEquals();
 	}
 
 }
