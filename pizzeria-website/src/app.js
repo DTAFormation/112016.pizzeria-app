@@ -30,10 +30,12 @@ angular.module('pizzeria', [
     .component('pizza', Pizza)
     .component('inscription', Inscription)
     .component('commandeEnvoye', CommandeEnvoye)
+
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
     .service('CommandeService', CommandeService)
+
 
 .config(function($routeProvider, $locationProvider) {
 
@@ -63,3 +65,4 @@ angular.module('pizzeria', [
         })
         .otherwise('/')
 });
+
