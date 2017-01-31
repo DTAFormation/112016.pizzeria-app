@@ -5,18 +5,15 @@ import ngStorage from 'ngstorage';
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
-
+import { ElemPanier } from './elemPanier/elemPanier.component'
 import { Inscription } from './inscription/inscription.component'
-import { UserService } from './shared/service/user.service'
 import { Login } from './login/login.component'
-import { PizzaService } from './shared/service/pizza.service'
-import { PanierService } from './shared/service/panier.service'
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 
-
-
-
+import { UserService } from './shared/service/user.service'
+import { PizzaService } from './shared/service/pizza.service'
+import { PanierService } from './shared/service/panier.service'
 
 angular.module('pizzeria', [
         ngRoute,
@@ -28,9 +25,10 @@ angular.module('pizzeria', [
     .component('panier', Panier)
     .component('login', Login)
     .component('pizza', Pizza)
+    .component('elemPanier', ElemPanier)
+    .component('inscription',Inscription)
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
-    .component('inscription',Inscription)
     .service('PanierService', PanierService)
     .config(function ($routeProvider, $locationProvider) {
 

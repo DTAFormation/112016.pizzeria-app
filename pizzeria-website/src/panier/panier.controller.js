@@ -1,7 +1,12 @@
 export default class PanierController {
 
+    constructor (PanierService) {
+
+        this.PanierService = PanierService;
+    }
+
     $onInit() {
-        this.name = "Fawzi";
+        this.panier = this.PanierService.getPanier();
     }
 
 }

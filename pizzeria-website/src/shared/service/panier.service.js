@@ -11,6 +11,7 @@ export class PanierService {
 
         this.$localStorage.jsonPanier = this.$localStorage.jsonPanier || [];
 
+        return this.$localStorage.jsonPanier;
     }
 
     ajouterElement(element) {
@@ -38,5 +39,10 @@ export class PanierService {
 
         delete this.$localStorage.jsonPanier;
 
+    }
+
+    getPanier() {
+
+        return this.$localStorage.jsonPanier || this.initPanier();
     }
 }
