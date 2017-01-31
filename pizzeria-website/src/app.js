@@ -32,12 +32,12 @@ angular.module('pizzeria', [
     .component('moncompte', MonCompte)
     .component('commandeEnvoye', CommandeEnvoye)
 
+    .service('PizzaService', PizzaService)
+    .service('UserService', UserService)
     .service('PanierService', PanierService)
-    .component('inscription', Inscription)
     .service('UserService', UserService)
     .service('CommandeService', CommandeService)
 
-   
 .config(function($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
