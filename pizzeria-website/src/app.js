@@ -10,6 +10,7 @@ import { Inscription } from './inscription/inscription.component';
 import { Login } from './login/login.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
+import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
@@ -27,39 +28,38 @@ angular.module('pizzeria', [
     .component('moncompte', MonCompte)
     .component('login', Login)
     .component('pizza', Pizza)
-    .component('inscription',Inscription)
-
+    .component('inscription', Inscription)
+    .component('commandeEnvoye', CommandeEnvoye)
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
     .service('CommandeService', CommandeService)
-    
-    .config(function ($routeProvider, $locationProvider) {
 
-        $locationProvider.html5Mode(true);
+.config(function($routeProvider, $locationProvider) {
 
-        $routeProvider
-            .when('/', {
-                template: `<home></home>`
-            })
-            .when('/panier', {
-                template: `<panier></panier>`
-            })
-            .when('/moncompte/:id?',{
-                template: `<moncompte></moncompte>`
-            })
+    $locationProvider.html5Mode(true);
 
-            .when('/login', {
-                template: `<login></login>`
-            })
-
-            .when('/inscription', {
+    $routeProvider
+        .when('/', {
+            template: `<home></home>`
+        })
+        .when('/panier', {
+            template: `<panier></panier>`
+        })
+        .when('/moncompte/:id?', {
+            template: `<moncompte></moncompte>`
+        })
+        .when('/login', {
+            template: `<login></login>`
+        })
+        .when('/inscription', {
             template: `<inscription></inscription>`
-            })
-
-             .when('/pizzas', {
-                template: `<pizza></pizza>`
-            })
-
-            .otherwise('/')
-    });
+        })
+        .when('/pizzas', {
+            template: `<pizza></pizza>`
+        })
+        .when('/commandeenvoyee/:id?', {
+            template: `<commande-envoye></commande-envoye>`
+        })
+        .otherwise('/')
+});
