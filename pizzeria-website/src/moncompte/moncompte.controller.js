@@ -9,12 +9,21 @@ export default class MonCompteController {
         this.id = $routeParams.id;
         this.$location = $location;
 
+    }
+    $onInit() {
+        this.commandes = [];
         this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
-    }
-    $onInit() {
-
+        this.CommandeService.getCommandeByUserId(this.id)
+            .then(commandes =>{
+                lodash(commandes.map(commande => {
+                   commande.date = Date(commande.date)
+                   this.commandes.push(commande)
+                }))
+                .flatten()
+            })
+            
         this.disable = true;
         this.CommandeService.getCommandeByUserId(this.id)
             .then(commandes =>{
@@ -48,7 +57,11 @@ export default class MonCompteController {
             .then(user => this.user = user[0]);
 
         this.disable = true;
+
+       
+
     }
+
  
     
 }
