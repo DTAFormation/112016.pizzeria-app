@@ -14,9 +14,7 @@ import { PanierService } from './shared/service/panier.service'
 import { MonCompte } from './moncompte/moncompte.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
-
-
-
+import { CommandeService } from './shared/service/commande.service';
 
 angular.module('pizzeria', [
         ngRoute,
@@ -33,10 +31,8 @@ angular.module('pizzeria', [
     .service('PanierService', PanierService)
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
-    .service('PizzaService', PizzaService)
-    .service('UserService', UserService)
     .service('LoginService', LoginService)
-
+    .service('CommandeService', CommandeService)
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
