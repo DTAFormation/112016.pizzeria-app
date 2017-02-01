@@ -20,7 +20,7 @@ export class PanierService {
             this.initPanier();
 
         let panier = this.$localStorage.jsonPanier;
-        let exist = _.find(panier, e => (e.id === element.id && e.type === element.type));
+        let exist = _.find(panier, e => (e.idProduit === element.id && e.type === element.type));
 
         if (exist !== undefined) {
             ++exist.quantite;
@@ -28,7 +28,7 @@ export class PanierService {
             let ajout = {};
 
             ajout.type = element.type;
-            ajout.id = element.id;
+            ajout.idProduit = element.id;
             ajout.quantite = 1;
             panier.push(ajout);
         }
