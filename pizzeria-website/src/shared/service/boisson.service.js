@@ -7,12 +7,8 @@ export class BoissonService{
     }
 
     getBoissons(){
-        return this.$http.get(api). then((response)=> response.data);
-    }
-
-        ajouterPanier(boisson) {
-
-      
+        return this.$http.get(api)
+        .then((response)=> response.data);
     }
 
 }

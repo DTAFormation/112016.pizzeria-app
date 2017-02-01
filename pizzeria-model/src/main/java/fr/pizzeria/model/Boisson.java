@@ -18,6 +18,7 @@ public class Boisson {
 	private String nom;
 	private BigDecimal prix;
 	private String urlImage;
+	private String type;
 	@Enumerated(EnumType.STRING)
 	private CategorieBoisson categorie;
 
@@ -32,6 +33,7 @@ public class Boisson {
 		this.prix = prix;
 		this.urlImage = urlImage;
 		this.categorie = categorie;
+		this.setType("boisson");
 	}
 
 	public int getId() {
@@ -72,6 +74,14 @@ public class Boisson {
 
 	public void setCategorie(CategorieBoisson categorie) {
 		this.categorie = categorie;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
