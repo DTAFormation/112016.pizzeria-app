@@ -6,6 +6,7 @@ export default class PanierController {
 
         this.PanierService = PanierService;
         this.PizzaService = PizzaService;
+        this.produitList = [];
  
     }
 

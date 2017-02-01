@@ -1,4 +1,19 @@
 <h3>Votre Panier</h3>
-<div>{{ $ctrl.panier }}</div>
-</br>
-<elem-panier ng-repeat="produit in $ctrl.produitList track by $index" produit="produit" />
+<table class="table">
+    <thead>
+        <tr>
+            <td></td>
+            <td> Nom & Ingerdients </td>
+            <td> Prix </td>
+            <td> Quantité </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="produit in $ctrl.produitList track by $index">
+            <th><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250" alt="{{$ctrl.$localStorage.jsonPanier.pizza[0].src}}"></th>
+            <td> {{produit.name}} <br/> {{produit.ingredients}} <br/><br/> <button ng-click="" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>
+            <td> {{produit.prix}} </td>
+            <td> <input type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"> </td>
+        </tr>
+    </tbody>
+</table>

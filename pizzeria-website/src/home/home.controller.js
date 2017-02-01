@@ -3,7 +3,7 @@ export default class HomeController {
 
         this.PanierService = PanierService;
         this.PizzaService = PizzaService;
-        console.log('test');
+
     }
 
     $onInit() {
