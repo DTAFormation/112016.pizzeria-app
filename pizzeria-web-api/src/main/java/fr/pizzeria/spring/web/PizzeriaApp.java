@@ -19,10 +19,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
+import fr.pizzeria.model.Dessert;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.Statut;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
+import fr.pizzeria.spring.web.resource.DessertResource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
 
 /**
@@ -66,22 +68,36 @@ public class PizzeriaApp {
 	@Autowired
 	private ClientResource clientResource;
 
+	@Autowired
+	private DessertResource dessertRessource;
+
 	@PostConstruct
 	public void setDatabase() {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
 
+			// client 1
 			pizzaResource.ajoutPizza(
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
 							new BigDecimal(9.9), 4, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
+			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
+
+			List<Pizza> pizzas = pizzaResource.listAllPizzas();
+
+			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
+					.get();
+			commandeRessource.ajoutCommande((new Commande(firstClient, null, new BigDecimal(443.9),
+					Statut.EN_PREPARATION, new Date(), pizzas)));
+			commandeRessource.ajoutCommande(
+					(new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+
+			// ----------------------------------------
 			pizzaResource.ajoutPizza(
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
 							new BigDecimal(9.9), 3, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
-<<<<<<< HEAD
-=======
 			pizzaResource.ajoutPizza(
 					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
 							new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
@@ -89,16 +105,12 @@ public class PizzeriaApp {
 			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
 					new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
 
->>>>>>> client
-			List<Pizza> pizzas = pizzaResource.listAllPizzas();
+			pizzas = pizzaResource.listAllPizzas();
 
-			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
 			clientResource.ajoutClient(new Client("DEPART", "Arnaud", "arnaud@gmail.com", "123456", "Cerise"));
 			clientResource.ajoutClient(new Client("fa", "fawzi", "fawzi@gmail.com", "123456", "Chez lui"));
 			clientResource.ajoutClient(new Client("Ville", "kevin", "kevin@gmail.com", "123456", "En Kaz Ay"));
 
-			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
-					.get();
 			Client secondClient = clientResource.findAll().stream().filter(client -> client.getId() == 2).findFirst()
 					.get();
 
@@ -108,6 +120,15 @@ public class PizzeriaApp {
 					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas)));
 			commandeRessource.ajoutCommande(
 					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas)));
+
+			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
+					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg");
+
+			Dessert dessert2 = new Dessert("crêpe Bretonne", new BigDecimal(200.0),
+					"http://www.recettes-bretonnes.fr/wp-content/Photos/millefeuille-crepe.jpg");
+
+			dessertRessource.ajoutDessert(dessert);
+			dessertRessource.ajoutDessert(dessert2);
 		}
 	}
 }

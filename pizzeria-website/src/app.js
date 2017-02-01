@@ -10,11 +10,13 @@ import { Inscription } from './inscription/inscription.component';
 import { Login } from './login/login.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
+import { Dessert } from './dessert/dessert.component';
 
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
 import { UserService } from './shared/service/user.service';
 import { CommandeService } from './shared/service/commande.service';
+import { DessertService } from './shared/service/dessert.service';
 
 angular.module('pizzeria', [
         ngRoute,
@@ -28,13 +30,14 @@ angular.module('pizzeria', [
     .component('login', Login)
     .component('pizza', Pizza)
     .component('inscription',Inscription)
-
+    .component('dessert', Dessert)
 
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
     .service('CommandeService', CommandeService)
-    
+    .service('DessertService', DessertService)
+
     .config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);
@@ -57,6 +60,9 @@ angular.module('pizzeria', [
             })
              .when('/pizzas', {
                 template: `<pizza></pizza>`
+            })
+            .when('/desserts',{
+                template: `<dessert></dessert>`
             })
             .otherwise('/')
     });

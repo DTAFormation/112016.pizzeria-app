@@ -1,0 +1,10 @@
+<h3>Nos Desserts</h3>
+
+<div class="container">   
+    <div class="row">
+        <product  ng-repeat=" dessert in $ctrl.desserts track by $index" product="dessert" on-select="$ctrl.ajouterPanier(dessert, $localStorage)" on-afficher-modale="$ctrl.afficherModale(dessert)">
+        </product>
+    </div>
+    <modal-pizza pizza="$ctrl.currentDessert">
+    </modal-pizza>
+</div>
