@@ -14,7 +14,7 @@ export class PanierService {
         return this.$localStorage.jsonPanier;
     }
 
-    ajouterElement(element) {
+     ajouterElement(element) {
 
         if (this.$localStorage.jsonPanier === undefined)
             this.initPanier();
@@ -34,6 +34,7 @@ export class PanierService {
         }
 
     }
+
 
     resetPanier() {
 
