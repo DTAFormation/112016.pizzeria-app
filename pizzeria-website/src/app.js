@@ -1,6 +1,7 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import ngStorage from 'ngstorage';
+import ngCookies from 'angular-cookies'
 
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
@@ -18,7 +19,8 @@ import { CommandeService } from './shared/service/commande.service';
 
 angular.module('pizzeria', [
         ngRoute,
-        'ngStorage'
+        'ngStorage',
+        ngCookies
     ])
     .component('home', Home)
     .component('product', Product)

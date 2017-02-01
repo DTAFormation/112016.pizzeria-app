@@ -1,21 +1,4 @@
-class LoginController {
-    constructor(LoginService){
-        this.LoginService = LoginService
-    }
-
-    login(){
-        this.LoginService.loginControl(this.email,this.mdp)
-            .then(response => {
-                if(!response){
-                    this.loguer = true
-                } 
-                else {
-                     this.loguer = false
-                }
-            })
-
-    }
-}
+import LoginController from './login.controller'
 
 export const Login = {
     template: require('./login.html'),

@@ -9,7 +9,9 @@ export class LoginService {
 
    loginControl(email, mdp){
        return this.$http.post(api,[email,mdp])
-       .then(response => (response.data));
+       .then(response => {
+           console.log('service login retour ',response.data)
+      return response.data});
    }
 
 }

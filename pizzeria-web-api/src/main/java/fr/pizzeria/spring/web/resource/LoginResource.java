@@ -19,17 +19,17 @@ public class LoginResource {
 	private IClientRepository ClientDao;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public boolean login(@RequestBody List<String> login) {
+	public Client login(@RequestBody List<String> login) {
 
 		List<Client> clients = ClientDao.findAll();
 
 		for (Client c : clients) {
 			if ((login.get(0).equals(c.getEmail())) && (login.get(1).equals(c.getMotDePasse()))) {
-				return true;
+				return c;
 			}
 		}
 
-		return false;
+		return null;
 	}
 
 }
