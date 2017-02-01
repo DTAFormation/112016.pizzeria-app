@@ -18,8 +18,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.Statut;
 import fr.pizzeria.spring.web.repository.ILivreurRepository;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
@@ -86,10 +88,10 @@ public class PizzeriaApp {
 
 			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
 					.get();
-			commandeRessource.ajoutCommande((new Commande(firstClient, null, new BigDecimal(443.9),
-					Statut.EN_PREPARATION, new Date(), pizzas)));
-			commandeRessource.ajoutCommande(
-					(new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
+					new Date(), pizzas)));
+			commandeRessource
+					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(

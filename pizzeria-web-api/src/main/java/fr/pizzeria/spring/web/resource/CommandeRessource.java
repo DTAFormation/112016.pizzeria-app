@@ -66,4 +66,9 @@ public class CommandeRessource {
 				new Date(), pizzas));
 	}
 
+	public void ajout(Commande commande) {
+		commandeDao.save(commande);
+
+	}
+
 }
