@@ -1,10 +1,9 @@
 const api = 'http://localhost:3000/login';
 
 export class LoginService {
-   constructor($http, $timeout, $q) {
+   constructor($http) {
        this.$http = $http;
-       this.$timeout = $timeout;
-       this.$q = $q;
+
    }
 
    loginControl(email, mdp){
