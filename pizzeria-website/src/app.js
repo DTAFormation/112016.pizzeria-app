@@ -32,7 +32,7 @@ angular.module('pizzeria', [
 
     .service('PanierService', PanierService)
     .service('PizzaService', PizzaService)
-    .service('PanierService', PanierService)
+    .service('UserService', UserService)
     .service('CommandeService', CommandeService)
     
     .config(function ($routeProvider, $locationProvider) {
