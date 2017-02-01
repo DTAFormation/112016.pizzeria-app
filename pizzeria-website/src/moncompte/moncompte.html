@@ -57,11 +57,11 @@
                     <td>{{ commande.statut }}</td>
                     <td>{{ commande.total }}</td>
                     <td>
-                        <button 
+                        <a 
                         class="btn btn-primary" 
-                        ng-click="$ctrl.voirCommande(commande.id)">
+                        ng-href="/commandeenvoyee/{{ commande.id }}">
                             Voir la Commande
-                        </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>

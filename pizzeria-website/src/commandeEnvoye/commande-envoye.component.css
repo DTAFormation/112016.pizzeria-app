@@ -1,0 +1,23 @@
+commande-envoye div.check {
+    border: solid 1px red;
+    width: 200px;
+    height: 200px;
+    text-align:center;
+    padding-top: 80px;
+    font-weight: bold;
+}
+
+commande-envoye div.unchek{
+    border: solid 1px black;
+    background-color: gray;
+    width: 200px;
+    height: 200px;
+    text-align:center;
+    padding-top: 80px;
+}
+
+span.glyph{
+    padding-top: 80px;
+    padding-left: 50px;
+    color: red;
+}

@@ -14,4 +14,8 @@ export class CommandeService{
             .then(response => response.data);
     }
 
+    getCommandeById(id){
+         return this.$http.get(`${ api }/commande/${ id }`)
+            .then(response => response.data);
+    }
 }

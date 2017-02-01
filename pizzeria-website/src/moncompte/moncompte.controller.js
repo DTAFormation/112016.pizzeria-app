@@ -52,7 +52,4 @@ export default class MonCompteController {
 
     }
 
-    voirCommande(idCommande){
-        console.log(idCommande)
-    }
 }

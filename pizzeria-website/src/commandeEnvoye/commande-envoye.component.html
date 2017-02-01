@@ -1,24 +1,68 @@
 
-<div class="container">
+<div class="container" >
     <div class="row">
-        <div class="col-md-2" style="border: solid 1px">
-            Statut 1
+        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_PREPARATION'">
+            <span> En cours de préparation </span>
         </div>
-        <span class="glyphicon  glyphicon-chevron-right col-md-1"></span>
-        <div class="col-md-2" style="border: solid 1px">
-            Statut 2
+         <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'EN_PREPARATION'">
+           <span>En cours de préparation</span>
         </div>
-        <span class="glyphicon  glyphicon-chevron-right col-md-1"></span>
-        <div class="col-md-2" style="border: solid 1px">
-            Statut 3
+
+            <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+
+        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_CUISSON'">
+            <span>En cours de cuisson</span>
         </div>
-        <span class="glyphicon  glyphicon-chevron-right col-md-1"></span>
-        <div class="col-md-2" style="border: solid 1px">
-            Statut 4
+        <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'EN_CUISSON'">
+            <span>En cours de cuisson</span>
+        </div>
+
+            <span class="glyphicon  glyphicon-chevron-right col-md-1  glyph"></span>
+
+        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_LIVRAISON'">
+            <span>En cours de livraison</span> 
+        </div>
+         <div class="col-md-2 check" ng-if="$ctrl.statut === 'PRET' ">
+            <span>Commande prête</span> 
+        </div>
+        <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'PRET' && $ctrl.statut !== 'EN_LIVRAISON' ">
+            <span>Commande prête / emporter</span> 
+        </div>
+
+            <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+
+        <div class="col-md-2 check" ng-if="$ctrl.statut === 'LIVRER'">
+           <span>Commande Livrer</span>
+        </div>
+         <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'LIVRER'">
+           <span>Commande Livrer</span>
         </div>
     </div>
 </div>
 <div class="container">
-    Les éléments de la pizza
+ <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>pizza</th>
+                    <th>code</th>
+                    <th>nom</th>
+                    <th>prix</th>
+                    <th>categorie</th>
+                    <th>note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pizza in $ctrl.commande">
+                    <td>
+                        <img ng-src="{{ pizza.urlImage }}" alt="{{ pizza.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ pizza.code }}</td>
+                    <td>{{ pizza.nom }}</td>
+                    <td>{{ pizza.prix }}</td>
+                    <td>{{ pizza.categorie }}</td>
+                    <td>{{ pizza.note }}</td>
+                </tr>
+            </tbody>
+        </table>
 
 </div>

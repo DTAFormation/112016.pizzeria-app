@@ -10,4 +10,6 @@ public interface ICommandeRepository extends JpaRepository<Commande, Integer> {
 
 	List<Commande> findByClientId_Id(Integer id);
 
+	List<Commande> findById(Integer id);
+
 }
