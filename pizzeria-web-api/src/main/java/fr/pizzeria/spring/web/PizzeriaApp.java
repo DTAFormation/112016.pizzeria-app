@@ -93,6 +93,11 @@ public class PizzeriaApp {
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
 							new BigDecimal(9.9), 3, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> client
 			pizzaResource.ajoutPizza(
 					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
 							new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
@@ -100,7 +105,12 @@ public class PizzeriaApp {
 			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
 					new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
 
+<<<<<<< HEAD
 			pizzas = pizzaResource.listAllPizzas();
+=======
+>>>>>>> client
+			List<Pizza> pizzas = pizzaResource.listAllPizzas();
+>>>>>>> client
 
 			clientResource.ajoutClient(new Client("DEPART", "Arnaud", "arnaud@gmail.com", "123456", "Cerise"));
 			clientResource.ajoutClient(new Client("fa", "fawzi", "fawzi@gmail.com", "123456", "Chez lui"));

@@ -12,6 +12,7 @@ import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 
+
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
 import { UserService } from './shared/service/user.service';
@@ -28,7 +29,7 @@ angular.module('pizzeria', [
     .component('moncompte', MonCompte)
     .component('login', Login)
     .component('pizza', Pizza)
-    .component('inscription', Inscription)
+    .component('inscription',Inscription)
     .component('commandeEnvoye', CommandeEnvoye)
 
     .service('PizzaService', PizzaService)

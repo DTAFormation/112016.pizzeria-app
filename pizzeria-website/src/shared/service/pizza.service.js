@@ -9,8 +9,8 @@ export class PizzaService {
 
     }
 
-
     getPizzas() {
+
         return this.$http.get(api)
             .then((response) =>
                 response.data
