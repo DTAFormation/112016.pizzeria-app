@@ -20,7 +20,7 @@ export default class CommandeController {
 
         this.panier.forEach(function (element, index) {
             if (this.panier[index].type === "pizza") {
-                this.PizzaService.getPizzaById(this.panier[index].id)
+                this.PizzaService.getPizzaById(this.panier[index].idProduit)
                     .then((data) => {
                         data.quantite = this.panier[index].quantite;
                         this.panierPizza.push(data);

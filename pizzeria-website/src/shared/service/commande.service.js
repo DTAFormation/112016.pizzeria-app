@@ -15,9 +15,9 @@ export class CommandeService {
     commandeTMP() {
         this.$localStorage.commandeEnCours = {};
         this.$localStorage.commandeEnCours.total = 42.50;
-        this.$localStorage.commandeEnCours.listeProduit = [{ "type": "pizza", "id": 1, "quantite": 12 },
-        { "type": "pizza", "id": 2, "quantite": 1 },
-        { "type": "pizza", "id": 3, "quantite": 11 }];
+        this.$localStorage.commandeEnCours.listeProduit = [{ "type": "pizza", "idProduit": 1, "quantite": 12 },
+        { "type": "pizza", "idProduit": 2, "quantite": 1 },
+        { "type": "pizza", "idProduit": 3, "quantite": 11 }];
         return this.$localStorage.commandeEnCours;
     }
 
@@ -35,6 +35,7 @@ export class CommandeService {
                 this.commande.push(element);
             }
         }, this);
+        console.log(this.commande);
 
         return this.$http.post(api, this.commande)
             .then(response => response.data);

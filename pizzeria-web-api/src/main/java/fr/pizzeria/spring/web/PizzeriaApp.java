@@ -18,7 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.spring.web.repository.ILivreurRepository;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
@@ -64,6 +66,9 @@ public class PizzeriaApp {
 	@Autowired
 	private ClientResource clientResource;
 
+	@Autowired
+	ILivreurRepository liveurDao;
+
 	@PostConstruct
 	public void setDatabase() {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
@@ -96,6 +101,9 @@ public class PizzeriaApp {
 					.get();
 			Client secondClient = clientResource.findAll().stream().filter(client -> client.getId() == 2).findFirst()
 					.get();
+
+			liveurDao.save(new Livreur("Toto", "jooj", "tomtom@gmail.com", "123456"));
+			liveurDao.save(new Livreur("Toto2", "jooj2", "tomtom22@gmail.com", "123456"));
 
 			// commandeRessource.ajoutCommande((new Commande(firstClient, null,
 			// new BigDecimal(443.9),
