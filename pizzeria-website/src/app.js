@@ -4,13 +4,14 @@ import ngStorage from 'ngstorage';
 
 import { Home } from './home/home.component';
 import { Product } from './product/product.component';
-import { ModalPizza } from './modal/modal.component';
 import { MonCompte } from './moncompte/moncompte.component';
+import { ModalPizza } from './modal/modal.component';
+import { Inscription } from './inscription/inscription.component';
+import { Login } from './login/login.component';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
-import { Login } from './login/login.component';
-import { Inscription } from './inscription/inscription.component';
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
+
 
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
@@ -26,16 +27,15 @@ angular.module('pizzeria', [
     .component('product', Product)
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
+    .component('moncompte', MonCompte)
     .component('login', Login)
     .component('pizza', Pizza)
     .component('inscription',Inscription)
-    .component('moncompte', MonCompte)
     .component('commandeEnvoye', CommandeEnvoye)
 
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
-    .service('UserService', UserService)
     .service('CommandeService', CommandeService)
 
 .config(function($routeProvider, $locationProvider) {
@@ -65,4 +65,6 @@ angular.module('pizzeria', [
             template: `<commande-envoye></commande-envoye>`
         })
         .otherwise('/')
+
 });
+

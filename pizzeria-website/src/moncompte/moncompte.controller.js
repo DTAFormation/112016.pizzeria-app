@@ -58,10 +58,6 @@ export default class MonCompteController {
 
         this.disable = true;
 
-       
-
     }
 
- 
-    
 }
