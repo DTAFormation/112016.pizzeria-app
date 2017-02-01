@@ -9,27 +9,6 @@ export class PizzaService {
 
     }
 
-    findAll() {
-
-        const pizzas = [{
-            id: 0,
-            type: 'pizza',
-            name: "Margherita",
-            urlImage: "http://mister-check.e-monsite.com/medias/images/pizza2.jpg"
-        }, {
-            id: 1,
-            type: 'pizza',
-            name: "Peperoni",
-            urlImage: "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg"
-        }, {
-            id: 2,
-            type: 'pizza',
-            name: "Reine",
-            urlImage: "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg"
-        }];
-
-        return this.$q.resolve(pizzas);
-    }
 
     getPizzas() {
         return this.$http.get(api)

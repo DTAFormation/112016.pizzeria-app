@@ -7,7 +7,7 @@ class ProductController {
 
     ajouterPanier(product) {
 
-        this.PanierService.addProduct(product);
+        this.PanierService.ajouterElement(product);
 
     }
 

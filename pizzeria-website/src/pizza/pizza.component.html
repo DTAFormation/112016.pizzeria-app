@@ -2,7 +2,16 @@
 
 <div class="container">
     <div class="row">
+         <nav class="navbar">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="categ in $ctrl.categs"><a href="#" ng-click="$ctrl.sort(categ.nom)">{{categ.nom}} ({{categ.nb}})</a></li>
+            </ul>
+        </nav>
+    </div>     
+    <div class="row">
         <product ng-repeat=" pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPanier(pizza, $localStorage)" on-afficher-modale="$ctrl.afficherModale(pizza)">
         </product>
     </div>
+    <modal-pizza pizza="$ctrl.currentPizza">
+    </modal-pizza>
 </div>

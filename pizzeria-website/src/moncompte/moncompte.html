@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        Informations personnelles
+        <form name="userForm" novalidate ng-submit="$ctrl.saveUser(userForm, $ctrl.user)" class="well">
+            <div class="form-group">
+                <label>Email</label>
+                <input ng-model="$ctrl.user.email" name="email" placeholder="$ctrl.user.email" ng-disabled="$ctrl.disable" type="email" class="form-control" required>
+                <p class="text-danger" ng-if="userForm.email.$error.required && userForm.email.$dirty">
+                    Obligatoire
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label>Nom</label>
+                <input ng-model="$ctrl.user.nom" name="nom" placeholder="$ctrl.user.nom" ng-disabled="$ctrl.disable" type="nom" class="form-control" required>
+                <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">
+                    Obligatoire
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label>Prenom</label>
+                <input ng-model="$ctrl.user.prenom" name="prenom" placeholder="$ctrl.user.prenom" ng-disabled="$ctrl.disable" type="prenom" class="form-control" required>
+                <p class="text-danger" ng-if="userForm.prenom.$error.required && userForm.prenom.$dirty">
+                    Obligatoire
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label>Adresse</label>
+                <input ng-model="$ctrl.user.adresse" name="adresse" placeholder="$ctrl.user.adresse" ng-disabled="$ctrl.disable" type="adresse" class="form-control" required>
+                <p class="text-danger" ng-if="userForm.adresse.$error.required && userForm.adresse.$dirty">
+                    Obligatoire
+                </p>
+            </div>
+            <button ng-if="$ctrl.disable" ng-click="$ctrl.updateInfo()" class="btn btn-primary">Mettre à jour les Informations</button>
+            <span>
+                <button ng-if="!$ctrl.disable" type="submit"  class="btn btn-primary">Valider Info</button> 
+                <button ng-if="!$ctrl.disable" ng-click="$ctrl.annulerUpdate()" class="btn btn-warning">Annuler</button>
+        </span>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Total</th>
+                    <th>Voir Commande</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="commande in $ctrl.commandes">
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.date }}</td>
+                    <td>{{ commande.statut }}</td>
+                    <td>{{ commande.total }}</td>
+                    <td>
+                        <button 
+                        class="btn btn-primary" 
+                        ng-click="$ctrl.voirCommande(commande.id)">
+                            Voir la Commande
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
