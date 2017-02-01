@@ -27,7 +27,7 @@ export class CommandeService {
             .then(response => response.data);
     }
 
-    envoyeffCommande(commandeATraiter) {
+    envoyeCommandeCache(commandeATraiter) {
         commandeATraiter.forEach(function (element, index) {
             if (commandeATraiter[index].type === "pizza") {
                 element.idClient = commandeATraiter.idClient;

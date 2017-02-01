@@ -53,9 +53,7 @@ export default class CommandeController {
     }
 
     envoyerCommande(){
-        // Ajouter un le Idclient
-        
-        this.CommandeService.envoyeffCommande(this.panier);
+        this.CommandeService.envoyeCommandeCache(this.panier);
 
     }
 
