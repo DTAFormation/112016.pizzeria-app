@@ -5,7 +5,6 @@ import ngStorage from 'ngstorage'
 import { Home } from './home/home.component'
 import { Product } from './product/product.component'
 import { ModalPizza } from './modal/modal.component'
-
 import { Inscription } from './inscription/inscription.component'
 import { UserService } from './shared/service/user.service'
 import { Login } from './login/login.component'
@@ -18,7 +17,6 @@ import { Boisson } from './boisson/boisson.component'
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 import { MonCompte } from './moncompte/moncompte.component';
 import { CommandeService } from './shared/service/commande.service';
-
 
 angular.module('pizzeria', [
         ngRoute,
@@ -34,6 +32,7 @@ angular.module('pizzeria', [
     .component('boisson', Boisson)
    .component('inscription',Inscription)
     .component('commandeEnvoye', CommandeEnvoye)
+    .component('inscription',Inscription)
     .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)
     .service('UserService', UserService)

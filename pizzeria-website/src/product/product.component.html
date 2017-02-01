@@ -1,11 +1,10 @@
 <div class="col-lg-4 col-sm-6 col-md-4">
     <div class="thumbnail">
-        <img ng-src="{{ $ctrl.product.urlImage }}" alt="{{ $ctrl.product.nom }}" ng-click="$ctrl.afficherModale()"  data-toggle="modal" data-target="#pizzaModal"/>
-
+        <img ng-src="{{ $ctrl.product.urlImage }}" alt="{{ $ctrl.product.name }}" ng-click="$ctrl.afficherModale()" data-toggle="modal"
+            data-target="#pizzaModal" />
         <div class="caption">
             <h3> {{ $ctrl.product.nom }} </h3>
             <p>...</p>
-            
         </div>
         <button ng-click="$ctrl.ajouterPanier($ctrl.product)" type="button" class="btn btn-primary">
         <span>Ajouter au panier</span>

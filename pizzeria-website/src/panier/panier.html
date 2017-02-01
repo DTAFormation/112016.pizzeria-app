@@ -1,1 +1,36 @@
-<div>Hello :D {{ $ctrl.name }}</div>
+<h3>Votre Panier</h3>
+<div class="container">
+    <div ng-if="$ctrl.produitList.length">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td> Nom & Ingerdients </td>
+                    <td> Prix </td>
+                    <td> Quantité </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="produit in $ctrl.produitList track by $index">
+                    <th><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{produit.nom}} <br/> {{produit.ingredients}} <br/><br/>
+                        <button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button>
+                    </td>
+                    <td> {{produit.prix}} €</td>
+                    <td>
+                        <input ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1"
+                            max="99" ng-model="produit.quantite"> </td>
+                </tr>
+            </tbody>
+        </table>
+        <div align="right">
+            TOTAL {{$ctrl.total}} € TTC
+        </div>
+        <div align="right">
+            <a href="/commande">Passer la Commande</a>
+        </div>
+    </div>
+    <div ng-if="!$ctrl.produitList.length">
+        Votre Panier est vide
+    </div>
+</div>
