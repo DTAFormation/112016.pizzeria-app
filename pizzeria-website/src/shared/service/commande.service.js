@@ -2,9 +2,10 @@ const api = 'http://localhost:3000/commandes'
 
 export class CommandeService {
 
-    constructor($q, $http, $localStorage) {
 
-        this.$q = $q;
+    constructor( $http, $localStorage) {
+
+
         this.$http = $http;
         this.totalCommande;
         this.$localStorage = $localStorage;
@@ -41,4 +42,8 @@ export class CommandeService {
             .then(response => response.data);
     }
 
+    getCommandeById(id){
+         return this.$http.get(`${ api }/commande/${ id }`)
+            .then(response => response.data);
+    }
 }

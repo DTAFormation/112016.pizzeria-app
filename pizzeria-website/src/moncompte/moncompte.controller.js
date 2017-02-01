@@ -6,12 +6,10 @@ export default class MonCompteController {
 
         this.UserService = UserService;
         this.CommandeService = CommandeService;
-
         this.id = $routeParams.id;
         this.$location = $location;
 
     }
-
     $onInit() {
         this.commandes = [];
         this.UserService.getUser(this.id)
@@ -27,6 +25,14 @@ export default class MonCompteController {
             })
             
         this.disable = true;
+        this.CommandeService.getCommandeByUserId(this.id)
+            .then(commandes =>{
+                lodash(commandes.map(commande => {
+                   commande.date = Date(commande.date)
+                   this.commandes.push(commande)
+                }))
+                .flatten()
+            })
 
     }
 
@@ -46,13 +52,12 @@ export default class MonCompteController {
 
     annulerUpdate() {
 
-        this.disable = true;
-         this.UserService.getUser(this.id)
+       
+        this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
+        this.disable = true;
+
     }
 
-    voirCommande(idCommande){
-        console.log(idCommande)
-    }
 }

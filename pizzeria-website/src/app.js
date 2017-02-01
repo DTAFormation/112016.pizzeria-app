@@ -11,6 +11,8 @@ import { Login } from './login/login.component';
 import { Inscription } from './inscription/inscription.component';
 import { MonCompte } from './moncompte/moncompte.component';
 import { Commande } from './commande/commande.component';
+import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
+
 
 
 
@@ -18,6 +20,7 @@ import { UserService } from './shared/service/user.service';
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
 import { CommandeService } from './shared/service/commande.service';
+
 
 angular.module('pizzeria', [
     ngRoute,
@@ -27,21 +30,24 @@ angular.module('pizzeria', [
     .component('product', Product)
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
+    .component('moncompte', MonCompte)
     .component('login', Login)
     .component('pizza', Pizza)
     .component('inscription', Inscription)
-    .component('moncompte', MonCompte)
     .component('commande', Commande)
+    .component('commandeEnvoye', CommandeEnvoye)
 
     .service('UserService', UserService)
     .service('PanierService', PanierService)
     .service('PizzaService', PizzaService)
     .service('CommandeService', CommandeService)
+    
 
+    
+.config(function($routeProvider, $locationProvider) {
 
-    .config(function ($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
 
-        $locationProvider.html5Mode(true);
 
         $routeProvider
             .when('/', {
@@ -65,5 +71,8 @@ angular.module('pizzeria', [
             .when('/commande', {
                 template: `<commande></commande>`
             })
+             .when('/commandeenvoyee/:id?', {
+            template: `<commande-envoye></commande-envoye>`
+        })
             .otherwise('/')
     });

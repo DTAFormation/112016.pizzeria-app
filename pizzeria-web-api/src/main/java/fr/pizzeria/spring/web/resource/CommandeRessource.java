@@ -42,6 +42,11 @@ public class CommandeRessource {
 		return commandeDao.findByClientId_Id(id);
 	}
 
+	@RequestMapping(path = "/commande/{id}", method = RequestMethod.GET)
+	public List<Commande> getClient(@PathVariable Integer id) {
+		return commandeDao.findById(id);
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public void ajoutCommande(@RequestBody ArrayList<CommandeClient> commandeClient) {
 		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();

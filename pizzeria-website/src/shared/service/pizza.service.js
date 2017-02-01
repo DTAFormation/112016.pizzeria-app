@@ -4,9 +4,8 @@ const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it 
 
 export class PizzaService {
 
-    constructor($q, $http) {
+    constructor( $http) {
 
-        this.$q = $q;
         this.$http = $http;
         this.pizzas=  this.$http.get(api)
             .then((response) =>
@@ -17,13 +16,13 @@ export class PizzaService {
 
 
     getPizzas() {
+
         return this.pizzas;
             
-
     }
     getPizzaById(id) {
+
        return this.pizzas.then(pizzas => _.find(pizzas, p => p.id === id));
    }
-
 
 }

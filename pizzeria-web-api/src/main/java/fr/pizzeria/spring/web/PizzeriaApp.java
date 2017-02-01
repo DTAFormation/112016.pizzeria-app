@@ -75,10 +75,23 @@ public class PizzeriaApp {
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
 
+			// client 1
 			pizzaResource.ajoutPizza(
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
 							new BigDecimal(9.9), 4, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
+			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
+
+			List<Pizza> pizzas = pizzaResource.listAllPizzas();
+
+			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
+					.get();
+			commandeRessource.ajoutCommande((new Commande(firstClient, null, new BigDecimal(443.9),
+					Statut.EN_PREPARATION, new Date(), pizzas)));
+			commandeRessource.ajoutCommande(
+					(new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+
+			// ----------------------------------------
 			pizzaResource.ajoutPizza(
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
 							new BigDecimal(9.9), 3, 1, CategoriePizza.SANS_VIANDE, new Date()));
@@ -90,15 +103,12 @@ public class PizzeriaApp {
 			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
 					new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
 
-			List<Pizza> pizzas = pizzaResource.listAllPizzas();
+			pizzas = pizzaResource.listAllPizzas();
 
-			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
 			clientResource.ajoutClient(new Client("DEPART", "Arnaud", "arnaud@gmail.com", "123456", "Cerise"));
 			clientResource.ajoutClient(new Client("fa", "fawzi", "fawzi@gmail.com", "123456", "Chez lui"));
 			clientResource.ajoutClient(new Client("Ville", "kevin", "kevin@gmail.com", "123456", "En Kaz Ay"));
 
-			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
-					.get();
 			Client secondClient = clientResource.findAll().stream().filter(client -> client.getId() == 2).findFirst()
 					.get();
 
