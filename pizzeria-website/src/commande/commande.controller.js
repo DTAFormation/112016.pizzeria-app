@@ -4,23 +4,29 @@ export default class CommandeController {
         this.CommandeService = CommandeService;
         this.PizzaService = PizzaService;
         this.panierPizza = [];
+        this.idClient=2;
+        
 
 
     }
 
     $onInit() {
+        
+        this.total = this.CommandeService.commandeTMP().total;
         this.panier = this.CommandeService.commandeTMP().listeProduit;
-        console.log(this.panier);
+
+        this.panier.idClient=this.idClient;
+        this.panier.total=this.total;
 
         this.panier.forEach(function (element, index) {
             if (this.panier[index].type === "pizza") {
                 this.PizzaService.getPizzaById(this.panier[index].id)
                     .then((data) => {
-                       data.quantite=this.panier[index].quantite
+                        data.quantite = this.panier[index].quantite;
                         this.panierPizza.push(data);
                     })
             }
-            console.log(this.panierPizza);
+
 
             if (this.panier[index].type === "boisson") {
 
@@ -35,15 +41,22 @@ export default class CommandeController {
             }
 
         }, this);
-       console.log(this.panierPizza);
+
 
     }
-    livraison(){
+    livraison() {
         console.log("cliquer sur la livraison");
     }
 
-    emporter(){
+    emporter() {
         console.log("cliquer sur à emporter");
+    }
+
+    envoyerCommande(){
+        // Ajouter un le Idclient
+        
+        this.CommandeService.envoyeffCommande(this.panier);
+
     }
 
 }
