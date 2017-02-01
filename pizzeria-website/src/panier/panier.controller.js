@@ -13,7 +13,7 @@ export default class PanierController {
     $onInit() {
 
         this.panier = this.PanierService.getPanier();
-        this.promProduits = this.PizzaService.findAll();
+        this.promProduits = this.PizzaService.getPizzas();
         this.refreshPanier();
     }
 

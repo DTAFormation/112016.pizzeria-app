@@ -13,7 +13,7 @@
             <tbody>
                 <tr ng-repeat="produit in $ctrl.produitList track by $index">
                     <th><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></th>
-                    <td> {{produit.name}} <br/> {{produit.ingredients}} <br/><br/>
+                    <td> {{produit.nom}} <br/> {{produit.ingredients}} <br/><br/>
                         <button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button>
                     </td>
                     <td> {{produit.prix}} €</td>
