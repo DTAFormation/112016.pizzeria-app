@@ -53,6 +53,6 @@ export default class MonCompteController {
     }
 
     voirCommande(idCommande){
-        console.log(idCommande)
+        //En cours d'implémentataion
     }
 }

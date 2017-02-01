@@ -29,6 +29,7 @@ angular.module('pizzeria', [
     .component('pizza', Pizza)
     .component('inscription',Inscription)
 
+
     .service('PizzaService', PizzaService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
@@ -48,18 +49,14 @@ angular.module('pizzeria', [
             .when('/moncompte/:id?',{
                 template: `<moncompte></moncompte>`
             })
-
             .when('/login', {
                 template: `<login></login>`
             })
-
             .when('/inscription', {
             template: `<inscription></inscription>`
             })
-
              .when('/pizzas', {
                 template: `<pizza></pizza>`
             })
-
             .otherwise('/')
     });
