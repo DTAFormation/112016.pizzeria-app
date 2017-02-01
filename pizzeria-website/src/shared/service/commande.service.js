@@ -2,9 +2,8 @@ const api = 'http://localhost:3000/commandes'
 
 export class CommandeService{
 
-    constructor($q, $http){
+    constructor( $http){
 
-        this.$q = $q;
         this.$http = $http;
 
     }
