@@ -13,14 +13,10 @@ import { MonCompte } from './moncompte/moncompte.component';
 import { Commande } from './commande/commande.component';
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 
-
-
-
 import { UserService } from './shared/service/user.service';
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
 import { CommandeService } from './shared/service/commande.service';
-
 
 angular.module('pizzeria', [
     ngRoute,
@@ -36,6 +32,7 @@ angular.module('pizzeria', [
     .component('inscription', Inscription)
     .component('commande', Commande)
     .component('commandeEnvoye', CommandeEnvoye)
+    .component('inscription',Inscription)
 
     .service('UserService', UserService)
     .service('PanierService', PanierService)

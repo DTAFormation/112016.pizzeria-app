@@ -1,16 +1,35 @@
 const api = 'http://localhost:3000/commandes'
 
 export class CommandeService {
-
-
-    constructor( $http, $localStorage) {
-
-
+    constructor($http, $localStorage, PizzaService) {
         this.$http = $http;
         this.totalCommande;
         this.$localStorage = $localStorage;
         this.commande = [];
+        this.PizzaService = PizzaService;
+    }
 
+    majCommande(listeProduit, total) {
+
+        this.$localStorage.commandeEnCours = {};
+
+        this.$localStorage.commandeEnCours.listeProduit = listeProduit;
+        this.$localStorage.commandeEnCours.total = total;
+    }
+
+    majQuantiteCache(produit) {
+
+        let tab = this.$localStorage.commandeEnCours.listeProduit;
+        let elem = _.find(tab, p => p.idProduit === produit.id && p.type === produit.type);
+
+        elem.quantite = produit.quantite;
+    }
+
+    supprimerProduitDuCache(produit) {
+
+        let panier = this.$localStorage.jsonPanier;
+        let commande = this.$localStorage.commandeEnCours.listeProduit;
+        _.remove(panier, e => e.idProduit === produit.id && e.type === produit.type);
     }
 
     commandeTMP() {
@@ -37,13 +56,11 @@ export class CommandeService {
             }
         }, this);
         console.log(this.commande);
-
         return this.$http.post(api, this.commande)
-            .then(response => response.data);
     }
 
-    getCommandeById(id){
-         return this.$http.get(`${ api }/commande/${ id }`)
+    getCommandeById(id) {
+        return this.$http.get(`${api}/commande/${id}`)
             .then(response => response.data);
     }
 }
