@@ -24,7 +24,7 @@ class PizzaController{
 
        sort(predicat){
         if(predicat !="Tous"){
-        this.pizzas =   this.Pizzaservice.getPizzas()
+        this.pizzas =   this.PizzaService.getPizzas()
            .then(pizzas => {
                this.pizzas = pizzas
              .filter((pizza)=> pizza.categorie == predicat);
