@@ -15,10 +15,9 @@ import { BoissonService } from './shared/service/boisson.service'
 import { Panier } from './panier/panier.component'
 import { Pizza } from './pizza/pizza.component'
 import { Boisson } from './boisson/boisson.component'
-
-
-
-
+import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
+import { MonCompte } from './moncompte/moncompte.component';
+import { CommandeService } from './shared/service/commande.service';
 
 
 angular.module('pizzeria', [
@@ -29,46 +28,46 @@ angular.module('pizzeria', [
     .component('product', Product)
     .component('modalPizza', ModalPizza)
     .component('panier', Panier)
+    .component('moncompte', MonCompte)
     .component('login', Login)
     .component('pizza', Pizza)
     .component('boisson', Boisson)
    .component('inscription',Inscription)
+    .component('commandeEnvoye', CommandeEnvoye)
     .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
-    .filter('unique', function() {
-    return function (array) {
-        return _.uniq(array, _.isEquals);
-    };
-})
-    .config(function ($routeProvider, $locationProvider) {
+    .service('CommandeService', CommandeService)
+    .config(function($routeProvider, $locationProvider) {
 
-        $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
-        $routeProvider
-            .when('/', {
-                template: `<home></home>`
-            })
-            .when('/panier', {
-                template: `<panier></panier>`
-            })
-
-            .when('/login', {
-                template: `<login></login>`
-            })
-
-            .when('/inscription', {
+    $routeProvider
+        .when('/', {
+            template: `<home></home>`
+        })
+        .when('/panier', {
+            template: `<panier></panier>`
+        })
+        .when('/moncompte/:id?', {
+            template: `<moncompte></moncompte>`
+        })
+        .when('/login', {
+            template: `<login></login>`
+        })
+        .when('/inscription', {
             template: `<inscription></inscription>`
-            })
-
-             .when('/pizzas', {
-                template: `<pizza></pizza>`
-            })
-
-            .when('/boissons', {
+        })
+        .when('/pizzas', {
+            template: `<pizza></pizza>`
+        })
+         .when('/boissons', {
                 template: `<boisson></boisson>`
             })
+        .when('/commandeenvoyee/:id?', {
+            template: `<commande-envoye></commande-envoye>`
+        })
+        .otherwise('/')
 
-            .otherwise('/')
-    });
+});

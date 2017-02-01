@@ -1,3 +1,5 @@
+import lodash from 'lodash';
+
 export default class HomeController {
     constructor(PanierService, PizzaService) {
 
@@ -8,13 +10,19 @@ export default class HomeController {
 
     $onInit() {
 
+        this.pizza = []
 
-        this.PizzaService.findAll()
-            .then(pizzas =>
-                this.pizzas = pizzas
-            );
-
-            
+        this.PizzaService.getPizzas()
+            .then(pizzas =>{
+               this.pizza = lodash
+                    .sortBy(pizzas, pizza => 
+                        pizza.date
+                   )
+                
+                this.pizzas = lodash
+                    .take(this.pizza, 3)
+            }
+        );
     }
 
     ajouterPizzaPanier(pizza) {

@@ -9,28 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.pizzeria.model.Client;
-import fr.pizzeria.spring.web.repository.IClientRepository;
+import fr.pizzeria.model.Commande;
+import fr.pizzeria.spring.web.repository.ICommandeRepository;
 
 @RestController
-@RequestMapping("/client")
-public class ClientResource {
+@RequestMapping("/commandes")
+public class CommandeRessource {
 
 	@Autowired
-	private IClientRepository clientDao;
+	ICommandeRepository commandeDao;
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
-	public List<Client> getClient(@PathVariable Integer id) {
-		return clientDao.findById(id);
+	public List<Commande> getCommandes(@PathVariable Integer id) {
+		return commandeDao.findByClientId_Id(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Client> findAll() {
-		return clientDao.findAll();
+	@RequestMapping(path = "/commande/{id}", method = RequestMethod.GET)
+	public List<Commande> getClient(@PathVariable Integer id) {
+		return commandeDao.findById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void ajoutClient(@RequestBody Client user) {
-		clientDao.save(user);
+	public void ajoutCommande(@RequestBody Commande commande) {
+		commandeDao.save(commande);
 	}
+
 }
