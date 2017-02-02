@@ -7,8 +7,16 @@ export class PizzaService {
     constructor($http) {
         this.$http = $http;
         this.pizzas=  this.$http.get(api)
-            .then((response) =>
+            .then((response) =>{
                 response.data
+                response.data.forEach(function(element) {
+                    element.type="pizza"
+                }, this);
+                
+                return response.data;
+            }
+                
+                
             );
 
     }

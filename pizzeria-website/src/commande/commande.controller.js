@@ -14,6 +14,7 @@ export default class CommandeController {
         
         this.total = this.CommandeService.commandeTMP().total;
         this.panier = this.CommandeService.commandeTMP().listeProduit;
+        console.log(this.panier);
 
         this.panier.idClient=this.idClient;
         this.panier.total=this.total;
