@@ -23,15 +23,15 @@ function choisirPizza(liste_depart, liste_arrivee){
 function retirerPizza(liste){
 	for( i = 0; i < liste.options.length; i++ ){
 		if( liste.options[i].selected && liste.options[i] != "" )	{
-			liste_depart.options[i] = null;
+			liste.options[i] = null;
 			i = i - 1 ;
 		}
 	}	
 }
 
 function retirerToutePizzas(liste){
-	for( i = 0; i < liste_depart.options.length; i++ ){
-		liste_depart.options[i] = null;
+	for( i = 0; i < liste.options.length; i++ ){
+		liste.options[i] = null;
 		i = i - 1 ;
 	}
 	
@@ -46,7 +46,7 @@ function valider( liste ){
 
 
 
-
+/* Code trouvé sur internet à utiliser comme exemple
 function deplacer( liste_depart, liste_arrivee )
 {
 	for( i = 0; i < liste_depart.options.length; i++ )
@@ -65,10 +65,9 @@ function deplacer( liste_depart, liste_arrivee )
 	}
 }
 
-/*
   deplacer_tout( liste_depart, liste_arrivee )
   Déplace depuis la liste de départ (argument 1) et à destination de la liste d'arrivée (argument 2) tous les éléments présents dans la liste de départ, en les ajoutant à la suite de ceux déjà présents dans la liste d'arrivée.
- */
+ 
 function deplacer_tout( liste_depart, liste_arrivee )
 {
 	for( i = 0; i < liste_depart.options.length; i++ )
@@ -79,10 +78,10 @@ function deplacer_tout( liste_depart, liste_arrivee )
 		i = i - 1 ;
 	}
 }
-/*
+
   deplacer_hautbas( liste, sens )
   Déplace au sein de la liste (argument 1) un élément dans le sens (argument 2) voulu : -1 pour remonter, +1 pour descendre.
- */
+ 
 function deplacer_hautbas( liste, sens )
 {
 	// init
@@ -103,10 +102,10 @@ function deplacer_hautbas( liste, sens )
 	liste.options[listesel].selected = false;
 	return true;
 }
-/*
+
   soumettre_2listes( liste1, liste2 )
   Au moment de la soumission du formulaire, sélectionne automatiquement toutes les valeurs des listes données dans les deux arguments, afin que les valeurs choisies soit récupérées dans le script de traitement.
- */
+ 
 function soumettre_2listes( liste1, liste2 )
 {
 	var listelen1 = liste1.length;
@@ -120,9 +119,9 @@ function soumettre_2listes( liste1, liste2 )
 		liste2.options[j].selected = true;
 	}
 }
-/*
+
   soumettre_1liste( liste )
   Au moment de la soumission du formulaire, sélectionne automatiquement toutes les valeurs de la liste donnée indiquée dans l'argument, afin que les valeurs choisies soit récupérées dans le script de traitement.
- */
+ 
 //-->
 /*]]>*/
