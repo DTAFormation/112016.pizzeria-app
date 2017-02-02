@@ -17,7 +17,7 @@
                 class="form-control" required> 
                 <p 
                 class="text-danger" 
-                ng-if="userForm.email.$error.required && userForm.email.$dirty">
+                ng-if="userForm.email.$invalid && userForm.email.$dirty">
                 Obligatoire
                 </p>
             </div>

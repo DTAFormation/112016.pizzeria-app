@@ -34,7 +34,6 @@ angular.module('pizzeria', [
     .component('inscription', Inscription)
     .component('commande', Commande)
     .component('commandeEnvoye', CommandeEnvoye)
-    .component('inscription',Inscription)
     .component('dessert', Dessert)
 
     .service('UserService', UserService)

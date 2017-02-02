@@ -3,7 +3,6 @@ import InscriptionController from './inscription.controller'
 export const Inscription ={
     
     bindings : {
-        user:'<',
         onSubmit:'&'
     },
 
