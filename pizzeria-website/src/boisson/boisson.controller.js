@@ -25,7 +25,7 @@ export default class BoissonController{
     }
 
      ajouterPanier(boisson) {
-         this.PanierService.ajouterPanier(boisson);
+         this.PanierService.ajouterElement(boisson);
      }
 
      sort(predicat){

@@ -26,8 +26,8 @@ export class CommandeService {
 
     supprimerProduitDuCache(produit) {
 
+        console.log('HHIHIHIHHI');
         let panier = this.$localStorage.jsonPanier;
-        let commande = this.$localStorage.commandeEnCours.listeProduit;
 
         _.remove(panier, e => e.idProduit === produit.id && e.type === produit.type);
     }

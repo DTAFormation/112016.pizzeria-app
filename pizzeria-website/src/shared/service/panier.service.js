@@ -1,9 +1,23 @@
 import _ from 'lodash';
 
 export class PanierService {
-    constructor($localStorage) {
+    constructor($localStorage, PizzaService, BoissonService, $q) {
 
         this.$localStorage = $localStorage;
+        this.BoissonService = BoissonService;
+        this.PizzaService = PizzaService;
+        this.$q = $q;
+    }
+
+    getProduits() {
+
+        return this.PizzaService.getPizzas()
+            .then(pizzas =>
+                this.BoissonService.getBoissons()
+                    .then(boissons =>
+                        this.prodList = _.concat(pizzas, boissons)
+                    )
+            )
 
     }
 
@@ -14,12 +28,13 @@ export class PanierService {
         return this.$localStorage.jsonPanier;
     }
 
-     ajouterElement(element) {
+    ajouterElement(element) {
 
         if (this.$localStorage.jsonPanier === undefined)
             this.initPanier();
 
         let panier = this.$localStorage.jsonPanier;
+
         let exist = _.find(panier, e => (e.idProduit === element.id && e.type === element.type));
 
         if (exist !== undefined) {
