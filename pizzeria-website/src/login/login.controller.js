@@ -10,13 +10,14 @@ export default class LoginController {
           if (form.$invalid) return;
         this.LoginService.loginControl(email, mdp)
             .then(client => {
+                console.log(client)
                if(Object.keys(client).length>0){
                    this.error = false;
-                   this.currentClient = client;  
+                   this.currentClient = {id: client.id, nom : client.nom};  
                    console.log('currentClient ', this.currentClient)
-                   this.isConnected()
+                   this.Connected()
                    const expireDate = new Date('01/01/2029')
-                   this.$cookies.put('user_session', this.currentClient.nom, {'expires': expireDate})
+                   this.$cookies.put('user_session', this.currentClient, {'expires': expireDate})
                     this.$location.path('/'); 
 
                }else{
@@ -28,7 +29,7 @@ export default class LoginController {
 
     }
 
-    isConnected(){
+    Connected(){
         this.connected = true;
     }
 
