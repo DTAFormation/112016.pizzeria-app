@@ -9,7 +9,7 @@ export class PizzaService {
         this.$http = $http;
         this.pizzas=  this.$http.get(api)
             .then((response) =>{
-                response.data
+               
                 response.data.forEach(function(element) {
                     element.type="pizza"
                 }, this);
