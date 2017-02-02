@@ -1,12 +1,18 @@
 const api = 'http://localhost:3000/commandes'
 
 export class CommandeService {
-    constructor($http, $localStorage, PizzaService) {
+    constructor($http, $localStorage, PizzaService, PanierService) {
         this.$http = $http;
         this.totalCommande;
         this.$localStorage = $localStorage;
         this.commande = [];
         this.PizzaService = PizzaService;
+        this.PanierService = PanierService;
+    }
+    ResetCommande(){
+        this.PanierService.resetPanier();
+        delete this.$localStorage.commandeEnCours;
+        this.totalCommande=0;
     }
 
     majCommande(listeProduit, total) {
@@ -26,18 +32,17 @@ export class CommandeService {
     }
 
     supprimerProduitDuCache(produit) {
-
+;
         let panier = this.$localStorage.jsonPanier;
-        let commande = this.$localStorage.commandeEnCours.listeProduit;
         _.remove(panier, e => e.idProduit === produit.id && e.type === produit.type);
     }
 
     commandeTMP() {
-        this.$localStorage.commandeEnCours = {};
-        this.$localStorage.commandeEnCours.total = 42.50;
-        this.$localStorage.commandeEnCours.listeProduit = [{ "type": "pizza", "idProduit": 1, "quantite": 12 },
-        { "type": "pizza", "idProduit": 2, "quantite": 1 },
-        { "type": "pizza", "idProduit": 3, "quantite": 11 }];
+        // this.$localStorage.commandeEnCours = {};
+        // this.$localStorage.commandeEnCours.total = 42.50;
+        // this.$localStorage.commandeEnCours.listeProduit = [{ "type": "pizza", "idProduit": 1, "quantite": 12 },
+        // { "type": "pizza", "idProduit": 2, "quantite": 1 },
+        // { "type": "pizza", "idProduit": 3, "quantite": 11 }];
         return this.$localStorage.commandeEnCours;
     }
 

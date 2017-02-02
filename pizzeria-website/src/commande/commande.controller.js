@@ -1,8 +1,9 @@
 export default class CommandeController {
-    constructor(CommandeService, PizzaService) {
+    constructor(CommandeService, PizzaService,PanierService) {
 
         this.CommandeService = CommandeService;
         this.PizzaService = PizzaService;
+        this.PanierService =PanierService;
         this.panierPizza = [];
         this.idClient=2;
         
@@ -14,6 +15,7 @@ export default class CommandeController {
         
         this.total = this.CommandeService.commandeTMP().total;
         this.panier = this.CommandeService.commandeTMP().listeProduit;
+        console.log(this.panier);
 
         this.panier.idClient=this.idClient;
         this.panier.total=this.total;
@@ -54,7 +56,13 @@ export default class CommandeController {
 
     envoyerCommande(){
         this.CommandeService.envoyeCommandeCache(this.panier);
+        this.CommandeService.ResetCommande();
 
     }
+    revoieIdCommande(){
+        this.idCommande();
+    }
+
+
 
 }

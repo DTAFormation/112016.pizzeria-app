@@ -2,18 +2,21 @@ import _ from 'lodash'
 
 export default class PanierController {
 
-    constructor(PanierService, PizzaService, CommandeService) {
+    constructor(PanierService, PizzaService, CommandeService, BoissonService) {
 
         this.PanierService = PanierService;
         this.PizzaService = PizzaService;
         this.CommandeService = CommandeService;
+        this.BoissonService = BoissonService;
         this.hip = 0;
     }
 
     $onInit() {
 
+
         this.panier = this.PanierService.getPanier();
-        this.promProduits = this.PizzaService.getPizzas();
+     //   this.promProduits = this.PizzaService.getPizzas();
+        this.promProduits = this.PanierService.getProduits();
         this.refreshPanier();
     }
 
@@ -46,7 +49,7 @@ export default class PanierController {
                 return _.find(this.panier, (e) => {
 
                     p.quantite = e.quantite;
-                    return e.idProduit === p.id;
+                    return e.idProduit === p.id && e.type === p.type;
                 });
             });
 

@@ -6,6 +6,7 @@ class PizzaController{
 
     $onInit(){
         this.PizzaService.getPizzas()
+
         .then(pizzas =>{
             this.pizzas = pizzas
         } );
@@ -54,6 +55,7 @@ class PizzaController{
         this.currentPizza = pizza;
 
     }
+
 }
 
  export const Pizza = {

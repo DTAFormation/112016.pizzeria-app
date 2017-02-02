@@ -4,11 +4,20 @@ const api = 'http://localhost:3000/pizzas'; // Fill the api URL here and use it 
 
 export class PizzaService {
 
+
     constructor($http) {
         this.$http = $http;
         this.pizzas=  this.$http.get(api)
-            .then((response) =>
+            .then((response) =>{
                 response.data
+                response.data.forEach(function(element) {
+                    element.type="pizza"
+                }, this);
+                
+                return response.data;
+            }
+                
+                
             );
 
     }

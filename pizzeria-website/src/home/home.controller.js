@@ -9,6 +9,7 @@ export default class HomeController {
     }
 
     $onInit() {
+
         this.pizza = []
         this.PizzaService.getPizzas()
             .then(pizzas =>{
