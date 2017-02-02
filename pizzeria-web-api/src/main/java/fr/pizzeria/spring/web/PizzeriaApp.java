@@ -117,15 +117,6 @@ public class PizzeriaApp {
 			liveurDao.save(new Livreur("Toto", "jooj", "tomtom@gmail.com", "123456"));
 			liveurDao.save(new Livreur("Toto2", "jooj2", "tomtom22@gmail.com", "123456"));
 
-			// commandeRessource.ajoutCommande((new Commande(firstClient, null,
-			// new BigDecimal(443.9),
-			// Statut.EN_PREPARATION, new Date(), pizzas)));
-			// commandeRessource.ajoutCommande(
-			// (new Commande(firstClient, null, new BigDecimal(25.9),
-			// Statut.EN_LIVRAISON, new Date(), pizzas)));
-			// commandeRessource.ajoutCommande(
-			// (new Commande(secondClient, null, new BigDecimal(535.9),
-			// Statut.LIVRER, new Date(), pizzas)));
 		}
 	}
 }
