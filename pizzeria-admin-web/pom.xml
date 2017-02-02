@@ -19,10 +19,6 @@
   <dependencies>
 
     <dependency>
-      <groupId>fr.pizzeria</groupId>
-      <artifactId>pizzeria-model</artifactId>
-    </dependency>
-    <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
     </dependency>
@@ -31,6 +27,10 @@
       <artifactId>javaee-api</artifactId>
     </dependency>
 
+    <dependency>
+    	<groupId>fr.pizzeria</groupId>
+    	<artifactId>pizzeria-model</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

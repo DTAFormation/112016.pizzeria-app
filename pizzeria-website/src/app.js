@@ -86,4 +86,3 @@ angular.module('pizzeria', [
             .otherwise('/')
 
 });
-

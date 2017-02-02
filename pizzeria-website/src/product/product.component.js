@@ -15,6 +15,7 @@ class ProductController {
         
         this.onAfficherModale();
 
+
     }
 
 }

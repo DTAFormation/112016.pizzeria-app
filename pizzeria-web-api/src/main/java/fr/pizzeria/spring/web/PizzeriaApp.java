@@ -34,6 +34,7 @@ import fr.pizzeria.spring.web.resource.PizzaResource;
  */
 @SpringBootApplication
 @EntityScan(basePackageClasses = Pizza.class)
+
 public class PizzeriaApp {
 
 	/**
@@ -46,7 +47,9 @@ public class PizzeriaApp {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
+
 				registry.addMapping("/**").allowedOrigins("*");
+
 			}
 		};
 	}

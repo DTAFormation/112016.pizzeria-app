@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
 	<persistence-unit name="pizzeria-admin-web">
-		<jta-data-source>jdbc/pizza-ds</jta-data-source>
+		<jta-data-source>jdbc/pizzeria-app</jta-data-source>
 		<class>fr.pizzeria.model.Pizza</class>
-		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Client</class>
+		<class>fr.pizzeria.model.Adresse</class>
 		<class>fr.pizzeria.model.Livreur</class>
-		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-		</properties>
+		<class>fr.pizzeria.model.Utilisateur</class>
+		<class>fr.pizzeria.model.Commande</class>
+		<class>fr.pizzeria.model.Ingredient</class>
 	</persistence-unit>
 </persistence>

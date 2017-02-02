@@ -1,28 +1,41 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "adresse")
 public class Adresse {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "numero", nullable = false)
 	private Integer numero;
+	@Column(name = "adresse1", length = 5000, nullable = false)
 	private String adresse1;
+	@Column(name = "adresse2", length = 5000)
 	private String adresse2;
+	@Column(name = "adresse3", length = 5000)
 	private String adresse3;
-	private Integer codePostal;
+	@Column(name = "code_postale", length = 5, nullable = false)
+	private String codePostal;
+	@Column(name = "ville", length = 5000, nullable = false)
 	private String ville;
+
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumn(name = "client_id")
+	// private Client resident;
 
 	public Adresse() {
 
 	}
 
-	public Adresse(Integer numero, String adresse1, String adresse2, String adresse3, Integer codePostal,
-			String ville) {
+	public Adresse(Integer numero, String adresse1, String adresse2, String adresse3, String codePostal, String ville) {
 		super();
 		this.numero = numero;
 		this.adresse1 = adresse1;
@@ -72,11 +85,11 @@ public class Adresse {
 		this.adresse3 = adresse3;
 	}
 
-	public Integer getcodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
-	public void setcodePostal(Integer codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 
@@ -88,4 +101,14 @@ public class Adresse {
 		this.ville = ville;
 	}
 
+	// public Client getResident() {
+	// return resident;
+	// }
+	//
+	// public void setResident(Client resident) {
+	// this.resident = resident;
+	// if (!resident.getAdresse().contains(this)) {
+	// resident.getAdresse().add(this);
+	// }
+	// }
 }

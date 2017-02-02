@@ -1,0 +1,10 @@
+diff a/pizzeria-admin-web/src/main/webapp/WEB-INF/views/login.jsp b/pizzeria-admin-web/src/main/webapp/WEB-INF/views/login.jsp	(rejected hunks)
+@@ -16,7 +16,7 @@
+ 	        <label for="inputPassword" class="sr-only">Mot de passe</label>
+ 	        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+ 	        <c:if test="${ not empty erreur }">
+-		        <div class="form-control-feedback">Erreur: <c:out value="${ erreur }"/></div>
++		        <div class="form-control-feedback"><c:out value="${ erreur }"/></div>
+ 	        </c:if>
+ 			<button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+ 		</form>

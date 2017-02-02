@@ -25,10 +25,12 @@ export default class HomeController {
 
     ajouterPizzaPanier(pizza) {
         this.PanierService.addProduct(pizza);
+
     }
 
     afficherModale(pizza) {
         this.currentPizza = pizza;
+
 
     }
 }

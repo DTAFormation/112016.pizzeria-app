@@ -2,6 +2,7 @@ package fr.pizzeria.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +11,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-
 @Entity
 @Table(name = "pizza")
+
 public class Pizza {
 
 	/*
@@ -28,7 +31,6 @@ public class Pizza {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Integer id;
 	@Column(name = "code", length = 3, nullable = false, unique = true)
 	private String code;
@@ -41,13 +43,17 @@ public class Pizza {
 	private CategoriePizza categorie;
 	@Column(name = "url", length = 5000)
 	private String urlImage;
-	@Column(name = "note", nullable = false)
+	@Column(name = "note", nullable = true)
 	private Integer note;
 	@Column(name = "nb_votant", nullable = true)
 	private Integer nbVotant;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date")
 	private Date date;
+
+	@ManyToMany
+	@JoinTable(name = "pizza_ingredient", joinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id"))
+	private List<Ingredient> ingredients;
 
 	public Pizza() {
 
@@ -85,12 +91,15 @@ public class Pizza {
 		this.date = date;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
+	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza cat, String url,
+			List<Ingredient> ingredients) {
+		this();
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = cat;
+		this.urlImage = url;
+		this.ingredients = ingredients;
 	}
 
 	public Integer getId() {
@@ -149,6 +158,14 @@ public class Pizza {
 		this.urlImage = urlImage;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public Integer getNbVotant() {
 		return nbVotant;
 	}
@@ -157,19 +174,11 @@ public class Pizza {
 		this.nbVotant = nbVotant;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (obj == this) {
-			return true;
-		}
-		if (obj.getClass() != getClass()) {
-			return false;
-		}
-		Pizza rhs = (Pizza) obj;
-		return new EqualsBuilder().append(code, rhs.code).isEquals();
+	public List<Ingredient> getIngredients() {
+		return ingredients;
 	}
 
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
 }
