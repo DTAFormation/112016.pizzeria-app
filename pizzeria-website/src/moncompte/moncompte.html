@@ -7,6 +7,18 @@
                 <input ng-model="$ctrl.user.email" name="email" placeholder="$ctrl.user.email" ng-disabled="$ctrl.disable" type="email" class="form-control" required>
                 <p class="text-danger" ng-if="userForm.email.$error.required && userForm.email.$dirty">
                     Obligatoire
+
+                <input 
+                ng-model="$ctrl.user.email" 
+                name="email" 
+                placeholder="$ctrl.user.email" 
+                ng-disabled="$ctrl.disable"
+                type="email" 
+                class="form-control" required> 
+                <p 
+                class="text-danger" 
+                ng-if="userForm.email.$error.required && userForm.email.$dirty">
+                Obligatoire
                 </p>
             </div>
 
@@ -16,6 +28,7 @@
                 <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">
                     Obligatoire
                 </p>
+               
             </div>
 
             <div class="form-group">
@@ -39,6 +52,8 @@
                 <button ng-if="!$ctrl.disable" ng-click="$ctrl.annulerUpdate()" class="btn btn-warning">Annuler</button>
         </span>
         </form>
+    </div>
+</div>
 
         <table class="table table-striped">
             <thead>
@@ -57,13 +72,14 @@
                     <td>{{ commande.statut }}</td>
                     <td>{{ commande.total }}</td>
                     <td>
-                        <button 
+                        <a 
                         class="btn btn-primary" 
-                        ng-click="$ctrl.voirCommande(commande.id)">
+                        ng-href="/commandeenvoyee/{{ commande.id }}">
                             Voir la Commande
-                        </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+       

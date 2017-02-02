@@ -1,0 +1,43 @@
+<div>
+    <h2>Votre commande </h2>
+
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <td> Nom & Ingerdients </td>
+                    <td> Prix </td>
+                    <td> Quantité </td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="pizzaCommande in $ctrl.panierPizza ">
+
+                    <th><img ng-src="{{pizzaCommande.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{pizzaCommande.nom}} </td>
+                    <td> {{pizzaCommande.prix}} </td>
+                    <td> {{pizzaCommande.quantite}} </td>
+                </tr>
+            </tbody>
+            <tfoot>
+               <td class="pull-right" > total = {{ $ctrl.total }}</td> 
+            </tfoot>
+        </table>
+        <button type="submit" class="pull-right btn btn-primary">Modifier</button>
+    </div>
+
+</div>
+<div>
+<table>
+    <td><img src="http://www.theatredunord.fr/wp-content/uploads/2015/09/Fiche-spectacle-VISUEL-COX-580x260-lectures-%C3%A0-emporter.jpg" width="500" height="300" ng-click="$ctrl.emporter()"></td>
+    <td><img src="http://www.lorrainepizza-luneville.com/img/livraison-de-pizza-chanteheux-zoom.jpg" width="500" height="300" ng-click="$ctrl.livraison()"></td>
+</table>
+</div>
+<div class="container">
+   <a href="/"> <button type="submit" class="pull-right btn btn-primary" ng-click="$ctrl.envoyerCommande()" > confirmer la commande </button></a>
+</div>

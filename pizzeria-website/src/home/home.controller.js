@@ -10,14 +10,12 @@ export default class HomeController {
 
     $onInit() {
         this.pizza = []
-
         this.PizzaService.getPizzas()
             .then(pizzas =>{
                this.pizza = lodash
                     .sortBy(pizzas, pizza => 
                         pizza.date
                    )
-                
                 this.pizzas = lodash
                     .take(this.pizza, 3)
             }
@@ -25,13 +23,10 @@ export default class HomeController {
     }
 
     ajouterPizzaPanier(pizza) {
-
         this.PanierService.addProduct(pizza);
-
     }
 
     afficherModale(pizza) {
-
         this.currentPizza = pizza;
 
     }

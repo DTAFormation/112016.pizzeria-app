@@ -6,18 +6,20 @@ export default class MonCompteController {
 
         this.UserService = UserService;
         this.CommandeService = CommandeService;
-
         this.id = $routeParams.id;
         this.$location = $location;
 
     }
-
     $onInit() {
+        
+        this.disable = true;
         this.commandes = [];
+
         this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
-        this.CommandeService.getCommandeByUserId(this.id)
+            
+        this.CommandeService.getCommandesByUserId(this.id)
             .then(commandes =>{
                 lodash(commandes.map(commande => {
                    commande.date = Date(commande.date)
@@ -25,8 +27,6 @@ export default class MonCompteController {
                 }))
                 .flatten()
             })
-            
-        this.disable = true;
 
     }
 
@@ -46,13 +46,12 @@ export default class MonCompteController {
 
     annulerUpdate() {
 
-        this.disable = true;
-         this.UserService.getUser(this.id)
+       
+        this.UserService.getUser(this.id)
             .then(user => this.user = user[0]);
 
+        this.disable = true;
+
     }
 
-    voirCommande(idCommande){
-        //En cours d'implémentataion
-    }
 }

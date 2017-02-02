@@ -5,7 +5,7 @@
 2 info using npm@4.0.5
 3 info using node@v7.4.0
 4 verbose stack Error: ENOENT: no such file or directory, open 'C:\Users\DevOps-JoelT\Desktop\pizzeria-app\package.json'
-5 verbose cwd C:\Users\DevOps-JoelT\Desktop\pizzeria-app
+5 verbose cwd C:\Users\DevOps-JoelT\Desktop\pizzeria-app\pizzeria-web-api
 6 error Windows_NT 6.1.7601
 7 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 8 error node v7.4.0
