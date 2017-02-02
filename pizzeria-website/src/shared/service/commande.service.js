@@ -1,12 +1,18 @@
 const api = 'http://localhost:3000/commandes'
 
 export class CommandeService {
-    constructor($http, $localStorage, PizzaService) {
+    constructor($http, $localStorage, PizzaService, PanierService) {
         this.$http = $http;
         this.totalCommande;
         this.$localStorage = $localStorage;
         this.commande = [];
         this.PizzaService = PizzaService;
+        this.PanierService = PanierService;
+    }
+    ResetCommande(){
+        this.PanierService.resetPanier();
+        delete this.$localStorage.commandeEnCours;
+        this.totalCommande=0;
     }
 
     majCommande(listeProduit, total) {
