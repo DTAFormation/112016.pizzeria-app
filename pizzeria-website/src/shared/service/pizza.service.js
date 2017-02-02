@@ -7,25 +7,31 @@ export class PizzaService {
 
     constructor($http) {
         this.$http = $http;
-        this.pizzas = this.getPizzas();
-    }
-
-    getPizzas() {
-
-        return this.$http.get(api)
-            .then((response) => {
-                for (let i = 0; i < response.data.length; ++i) {
-
-                    response.data[i].type = 'pizza';
-                }
+        this.pizzas=  this.$http.get(api)
+            .then((response) =>{
+                response.data
+                response.data.forEach(function(element) {
+                    element.type="pizza"
+                }, this);
+                
                 return response.data;
             }
+                
+                
             );
 
     }
 
+
+    getPizzas() {
+
+        return this.pizzas;
+            
+    }
+
     getPizzaById(id) {
 
-        return this.pizzas.then(pizzas => _.find(pizzas, p => p.id === id));
-    }
+       return this.pizzas.then(pizzas => _.find(pizzas, p => p.id === id));
+   }
+
 }

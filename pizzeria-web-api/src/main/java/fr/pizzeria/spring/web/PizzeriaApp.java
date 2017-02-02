@@ -19,8 +19,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
+import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.Statut;
+import fr.pizzeria.spring.web.repository.ILivreurRepository;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
@@ -66,6 +68,9 @@ public class PizzeriaApp {
 	@Autowired
 	private ClientResource clientResource;
 
+	@Autowired
+	ILivreurRepository liveurDao;
+
 	@PostConstruct
 	public void setDatabase() {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
@@ -83,10 +88,10 @@ public class PizzeriaApp {
 
 			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
 					.get();
-			commandeRessource.ajoutCommande((new Commande(firstClient, null, new BigDecimal(443.9),
-					Statut.EN_PREPARATION, new Date(), pizzas)));
-			commandeRessource.ajoutCommande(
-					(new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
+					new Date(), pizzas)));
+			commandeRessource
+					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
@@ -109,12 +114,18 @@ public class PizzeriaApp {
 			Client secondClient = clientResource.findAll().stream().filter(client -> client.getId() == 2).findFirst()
 					.get();
 
-			commandeRessource.ajoutCommande((new Commande(firstClient, null, new BigDecimal(443.9),
-					Statut.EN_PREPARATION, new Date(), pizzas)));
-			commandeRessource.ajoutCommande(
-					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas)));
-			commandeRessource.ajoutCommande(
-					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas)));
+			liveurDao.save(new Livreur("Toto", "jooj", "tomtom@gmail.com", "123456"));
+			liveurDao.save(new Livreur("Toto2", "jooj2", "tomtom22@gmail.com", "123456"));
+
+			// commandeRessource.ajoutCommande((new Commande(firstClient, null,
+			// new BigDecimal(443.9),
+			// Statut.EN_PREPARATION, new Date(), pizzas)));
+			// commandeRessource.ajoutCommande(
+			// (new Commande(firstClient, null, new BigDecimal(25.9),
+			// Statut.EN_LIVRAISON, new Date(), pizzas)));
+			// commandeRessource.ajoutCommande(
+			// (new Commande(secondClient, null, new BigDecimal(535.9),
+			// Statut.LIVRER, new Date(), pizzas)));
 		}
 	}
 }
