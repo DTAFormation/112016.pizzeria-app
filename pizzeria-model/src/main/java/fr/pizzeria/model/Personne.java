@@ -53,8 +53,8 @@ public class Personne {
 		return motDePasse;
 	}
 
-	public void setMotDePasse(String mot_de_passe) {
-		this.motDePasse = mot_de_passe;
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
 
 }
