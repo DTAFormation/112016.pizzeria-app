@@ -88,6 +88,9 @@ angular.module('pizzeria', [
             .when('/boissons', {
                 template: `<boisson></boisson>`
             })
+            .when('/entrees', {
+                template: `<entree></entree>`
+            })
             .when('/commandeenvoyee/:id?', {
             template: `<commande-envoye></commande-envoye>`
             })

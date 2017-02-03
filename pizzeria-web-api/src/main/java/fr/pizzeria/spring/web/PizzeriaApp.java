@@ -16,17 +16,23 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import fr.pizzeria.model.Boisson;
+import fr.pizzeria.model.CategorieBoisson;
+import fr.pizzeria.model.CategorieEntree;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Dessert;
+import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.Statut;
 import fr.pizzeria.spring.web.repository.ILivreurRepository;
+import fr.pizzeria.spring.web.resource.BoissonResource;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
 import fr.pizzeria.spring.web.resource.DessertResource;
+import fr.pizzeria.spring.web.resource.EntreeResource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
 
 /**
@@ -77,6 +83,12 @@ public class PizzeriaApp {
 	private DessertResource dessertRessource;
 
 	@Autowired
+	private BoissonResource boissonRessource;
+
+	@Autowired
+	private EntreeResource entreeRessource;
+
+	@Autowired
 	ILivreurRepository liveurDao;
 
 	@PostConstruct
@@ -84,6 +96,21 @@ public class PizzeriaApp {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
+			
+			Boisson boisson = new Boisson("coca", new BigDecimal(2.5),
+					"http://media.topito.com/wp-content/uploads/2014/12/coca-250x250.jpg", CategorieBoisson.GAZ);
+			Boisson boisson2 = new Boisson("oasis tropical", new BigDecimal(2.0),
+					"http://medine-distribution.fr/219-home_default/oasis-tropical-50cl-x-24.jpg",
+					CategorieBoisson.SANS_GAZ);
+			Boisson boisson3 = new Boisson("evian", new BigDecimal(1.5),
+					"http://www.galerieculinaireparis.com/755-home_default/o4-evian-1l.jpg", CategorieBoisson.SANS_GAZ);
+			boissonRessource.ajoutBoisson(boisson);
+			boissonRessource.ajoutBoisson(boisson2);
+			boissonRessource.ajoutBoisson(boisson3);
+			
+			entreeRessource.ajoutEntree(
+					new Entree("Verrine de crevette", new BigDecimal(12.25), "http://static.750g.com/images/200-160/667cadcb25da94adb772f1b48acfef42/verrines-de-crevettes-au-pamplemousse-et-a-la-pomme.png", CategorieEntree.POISSON)
+					);
 
 			// client 1
 			pizzaResource.ajoutPizza(
@@ -99,12 +126,12 @@ public class PizzeriaApp {
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null)));
 			commandeRessource
-					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
+			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null)));
 			commandeRessource
-					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
+			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(

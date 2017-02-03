@@ -3,6 +3,8 @@ package fr.pizzeria.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,18 +19,20 @@ public class Entree {
 	private BigDecimal prix;
 	private String urlImage;
 	private String type;
+	@Enumerated(EnumType.STRING)
+	private CategorieEntree categorie;
 
 	public Entree() {
 
 	}
 
-	public Entree(String nom, BigDecimal prix, String urlImage) {
+	public Entree(String nom, BigDecimal prix, String urlImage, CategorieEntree categorie) {
 		super();
-
 		this.nom = nom;
 		this.prix = prix;
 		this.urlImage = urlImage;
-		type = "entrée";
+		this.type = "entree";
+		this.categorie = categorie;
 	}
 
 	public Integer getId() {
@@ -60,6 +64,26 @@ public class Entree {
 	}
 
 	public void setUrl_Image(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public CategorieEntree getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(CategorieEntree categorie) {
+		this.categorie = categorie;
+	}
+
+	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
 
