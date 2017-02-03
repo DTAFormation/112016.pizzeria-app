@@ -1,8 +1,8 @@
 class LoginController {
-    constructor(UserService, $location, $scope){
+    constructor(UserService, $location, $rootScope){
         this.UserService = UserService;
         this.$location = $location;
-        this.$scope = $scope
+        this.$rootScope = $rootScope
     }
 
     $onInit() {
@@ -10,16 +10,14 @@ class LoginController {
     }
 
     authentification(form, user){
-        console.log("Email : " + user.email)
-        console.log("PassWord : " + user.motDePasse)
         if(form.$invalid) return;
         this.UserService.connectUser(user)
             .then(user=> {
                 if(!user) {
                     this.message = "Email ou Mot de passe incorrect"
                 } else {
-                    this.$scope.$emit("userAuth", user)
-                    this.$location.path('/')
+                    this.$rootScope.$emit("userAuth", user)
+                    this.$location.path('/pizza')
                 }
             })
     }

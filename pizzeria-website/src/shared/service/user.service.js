@@ -22,18 +22,14 @@ export class UserService {
             .then(response => {
                 let user = response.data
                 if(!response.data) {
-                    console.log("utilisateur non valide")
                     return null
                 } else {
-                    console.log("utilisateur authentifier : ")
                     let userAuthConcat = {
                         id: user.id,
                         nom: user.nom,
                         prenom: user.prenom
                     }
-                    console.table(userAuthConcat)
                     localStorage.userAuth = angular.toJson(userAuthConcat)
-                    console.log("utilisateur enregistré dans la session")
                     return userAuthConcat
                 }
             })

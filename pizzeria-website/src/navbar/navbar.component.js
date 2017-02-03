@@ -1,9 +1,8 @@
 class NavbarController {
-    constructor($scope) {
-        this.userAuth = {}
-        this.$scope = $scope
-        this.$scope.$on("userAuth", () => {
-            console.log("connecter")
+    constructor($rootScope) {
+        this.$rootScope = $rootScope
+        this.$rootScope.$on("userAuth", (event, user) => {
+            this.userAuth = user
         })
     }
 
@@ -13,10 +12,15 @@ class NavbarController {
         }
     }
 
+    setUserAuth(user) {
+        this.userAuth = user
+    }
+
     logoutUser() {
         localStorage.removeItem("userAuth")
         this.userAuth = {}
     }
+    
 }
 
 export const Navbar = {
