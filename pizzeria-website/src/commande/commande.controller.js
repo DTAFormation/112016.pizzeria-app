@@ -1,11 +1,12 @@
 export default class CommandeController {
-    constructor(CommandeService, PizzaService, PanierService, BoissonService, DessertService) {
+    constructor(CommandeService, PizzaService, PanierService, BoissonService, DessertService, EntreeService) {
 
         this.CommandeService = CommandeService;
         this.PizzaService = PizzaService;
         this.BoissonService = BoissonService;
         this.DessertService = DessertService;
         this.PanierService = PanierService;
+        this.EntreeService = EntreeService;
         this.total=0;
         this.panierPizza = [];
         this.idClient = 2;
@@ -44,6 +45,15 @@ export default class CommandeController {
 
             if (this.panier[index].type === "dessert") {
                 this.DessertService.getdessertsById(this.panier[index].idProduit)
+                    .then((data) => {
+                        console.log((data))
+                        data.quantite = this.panier[index].quantite;
+                        this.panierPizza.push(data);
+                    })
+            }
+            
+            if (this.panier[index].type === "entrée") {
+                this.EntreeService.getEntreesById(this.panier[index].idProduit)
                     .then((data) => {
                         console.log((data))
                         data.quantite = this.panier[index].quantite;

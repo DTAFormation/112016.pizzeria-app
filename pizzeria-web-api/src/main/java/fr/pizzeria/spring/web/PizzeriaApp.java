@@ -97,14 +97,14 @@ public class PizzeriaApp {
 			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
 					.get();
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas)));
+					new Date(), pizzas, null, null, null)));
 			commandeRessource
-					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas)));
+					new Date(), pizzas, null, null, null)));
 			commandeRessource
-					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas)));
+					.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
@@ -128,11 +128,11 @@ public class PizzeriaApp {
 					.get();
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas)));
+					new Date(), pizzas, null, null, null)));
 			commandeRessource.ajout(
-					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas)));
+					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas, null, null, null)));
 			commandeRessource.ajout(
-					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas)));
+					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas, null, null, null)));
 
 			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
 					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg");

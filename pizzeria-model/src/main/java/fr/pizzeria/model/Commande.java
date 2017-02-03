@@ -1,6 +1,7 @@
 package fr.pizzeria.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,17 +46,31 @@ public class Commande {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date")
 	private Date date;
+	
+	@ManyToMany
+	@JoinTable(name = "commande_entree", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "entree_id", referencedColumnName = "id"))
+	private List<Entree> entrees;
 
 	@ManyToMany
 	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
 	private List<Pizza> pizzas;
+	
+	@ManyToMany
+	@JoinTable(name = "commande_boisson", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "boisson_id", referencedColumnName = "id"))
+	private List<Boisson> boissons;
+	
+	@ManyToMany
+	@JoinTable(name = "commande_dessert", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dessert_id", referencedColumnName = "id"))
+	private List<Dessert> dessert;
+	
+	
 
 	public Commande() {
 
 	}
 
 	public Commande(Client idClient, Livreur idLivreur, BigDecimal total, Statut statut, Date date,
-			List<Pizza> pizzas) {
+			List<Pizza> pizzas, List<Boisson> boissons, List<Dessert> desserts, List<Entree> entrees) {
 		super();
 		this.clientId = idClient;
 		this.livreurId = idLivreur;
@@ -63,6 +78,14 @@ public class Commande {
 		this.statut = statut;
 		this.date = date;
 		this.pizzas = pizzas;
+		this.boissons = boissons;
+		this.entrees = entrees;
+		this.dessert = desserts;
+	}
+
+	public Commande(Client client, Livreur liveur, BigDecimal total2, Statut enPreparation, Date date2,
+			ArrayList<Pizza> pizzas2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**

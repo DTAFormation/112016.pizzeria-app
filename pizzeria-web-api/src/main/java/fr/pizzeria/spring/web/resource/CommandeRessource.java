@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.pizzeria.model.Boisson;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.CommandeClient;
+import fr.pizzeria.model.Dessert;
+import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.Statut;
@@ -29,7 +32,16 @@ public class CommandeRessource {
 	ICommandeRepository commandeDao;
 
 	@Autowired
+	private EntreeResource entreeResource;
+
+	@Autowired
 	private PizzaResource pizzaResource;
+
+	@Autowired
+	private BoissonResource boissonResource;
+
+	@Autowired
+	private DessertResource dessertResource;
 
 	@Autowired
 	IClientRepository clientDao;
@@ -49,13 +61,28 @@ public class CommandeRessource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public void ajoutCommande(@RequestBody ArrayList<CommandeClient> commandeClient) {
-		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
+		ArrayList<Pizza> pizzas = new ArrayList<>();
+		ArrayList<Entree> entrees = new ArrayList<>();
+		ArrayList<Boisson> boissons = new ArrayList<>();
+		ArrayList<Dessert> desserts = new ArrayList<>();
 		for (CommandeClient commandeproduit : commandeClient) {
-
-			if (commandeproduit.getType().equals("pizza")) {
+			switch(commandeproduit.getType()){
+			case "pizza":
 				pizzas.add(pizzaResource.listAllPizzas().stream()
 						.filter(p -> p.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-
+				break;
+			case "boisson":
+				boissons.add(boissonResource.findAll().stream()
+						.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+				break;
+			case "entrée":
+				entrees.add(entreeResource.findAll().stream()
+						.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+				break;
+			case "dessert":
+				desserts.add(dessertResource.findAll().stream()
+						.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+				break;
 			}
 		}
 		Client client = clientDao.findAll().stream().filter(p -> p.getId().equals(commandeClient.get(0).getIdProduit()))
@@ -63,7 +90,7 @@ public class CommandeRessource {
 
 		Livreur liveur = liveurDao.findAll().stream().filter(p -> p.getId().equals(1)).findFirst().get();
 		commandeDao.save(new Commande(client, liveur, commandeClient.get(0).getTotal(), Statut.EN_PREPARATION,
-				new Date(), pizzas));
+				new Date(), pizzas, boissons, desserts, entrees));
 	}
 
 	public void ajout(Commande commande) {

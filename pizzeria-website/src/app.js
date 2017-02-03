@@ -15,12 +15,14 @@ import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 import { MonCompte } from './moncompte/moncompte.component';
 import { Commande } from './commande/commande.component';
 import { Dessert } from './dessert/dessert.component';
+import { Entree } from './entree/entree.component';
 
 import { UserService } from './shared/service/user.service';
 import { PizzaService } from './shared/service/pizza.service';
 import { PanierService } from './shared/service/panier.service';
 import { CommandeService } from './shared/service/commande.service';
 import { DessertService } from './shared/service/dessert.service';
+import { EntreeService } from './shared/service/entree.service';
 
 angular.module('pizzeria', [
     ngRoute,
@@ -37,6 +39,7 @@ angular.module('pizzeria', [
     .component('commandeEnvoye', CommandeEnvoye)
     .component('dessert', Dessert)
     .component('boisson', Boisson)
+    .component('entree', Entree)
     .component('inscription',Inscription)
     
     .service('PizzaService', PizzaService)
@@ -45,6 +48,7 @@ angular.module('pizzeria', [
     .service('PanierService', PanierService)
     .service('CommandeService', CommandeService)
     .service('DessertService', DessertService)
+    .service('EntreeService', EntreeService)
 
 
     

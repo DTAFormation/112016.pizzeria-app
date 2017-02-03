@@ -3,14 +3,12 @@ package fr.pizzeria.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Boisson {
+public class Entree {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +17,18 @@ public class Boisson {
 	private BigDecimal prix;
 	private String urlImage;
 	private String type;
-	@Enumerated(EnumType.STRING)
-	private CategorieBoisson categorie;
 
-	public Boisson() {
+	public Entree() {
 
 	}
 
-	public Boisson(String nom, BigDecimal prix, String urlImage, CategorieBoisson categorie) {
+	public Entree(String nom, BigDecimal prix, String urlImage) {
 		super();
 
 		this.nom = nom;
 		this.prix = prix;
 		this.urlImage = urlImage;
-		this.categorie = categorie;
-		this.setType("boisson");
+		type = "entrée";
 	}
 
 	public Integer getId() {
@@ -66,22 +61,6 @@ public class Boisson {
 
 	public void setUrl_Image(String urlImage) {
 		this.urlImage = urlImage;
-	}
-
-	public CategorieBoisson getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(CategorieBoisson categorie) {
-		this.categorie = categorie;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 }
