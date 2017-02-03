@@ -16,6 +16,7 @@ import { MonCompte } from './moncompte/moncompte.component';
 import { Commande } from './commande/commande.component';
 import { Dessert } from './dessert/dessert.component';
 import { Entree } from './entree/entree.component';
+import { Navbar } from './navbar/navbar.component';
 
 import { UserService } from './shared/service/user.service';
 import { PizzaService } from './shared/service/pizza.service';
@@ -42,6 +43,7 @@ angular.module('pizzeria', [
     .component('boisson', Boisson)
     .component('entree', Entree)
     .component('inscription',Inscription)
+    .component('navbar', Navbar)
     
     .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)

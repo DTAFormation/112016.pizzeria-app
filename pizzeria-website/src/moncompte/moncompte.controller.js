@@ -3,30 +3,35 @@ import lodash from 'lodash';
 export default class MonCompteController {
 
     constructor(UserService, $routeParams, $location, CommandeService) {
-
         this.UserService = UserService;
         this.CommandeService = CommandeService;
         this.id = $routeParams.id;
         this.$location = $location;
 
     }
+
     $onInit() {
         
         this.disable = true;
         this.commandes = [];
 
-        this.UserService.getUser(this.id)
-            .then(user => this.user = user[0]);
+        if(this.id){
+            this.UserService.getUser(this.id)
+                .then(user => this.user = user[0]);
 
-            
-        this.CommandeService.getCommandesByUserId(this.id)
-            .then(commandes =>{
-                lodash(commandes.map(commande => {
-                   commande.date = Date(commande.date)
-                   this.commandes.push(commande)
-                }))
-                .flatten()
-            })
+                
+            this.CommandeService.getCommandesByUserId(this.id)
+                .then(commandes =>{
+                    lodash(commandes.map(commande => {
+                    commande.date = Date(commande.date)
+                    this.commandes.push(commande)
+                    }))
+                    .flatten()
+                })
+        } else {
+            this.$location.path('/')
+        }
+        
 
     }
 

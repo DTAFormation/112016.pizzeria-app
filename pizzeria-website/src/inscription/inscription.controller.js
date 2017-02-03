@@ -1,8 +1,7 @@
  export default class InscriptionController{
     constructor(UserService, $location){
         this.UserService = UserService;
-        this.$location = $location;
-        
+        this.$location = $location;      
     }
 
     saveUser(form, user){
