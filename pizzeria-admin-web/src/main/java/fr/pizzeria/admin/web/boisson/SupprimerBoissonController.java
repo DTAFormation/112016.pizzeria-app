@@ -14,20 +14,25 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.admin.metier.BoissonService;
 import fr.pizzeria.model.Boisson;
 
-@WebServlet("/admin/boissons/list")
-public class ListerBoissonController extends HttpServlet {
+/**
+ * Servlet implementation class SupprimerBoissonController
+ */
+@WebServlet("/admin/boissons/delete")
+public class SupprimerBoissonController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@EJB
-	BoissonService boissonService;
 	private static final String VUE_LISTER_BOISSON = "/WEB-INF/views/boissons/listBoissons.jsp";
 
-	public ListerBoissonController() {
+	@EJB
+	private BoissonService boissonService;
+
+	public SupprimerBoissonController() {
 		super();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		List<Boisson> listerBoissons = boissonService.listerBoissons();
 		request.setAttribute("listerBoissons", listerBoissons);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VUE_LISTER_BOISSON);
@@ -36,7 +41,8 @@ public class ListerBoissonController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		boissonService.deleteBoisson(id);
 		doGet(request, response);
 	}
 

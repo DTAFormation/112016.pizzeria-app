@@ -13,6 +13,5 @@
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Ingredient</class>
 		<class>fr.pizzeria.model.Boisson</class>
-
 	</persistence-unit>
 </persistence>
