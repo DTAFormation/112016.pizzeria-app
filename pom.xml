@@ -202,10 +202,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-				<jdbc.url>jdbc:mysql://localhost:3306/pizzeriadb</jdbc.url>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.pass></jdbc.pass>
+				<post.construct.mode>dev</post.construct.mode>
 			</properties>
 		</profile>
 
