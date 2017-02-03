@@ -28,7 +28,6 @@
 								<th>Prénom</th>
 								<th>Email</th>
 								<th>Adresse</th>
-								<th>Mot De Passe</th>
 							</tr>
 						</thead>
 
@@ -39,8 +38,7 @@
 									<td>${clients.nom}</td>
 									<td>${clients.prenom}</td>
 									<td>${clients.email}</td>
-									<td>ici une adresse</td>
-									<td>${clients.motDePasse}</td>
+									<td>${clients.adresse}</td>
 									<td><a
 										href="<c:url value="/admin/clients/update?id=${clients.id}"/>"
 										class="btn btn-success">Editer</a></td>

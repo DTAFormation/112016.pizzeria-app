@@ -15,15 +15,15 @@ import fr.pizzeria.model.Client;
 
 @WebServlet("/admin/clients/update")
 public class UpdateClientController extends HttpServlet {
-	
+
 	@EJB
 	private ClientService clientService;
-	
+
 	private static final String VUE_UPDATE_CLIENT = "/WEB-INF/views/clients/updateClients.jsp";
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
+
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		Client c = clientService.retrieveClient(id);
 		req.setAttribute("client", c);
@@ -34,19 +34,22 @@ public class UpdateClientController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {			
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nom = req.getParameter("nom").toUpperCase();
 		String prenom = req.getParameter("prenom").toLowerCase();
 		String email = req.getParameter("email");
-		String mdp = req.getParameter("mdp");
-		Client c = new Client(id, nom, prenom, email, mdp);
-		
+		String adresse = req.getParameter("adresse");
+
+		Client c = new Client();
+		c.setNom(nom);
+		c.setPrenom(prenom);
+		c.setEmail(email);
+		c.setAdresse(adresse);
 		clientService.updateClient(id, c);
-	
-		//resp.setStatus(201);
-		resp.sendRedirect(req.getContextPath()+"/admin/clients/list");
+
+		resp.sendRedirect(req.getContextPath() + "/admin/clients/list");
 	}
 
 }

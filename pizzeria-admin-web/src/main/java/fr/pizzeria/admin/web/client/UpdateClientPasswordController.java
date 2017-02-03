@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -17,28 +18,28 @@ import fr.pizzeria.admin.exception.ClientException;
 import fr.pizzeria.admin.metier.ClientService;
 import fr.pizzeria.model.Client;
 
-@WebServlet("/admin/clients/create")
-public class CreateClientController extends HttpServlet {
+@WebServlet("/admin/clients/update/password")
+public class UpdateClientPasswordController extends HttpServlet {
 
 	@EJB
 	private ClientService clientService;
 
-	private static final String VUE_CREER_CLIENT = "/WEB-INF/views/clients/createClients.jsp";
+	private static final String VUE_UPDATE_CLIENT_PASSWORD = "/WEB-INF/views/clients/updateClientsPassword.jsp";
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_CREER_CLIENT);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		Client c = clientService.retrieveClient(id);
+		req.setAttribute("client", c);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_UPDATE_CLIENT_PASSWORD);
 		dispatcher.forward(req, resp);
-
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String nom = req.getParameter("nom").toUpperCase();
-		String prenom = req.getParameter("prenom").toLowerCase();
-		String email = req.getParameter("email");
-		String adresse = req.getParameter("adresse");
-		String mdp = req.getParameter("mdp");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		String mdp = req.getParameter("mdp1");
 		String motDepasse = null;
 
 		try {
@@ -50,14 +51,10 @@ public class CreateClientController extends HttpServlet {
 			e.printStackTrace();
 
 		}
-
+		Logger.getLogger(UpdateClientPasswordController.class.getName()).info(motDepasse);
 		Client c = new Client();
-		c.setNom(nom);
-		c.setPrenom(prenom);
-		c.setEmail(email);
 		c.setMotDePasse(motDepasse);
-		c.setAdresse(adresse);
-		clientService.createClient(c);
+		clientService.updateClientPass(id, c);
 
 		resp.sendRedirect(req.getContextPath() + "/admin/clients/list");
 	}
@@ -73,5 +70,4 @@ public class CreateClientController extends HttpServlet {
 
 		return String.format("%032X", new BigInteger(1, shaOne));
 	}
-
 }

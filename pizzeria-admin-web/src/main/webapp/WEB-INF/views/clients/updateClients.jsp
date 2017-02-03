@@ -7,11 +7,12 @@
 	<jsp:param value="Modifier Client" name="title" />
 </jsp:include>
 <body>
+
 	<%@include file="../layout/menu.jsp"%>
 	<div class="row">
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
-				<div class="card-block">
+				<div class="card-block well">
 					<c:set var="client" scope="session" value="${param.client}" />
 					<form class="form-horizontal" method="post">
 						<fieldset>
@@ -26,6 +27,7 @@
 									<input id="nom" name="nom" type="text" value="${client.nom}"
 										placeholder="Nom du client" class="form-control input-md"
 										required>
+
 								</div>
 							</div>
 
@@ -48,27 +50,28 @@
 										class="form-control input-md" required>
 								</div>
 							</div>
-
-							<!-- Select Basic -->
+							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="categorie">Mot
-									de Passe</label>
+								<label class="col-md-4 control-label" for="adresse">Adresse</label>
 								<div class="col-md-4">
-									<input id="mdp" name="mdp" type="text"
-										value="${client.motDePasse}"
-										placeholder=" Mot de passe du client"
-										class="form-control input-md" required>
+									<input id="adresse" name="adresse" type="text"
+									value="${client.adresse}"
+									class="form-control input-md"
+										required>
 								</div>
 							</div>
+
+							<a
+								href="<c:url value="/admin/clients/update/password?id=${client.id}"/>"
+								class="btn btn-primary">Editer Mot De Passe</a>
+
 
 							<!-- Button -->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="valider"></label>
 								<div class="col-md-4">
 									<button id="valider" name="valider" class="btn btn-primary">Valider</button>
-									<a
-										href="<c:url value="list"/>"
-										class="btn btn-danger">Annuler</a>
+									<a href="<c:url value="list"/>" class="btn btn-danger">Annuler</a>
 								</div>
 							</div>
 

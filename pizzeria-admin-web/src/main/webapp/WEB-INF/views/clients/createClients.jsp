@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="col-lg-9 col-md-9">
-			<div class="card">
+			<div class="card well">
 				<div class="card-block"></div>
 				<h2>Nouveau Client</h2>
 
@@ -51,24 +51,22 @@
 									required>
 							</div>
 						</div>
-
-						<!-- FUTUR CHAMP ADRESSE Text input
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="adresse">Adresse</label>
-				<div class="col-md-4">
-					<input id="adresse" name="adresse" type="text"
-						value="${client.adresse}" placeholder=" Adresse du client"
-						class="form-control input-md" required="">
-
-				</div>
-			</div>-->
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="adresse">Adresse</label>
+							<div class="col-md-4">
+								<input id="adresse" name="adresse" type="text"
+									placeholder=" Adresse du client" class="form-control input-md" 
+									required>
+							</div>
+						</div>
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="categorie">Mot
+							<label class="col-md-4 control-label" for="password">Mot
 								de Passe</label>
 							<div class="col-md-4">
-								<input id="mdp" name="mdp" type="text"
+								<input id="mdp" name="mdp" type="password"
 									placeholder=" Mot de passe du client"
 									class="form-control input-md" required>
 							</div>
@@ -79,8 +77,7 @@
 							<label class="col-md-4 control-label" for="valider"></label>
 							<div class="col-md-4">
 								<button id="valider" name="valider" class="btn btn-primary">Valider</button>
-								<a href="<c:url value="list"/>"
-									class="btn btn-danger">Annuler</a>
+								<a href="<c:url value="list"/>" class="btn btn-danger">Annuler</a>
 							</div>
 						</div>
 
