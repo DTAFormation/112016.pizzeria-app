@@ -1,7 +1,6 @@
 package fr.pizzeria.admin.metier;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -28,12 +27,8 @@ public class BoissonService {
 	}
 
 	public List<Boisson> listerBoissons() {
-		LOG.log(Level.INFO, "ICIIIIIIIIIIIIIIIIIIII list !");
 		TypedQuery<Boisson> query = em.createQuery("select b from Boisson b", Boisson.class);
 		List<Boisson> listerBoissons = query.getResultList();
-		for (Boisson boisson : listerBoissons) {
-			LOG.log(Level.INFO, "boisson :" + boisson.getCategorie().toString());
-		}
 		return listerBoissons;
 
 	}
@@ -56,9 +51,7 @@ public class BoissonService {
 	}
 
 	public void deleteBoisson(int id) {
-		LOG.log(Level.INFO, "ICIIIIIIIIIIIIIIIIIIII supprimier et id = " + id + " !");
 		Boisson boisson = em.find(Boisson.class, id);
-		LOG.log(Level.INFO, "boisson : " + boisson);
 		if (boisson != null)
 			em.remove(boisson);
 	}
