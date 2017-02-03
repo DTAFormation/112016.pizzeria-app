@@ -9,9 +9,9 @@
                     <th>
 
                     </th>
-                    <td> Nom & Ingerdients </td>
-                    <td> Prix </td>
-                    <td> Quantité </td>
+                    <th> Nom & Ingerdients </th>
+                    <th> Prix </th>
+                    <th> Quantité </th>
                 </tr>
 
             </thead>
@@ -23,9 +23,33 @@
                     <td> {{$ctrl.UtilService.getPrix(pizzaCommande.prix)}} </td>
                     <td> {{pizzaCommande.quantite}} </td>
                 </tr>
+                <tr ng-repeat="boissonCommande in $ctrl.panierBoisson ">
+
+                    <th><img ng-src="{{boissonCommande.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{boissonCommande.nom}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(boissonCommande.prix)}} </td>
+                    <td> {{boissonCommande.quantite}} </td>
+                </tr>
+                <tr ng-repeat="entreeCommande in $ctrl.panierEntree ">
+
+                    <th><img ng-src="{{entreeCommande.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{entreeCommande.nom}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(entreeCommande.prix)}} </td>
+                    <td> {{entreeCommande.quantite}} </td>
+                </tr>
+                <tr ng-repeat="dessertCommande in $ctrl.panierDessert ">
+
+                    <th><img ng-src="{{dessertCommande.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{dessertCommande.nom}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(dessertCommande.prix)}} </td>
+                    <td> {{dessertCommande.quantite}} </td>
+                </tr>
             </tbody>
             <tfoot>
-               <td class="pull-right" > total = {{ $ctrl.UtilService.getPrix($ctrl.total) }} </td> 
+                <td></td>
+                <td>Total</td>
+                <td> {{ $ctrl.UtilService.getPrix($ctrl.total) }} </td>
+                <td></td>
             </tfoot>
         </table>
         <a ng-href="/panier" class="pull-right btn btn-primary">Modifier</a>

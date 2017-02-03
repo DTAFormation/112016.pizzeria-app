@@ -41,26 +41,84 @@
 </div>
 
  <table class="table table-striped">
-            <thead>
+            <thead ng-if="$ctrl.haveEntree()">
+                <tr>
+                    <th>Entrée</th>
+                    <th>nom</th>
+                    <th>prix</th>
+                    <th></th>
+                    <th>note</th>
+                </tr>
+            </thead>
+            <tbody ng-if="$ctrl.haveEntree()">
+                <tr ng-repeat="entree in $ctrl.entrees">
+                    <td>
+                        <img ng-src="{{ entree.urlImage }}" alt="{{ entree.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ entree.nom }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(entree.prix) }}</td>
+                    <td></td>
+                    <td>{{ entree.note }}</td>
+                </tr>
+            </tbody>
+            <thead ng-if="$ctrl.havePizza()">
                 <tr>
                     <th>pizza</th>
-                    <th>code</th>
                     <th>nom</th>
                     <th>prix</th>
                     <th>categorie</th>
                     <th>note</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-repeat="pizza in $ctrl.commande">
+            <tbody ng-if="$ctrl.havePizza()">
+                <tr ng-repeat="pizza in $ctrl.pizzas">
                     <td>
                         <img ng-src="{{ pizza.urlImage }}" alt="{{ pizza.nom }}" width="30px" height="30px"/>
                     </td>
-                    <td>{{ pizza.code }}</td>
                     <td>{{ pizza.nom }}</td>
-                    <td>{{ pizza.prix }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(pizza.prix) }}</td>
                     <td>{{ pizza.categorie }}</td>
                     <td>{{ pizza.note }}</td>
+                </tr>
+            </tbody>
+            <thead ng-if="$ctrl.haveDessert()">
+                <tr>
+                    <th>Dessert</th>
+                    <th>nom</th>
+                    <th>prix</th>
+                    <th></th>
+                    <th>note</th>
+                </tr>
+            </thead>
+            <tbody ng-if="$ctrl.haveDessert()">
+                <tr ng-repeat="dessert in $ctrl.desserts">
+                    <td>
+                        <img ng-src="{{ dessert.urlImage }}" alt="{{ dessert.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ dessert.nom }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(dessert.prix) }}</td>
+                    <td></td>
+                    <td>{{ dessert.note }}</td>
+                </tr>
+            </tbody>
+            <thead ng-if="$ctrl.haveBoisson()">
+                <tr>
+                    <th>Boisson</th>
+                    <th>nom</th>
+                    <th>prix</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-if="$ctrl.haveBoisson()">
+                <tr ng-repeat="boisson in $ctrl.boissons">
+                    <td>
+                        <img ng-src="{{ boisson.urlImage }}" alt="{{ boisson.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ boisson.nom }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(boisson.prix) }}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

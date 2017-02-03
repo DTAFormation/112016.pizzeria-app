@@ -61,7 +61,7 @@ public class Commande {
 	
 	@ManyToMany
 	@JoinTable(name = "commande_dessert", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dessert_id", referencedColumnName = "id"))
-	private List<Dessert> dessert;
+	private List<Dessert> desserts;
 	
 	
 
@@ -80,7 +80,7 @@ public class Commande {
 		this.pizzas = pizzas;
 		this.boissons = boissons;
 		this.entrees = entrees;
-		this.dessert = desserts;
+		this.desserts = desserts;
 	}
 
 	public Commande(Client client, Livreur liveur, BigDecimal total2, Statut enPreparation, Date date2,
@@ -192,4 +192,30 @@ public class Commande {
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
+
+	public List<Entree> getEntrees() {
+		return entrees;
+	}
+
+	public void setEntrees(List<Entree> entrees) {
+		this.entrees = entrees;
+	}
+
+	public List<Boisson> getBoissons() {
+		return boissons;
+	}
+
+	public void setBoissons(List<Boisson> boissons) {
+		this.boissons = boissons;
+	}
+
+	public List<Dessert> getDesserts() {
+		return desserts;
+	}
+
+	public void setDesserts(List<Dessert> dessert) {
+		this.desserts = desserts;
+	}
+	
+	
 }

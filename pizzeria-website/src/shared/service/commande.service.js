@@ -54,7 +54,7 @@ export class CommandeService {
 
     envoyeCommandeCache(commandeATraiter) {
         commandeATraiter.forEach(function (element, index) {
-            if (commandeATraiter[index].type === "pizza") {
+            if (commandeATraiter[index].type === "pizza" || commandeATraiter[index].type === "boisson" || commandeATraiter[index].type === "entree" || commandeATraiter[index].type === "dessert") {
                 element.idClient = commandeATraiter.idClient;
                 element.total = commandeATraiter.total;
                 this.commande.push(element);
