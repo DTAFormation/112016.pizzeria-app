@@ -36,6 +36,7 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/users/list"/>">Utilisateurs</a></li>
 			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/pizzas/list"/>">Pizzas</a></li>
+			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/boissons/list"/>">Boissons</a></li>
 			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/clients/list"/>">Clients</a></li>
 			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/commandes/list"/>">Commandes</a></li>
 			<li class="nav-item"><a class="nav-link" href="<c:url value="/admin/livreurs/list"/>" >Livreurs</a></li>
