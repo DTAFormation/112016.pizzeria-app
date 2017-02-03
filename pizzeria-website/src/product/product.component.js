@@ -1,3 +1,5 @@
+import css from './product.component.css';
+
 class ProductController {
 
     constructor(PanierService, UtilService) {

@@ -1,0 +1,6 @@
+.thumbnail img {
+    height: 200px;
+}
+.thumbnail button {
+    float: right;
+}

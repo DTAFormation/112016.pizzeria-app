@@ -28,7 +28,7 @@ public class Dessert {
 		this.nom = nom;
 		this.prix = prix;
 		this.urlImage = urlImage;
-		type = "dessert";
+		this.type = "dessert";
 	}
 
 	public Integer getId() {

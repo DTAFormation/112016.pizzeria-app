@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CategorieBoisson {
 
-	ALCOOL("Alcool"), SANS_ALCOOL("Sans alcool"), GAZ("Gaz"), SANS_GAZ("Sans gaz");
+	ALCOOL("Alcool"), SANS_ALCOOL("Sans alcool"), GAZ("Gazeux"), SANS_GAZ("Sans gaz");
 
 	private String nomCateg;
 

@@ -1,13 +1,19 @@
 <div class="col-lg-4 col-sm-6 col-md-4">
     <div class="thumbnail">
-        <img ng-src="{{ $ctrl.product.urlImage }}" alt="{{ $ctrl.product.name }}" ng-click="$ctrl.afficherModale()" data-toggle="modal"
+        <img class="cuicui" ng-src="{{ $ctrl.product.urlImage }}" alt="{{ $ctrl.product.nom }}" ng-click="$ctrl.afficherModale()" data-toggle="modal"
             data-target="#pizzaModal" />
         <div class="caption">
-            <h3> {{ $ctrl.product.nom }} </h3>
-            <p> {{ $ctrl.UtilService.getPrix($ctrl.product.prix) }} </p>
+
+            <h3>{{ $ctrl.product.nom.toUpperCase() }}</h3>
+
         </div>
-        <button ng-click="$ctrl.ajouterPanier($ctrl.product)" type="button" class="btn btn-primary">
-        <span>Ajouter au panier</span>
-    </button>
+        <div>    
+        <span style="margin-left:75px">
+            <h4 style="display:inline-block">{{ $ctrl.product.prix.toLocaleString('fr-FR',{style:'currency', currency: 'EUR'}) }}</h4>
+        </span>
+        <button ng-click="$ctrl.ajouterPanier($ctrl.product)" 
+            type="button" class="btn btn-primary">
+            Ajouter au panier
+        </button> </div>
     </div>
 </div>
