@@ -4,7 +4,7 @@
             data-target="#pizzaModal" />
         <div class="caption">
             <h3> {{ $ctrl.product.nom }} </h3>
-            <p> {{ $ctrl.product.prix }}€ </p>
+            <p> {{ $ctrl.UtilService.getPrix($ctrl.product.prix) }} </p>
         </div>
         <button ng-click="$ctrl.ajouterPanier($ctrl.product)" type="button" class="btn btn-primary">
         <span>Ajouter au panier</span>

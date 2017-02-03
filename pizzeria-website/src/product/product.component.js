@@ -1,8 +1,9 @@
 class ProductController {
 
-    constructor(PanierService) {
+    constructor(PanierService, UtilService) {
 
         this.PanierService = PanierService;
+        this.UtilService = UtilService;
     }
 
     ajouterPanier(product) {
