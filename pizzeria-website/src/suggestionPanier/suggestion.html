@@ -1,0 +1,34 @@
+<a href="#" ng-click="$ctrl.createSuggestion2()">blablabla</a>
+<h3>Vous pourriez aimer</h3>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="produit in $ctrl.pizzas track by $index">
+                <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="150"></td>
+                <td>{{produit.nom}}</br>Note:{{produit.note}}<span class="glyphicon glyphicon-asterisk"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="prom in $ctrl.promProduits track by $index">
+                <td><img ng-src="{{prom.urlImage}}" class="img-thumbnail" width="150"></td>
+                <td>{{prom.nom}}</br>Note:{{prom.note}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

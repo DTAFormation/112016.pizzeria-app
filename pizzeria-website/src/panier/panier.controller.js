@@ -1,10 +1,9 @@
-
 import _ from 'lodash'
 
 export default class PanierController {
 
-    constructor(PanierService, PizzaService, CommandeService, BoissonService) {
-
+    constructor(UtilService, PanierService, PizzaService, CommandeService, BoissonService) {
+        this.UtilService = UtilService;
         this.PanierService = PanierService;
         this.PizzaService = PizzaService;
         this.CommandeService = CommandeService;
@@ -16,7 +15,7 @@ export default class PanierController {
 
 
         this.panier = this.PanierService.getPanier();
-     //   this.promProduits = this.PizzaService.getPizzas();
+        //   this.promProduits = this.PizzaService.getPizzas();
         this.promProduits = this.PanierService.getProduits();
         this.refreshPanier();
     }

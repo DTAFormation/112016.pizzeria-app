@@ -1,12 +1,13 @@
 import _ from 'lodash';
 
 export class PanierService {
-    constructor($localStorage, PizzaService, BoissonService, $q, DessertService) {
+    constructor($localStorage, PizzaService, BoissonService, $q, DessertService, EntreeService) {
 
         this.$localStorage = $localStorage;
         this.BoissonService = BoissonService;
         this.DessertService = DessertService;
         this.PizzaService = PizzaService;
+        this.EntreeService = EntreeService;
         this.$q = $q;
     }
 
@@ -15,12 +16,15 @@ export class PanierService {
         return this.PizzaService.getPizzas()
             .then(pizzas =>
                 this.BoissonService.getBoissons()
-                    .then(boissons =>
-                            this.DessertService.getDesserts()
-                            .then(desserts =>
-                            this.prodList = _.concat(pizzas, boissons, desserts)
+                .then(boissons =>
+                    this.DessertService.getDesserts()
+                    .then(desserts =>
+                        this.EntreeService.getEntrees()
+                        .then(entrees =>
+                            this.prodList = _.concat(pizzas, boissons, desserts, entrees)
                         )
-                    ) 
+                    )
+                )
             )
 
     }

@@ -15,7 +15,7 @@ class ProductController {
     }
 
     afficherModale() {
-        
+
         this.onAfficherModale();
 
 
@@ -30,7 +30,6 @@ export const Product = {
     },
 
     template: require('./product.component.html'),
-
     controller: ProductController
 
 };

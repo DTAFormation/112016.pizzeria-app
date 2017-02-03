@@ -17,6 +17,8 @@ import { Commande } from './commande/commande.component';
 import { Dessert } from './dessert/dessert.component';
 import { Entree } from './entree/entree.component';
 import { Navbar } from './navbar/navbar.component';
+import { SuggestionPanier } from './suggestionPanier/suggestion.component';
+
 
 import { UserService } from './shared/service/user.service';
 import { PizzaService } from './shared/service/pizza.service';
@@ -27,9 +29,9 @@ import { EntreeService } from './shared/service/entree.service';
 import { UtilService } from './shared/service/util.service';
 
 angular.module('pizzeria', [
-    ngRoute,
-    'ngStorage'
-])
+        ngRoute,
+        'ngStorage'
+    ])
     .component('home', Home)
     .component('product', Product)
     .component('modalPizza', ModalPizza)
@@ -42,10 +44,12 @@ angular.module('pizzeria', [
     .component('dessert', Dessert)
     .component('boisson', Boisson)
     .component('entree', Entree)
-    .component('inscription',Inscription)
+    .component('inscription', Inscription)
     .component('navbar', Navbar)
-    
-    .service('PizzaService', PizzaService)
+    .component('inscription', Inscription)
+    .component('suggestionPanier', SuggestionPanier)
+
+.service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
@@ -55,45 +59,45 @@ angular.module('pizzeria', [
     .service('UtilService', UtilService)
 
 
-    
+
 .config(function($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
 
-        $routeProvider
-            .when('/', {
-                template: `<home></home>`
-            })
-            .when('/panier', {
-                template: `<panier></panier>`
-            })
-            .when('/login', {
-                template: `<login></login>`
-            })
-            .when('/inscription', {
-                template: `<inscription></inscription>`
-            })
-            .when('/pizzas', {
-                template: `<pizza></pizza>`
-            })
-            .when('/desserts',{
-                template: `<dessert></dessert>`
-            })
-            .when('/moncompte/:id?',{
-                template: `<moncompte></moncompte>`
-            })
-            .when('/commande', {
-                template: `<commande></commande>`
-            })
-            .when('/boissons', {
-                template: `<boisson></boisson>`
-            })
-            .when('/entrees', {
-                template: `<entree></entree>`
-            })
-            .when('/commandeenvoyee/:id?', {
+    $routeProvider
+        .when('/', {
+            template: `<home></home>`
+        })
+        .when('/panier', {
+            template: `<panier></panier>`
+        })
+        .when('/login', {
+            template: `<login></login>`
+        })
+        .when('/inscription', {
+            template: `<inscription></inscription>`
+        })
+        .when('/pizzas', {
+            template: `<pizza></pizza>`
+        })
+        .when('/desserts', {
+            template: `<dessert></dessert>`
+        })
+        .when('/moncompte/:id?', {
+            template: `<moncompte></moncompte>`
+        })
+        .when('/commande', {
+            template: `<commande></commande>`
+        })
+        .when('/boissons', {
+            template: `<boisson></boisson>`
+        })
+        .when('/entrees', {
+            template: `<entree></entree>`
+        })
+        .when('/commandeenvoyee/:id?', {
             template: `<commande-envoye></commande-envoye>`
-            })
-            .otherwise('/')
+        })
+        .otherwise('/')
 
 });

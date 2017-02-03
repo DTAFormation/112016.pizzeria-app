@@ -1,5 +1,4 @@
-<h3>
-    Votre Panier</h3>
+<h3>Votre Panier</h3>
 <div class="container">
     <div ng-if="$ctrl.produitList.length">
         <table class="table">
@@ -16,23 +15,27 @@
             <tbody>
                 <tr ng-repeat="produit in $ctrl.produitList track by $index">
                     <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></td>
-                    <td>{{produit.type}}</td>
-                    <td> {{produit.nom | uppercase}} <br/> {{produit.ingredients}}</td>
-                    <td> {{produit.prix}} €</td>
+                    <td>{{produit.type | uppercase}}</td>
+                    <td> {{produit.nom}} <br/> {{produit.ingredients}}</td>
+                    <td> {{$ctrl.UtilService.getPrix(produit.prix)}}</td>
                     <td><input ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
                     <td><button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="5" style="text-align:right;">TOTAL {{$ctrl.total | number:2}} € TTC</th>
+                    <th colspan="6" style="text-align:right;">TOTAL {{$ctrl.UtilService.getPrix($ctrl.total)}} TTC
+                        <br><a class="btn btn-primary" href="/commande">Valider la Commande</a>
+                    </th>
                 </tr>
             </tfoot>
         </table>
-        <div align="right">
-            <a class="btn btn-primary" href="/commande">Valider la Commande</a>
-        </div>
     </div>
+
+    <div>
+        <suggestion-panier></suggestion-panier>
+    </div>
+
     <div ng-if="!$ctrl.produitList.length">
         Votre Panier est vide
     </div>
