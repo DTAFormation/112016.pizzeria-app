@@ -1,8 +1,8 @@
 package fr.pizzeria.model;
 
 public enum Statut {
-	EN_PREPARATION("En cours de préapartion"), EN_CUISSON("En cours de cuisson"), EN_LIVRAISON(
-			"En cours de livraison"), PRET("Prête à emporter"), LIVRER("Livré");
+	EN_PREPARATION("En cours de préparation"), EN_CUISSON("En cours de cuisson"), EN_LIVRAISON(
+			"En cours de livraison"), PRET("Prête à emporter"), LIVRER("Livrée");
 
 	private String label;
 
