@@ -56,7 +56,7 @@
                         <img ng-src="{{ entree.urlImage }}" alt="{{ entree.nom }}" width="30px" height="30px"/>
                     </td>
                     <td>{{ entree.nom }}</td>
-                    <td>{{ $ctrl.UtilService.getPrix(entree.prix) }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(entree.prix,"fr","eur") }}</td>
                     <td></td>
                     <td>{{ entree.note }}</td>
                 </tr>
@@ -76,7 +76,7 @@
                         <img ng-src="{{ pizza.urlImage }}" alt="{{ pizza.nom }}" width="30px" height="30px"/>
                     </td>
                     <td>{{ pizza.nom }}</td>
-                    <td>{{ $ctrl.UtilService.getPrix(pizza.prix) }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(pizza.prix,"fr","eur") }}</td>
                     <td>{{ pizza.categorie }}</td>
                     <td>{{ pizza.note }}</td>
                 </tr>
@@ -96,7 +96,7 @@
                         <img ng-src="{{ dessert.urlImage }}" alt="{{ dessert.nom }}" width="30px" height="30px"/>
                     </td>
                     <td>{{ dessert.nom }}</td>
-                    <td>{{ $ctrl.UtilService.getPrix(dessert.prix) }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(dessert.prix,"fr","eur") }}</td>
                     <td></td>
                     <td>{{ dessert.note }}</td>
                 </tr>
@@ -116,7 +116,7 @@
                         <img ng-src="{{ boisson.urlImage }}" alt="{{ boisson.nom }}" width="30px" height="30px"/>
                     </td>
                     <td>{{ boisson.nom }}</td>
-                    <td>{{ $ctrl.UtilService.getPrix(boisson.prix) }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(boisson.prix,"fr","eur") }}</td>
                     <td></td>
                     <td></td>
                 </tr>

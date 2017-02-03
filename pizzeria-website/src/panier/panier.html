@@ -17,14 +17,14 @@
                     <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></td>
                     <td>{{produit.type | uppercase}}</td>
                     <td> {{produit.nom}} <br/> {{produit.ingredients}}</td>
-                    <td> {{$ctrl.UtilService.getPrix(produit.prix)}}</td>
+                    <td> {{$ctrl.UtilService.getPrix(produit.prix,"fr","eur")}}</td>
                     <td><input ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
                     <td><button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="6" style="text-align:right;">TOTAL {{$ctrl.UtilService.getPrix($ctrl.total)}} TTC
+                    <th colspan="6" style="text-align:right;">TOTAL {{$ctrl.UtilService.getPrix($ctrl.total,"fr","eur")}} TTC
                         <br><a class="btn btn-primary" href="/commande">Valider la Commande</a>
                     </th>
                 </tr>

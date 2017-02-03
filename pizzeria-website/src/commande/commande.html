@@ -20,35 +20,35 @@
 
                     <th><img ng-src="{{pizzaCommande.urlImage}}" class="img-thumbnail" width="250"></th>
                     <td> {{pizzaCommande.nom}} </td>
-                    <td> {{$ctrl.UtilService.getPrix(pizzaCommande.prix)}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(pizzaCommande.prix,"fr","eur")}} </td>
                     <td> {{pizzaCommande.quantite}} </td>
                 </tr>
                 <tr ng-repeat="boissonCommande in $ctrl.panierBoisson ">
 
                     <th><img ng-src="{{boissonCommande.urlImage}}" class="img-thumbnail" width="250"></th>
                     <td> {{boissonCommande.nom}} </td>
-                    <td> {{$ctrl.UtilService.getPrix(boissonCommande.prix)}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(boissonCommande.prix,"fr","eur")}} </td>
                     <td> {{boissonCommande.quantite}} </td>
                 </tr>
                 <tr ng-repeat="entreeCommande in $ctrl.panierEntree ">
 
                     <th><img ng-src="{{entreeCommande.urlImage}}" class="img-thumbnail" width="250"></th>
                     <td> {{entreeCommande.nom}} </td>
-                    <td> {{$ctrl.UtilService.getPrix(entreeCommande.prix)}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(entreeCommande.prix,"fr","eur")}} </td>
                     <td> {{entreeCommande.quantite}} </td>
                 </tr>
                 <tr ng-repeat="dessertCommande in $ctrl.panierDessert ">
 
                     <th><img ng-src="{{dessertCommande.urlImage}}" class="img-thumbnail" width="250"></th>
                     <td> {{dessertCommande.nom}} </td>
-                    <td> {{$ctrl.UtilService.getPrix(dessertCommande.prix)}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(dessertCommande.prix,"fr","eur")}} </td>
                     <td> {{dessertCommande.quantite}} </td>
                 </tr>
             </tbody>
             <tfoot>
                 <td></td>
                 <td>Total</td>
-                <td> {{ $ctrl.UtilService.getPrix($ctrl.total) }} </td>
+                <td> {{ $ctrl.UtilService.getPrix($ctrl.total,"fr","eur") }} </td>
                 <td></td>
             </tfoot>
         </table>
