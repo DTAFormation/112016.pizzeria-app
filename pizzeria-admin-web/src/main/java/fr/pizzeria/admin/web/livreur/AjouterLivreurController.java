@@ -11,10 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
 
 import fr.pizzeria.admin.metier.LivreurService;
-import fr.pizzeria.admin.web.pizza.ListerPizzaController;
 import fr.pizzeria.model.Livreur;
 
 /**
@@ -23,32 +21,40 @@ import fr.pizzeria.model.Livreur;
 @WebServlet("/admin/livreurs/add")
 public class AjouterLivreurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	@Inject private LivreurService livreurService;
-	
+
+	@Inject
+	private LivreurService livreurService;
+
 	private static final Logger LOG = Logger.getLogger(AjouterLivreurController.class.getName());
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AjouterLivreurController() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LOG.log(Level.INFO, "livreur get post");
-	    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/livreurs/addLivreur.jsp");
-	    dispatcher.forward(request, response);
+	public AjouterLivreurController() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		LOG.log(Level.INFO, "livreur get post");
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/livreurs/addLivreur.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		LOG.log(Level.INFO, "livreur add post");
-		livreurService.save(new Livreur((String)request.getParameter("nom"),(String)request.getParameter("prenom"), (String)request.getParameter("email")));
+		livreurService.save(new Livreur((String) request.getParameter("nom"), (String) request.getParameter("prenom"),
+				(String) request.getParameter("email"), "1234"));
 		response.sendRedirect(request.getContextPath() + "/admin/livreurs/add");
 	}
 
