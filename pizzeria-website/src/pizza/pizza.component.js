@@ -1,3 +1,5 @@
+import css from './pizza.component.css';
+
 class PizzaController{
 
     constructor(PizzaService){
@@ -6,48 +8,54 @@ class PizzaController{
 
     $onInit(){
         this.PizzaService.getPizzas()
-
-        .then(pizzas =>{
-            this.pizzas = pizzas
-        } );
-
-       this.getCateg();
-       this.initPizzas();
-
+            .then(pizzas =>{
+                this.pizzas = pizzas
+        });
+        this.getCateg();
+        this.initPizzas();
+        this.predicat = "Tous"
     }
 
 
     initPizzas(){
-             this.PizzaService.getPizzas()
-        .then(pizzas => this.pizzas = pizzas );
-           
-       }
+        this.PizzaService.getPizzas()
+            .then(pizzas => 
+                this.pizzas = pizzas 
+            );
+    }
 
-       sort(predicat){
-        if(predicat !="Tous"){
-        this.pizzas =   this.PizzaService.getPizzas()
-           .then(pizzas => {
-               this.pizzas = pizzas
-             .filter((pizza)=> pizza.categorie == predicat);
-           })
-         }else{
-         this.initPizzas();
+    sort(predicat){
+        this.predicat = predicat
+        if(predicat.nom != "Tous") {
+            this.pizzas = this.PizzaService.getPizzas()
+            .then(pizzas => {
+                this.pizzas = pizzas
+                .filter((pizza)=> pizza.categorie == predicat.nom);
+            })
+         } else {
+            this.initPizzas();
          }
-       }
+    }
+
+    isCategSelected(categ) {
+        return this.predicat === categ.nom
+    }
 
     getCateg(){
-          this.PizzaService.getPizzas()
-           .then(pizzas =>{
-             let categObj = _.countBy(pizzas, 'categorie');
-             let categObjArr = []
-             Object.getOwnPropertyNames(categObj).forEach(function(val, idx, array) {
-             categObjArr.push({ nom :val,
-             nb : categObj[val]})   
-             });
-             categObjArr.reduce((acc, obj)=>this.nbMax = (acc += obj.nb),0);
-             categObjArr.push({nom : "Tous", nb : this.nbMax});
-             this.categs = categObjArr;
-           } )
+        this.PizzaService.getPizzas()
+            .then(pizzas =>{
+                let categObj = _.countBy(pizzas, 'categorie');
+                let categObjArr = []
+                Object.getOwnPropertyNames(categObj).forEach(function(val, idx, array) {
+                    categObjArr.push({ 
+                        nom : val,
+                        nb : categObj[val]
+                    })   
+                });
+                categObjArr.reduce((acc, obj)=>this.nbMax = (acc += obj.nb),0);
+                categObjArr.unshift({nom : "Tous", nb : this.nbMax});
+                this.categs = categObjArr;
+            })
      }
 
   afficherModale(pizza) {
