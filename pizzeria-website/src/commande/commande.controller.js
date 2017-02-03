@@ -1,5 +1,7 @@
+import css from './commande.component.css';
+
 export default class CommandeController {
-    constructor(CommandeService, PizzaService, PanierService, BoissonService, DessertService, EntreeService) {
+    constructor(CommandeService, PizzaService, PanierService, BoissonService, DessertService, EntreeService, UtilService) {
 
         this.CommandeService = CommandeService;
         this.PizzaService = PizzaService;
@@ -7,9 +9,15 @@ export default class CommandeController {
         this.DessertService = DessertService;
         this.PanierService = PanierService;
         this.EntreeService = EntreeService;
+        this.UtilService = UtilService;
         this.total=0;
         this.panierPizza = [];
+        this.panierBoisson = [];
+        this.panierEntree = [];
+        this.panierDessert = [];
         this.idClient = 2;
+        this.aEmporter = false;
+        this.aLivrer = true;
 
 
 
@@ -19,10 +27,10 @@ export default class CommandeController {
 
         this.total = this.CommandeService.commandeTMP().total;
         this.panier = this.CommandeService.commandeTMP().listeProduit;
-        console.log(this.panier);
 
         this.panier.idClient = this.idClient;
         this.panier.total = this.total;
+        this.panier.aLivrer = this.aLivrer;
 
         this.panier.forEach(function (element, index) {
             if (this.panier[index].type === "pizza") {
@@ -38,7 +46,7 @@ export default class CommandeController {
                 this.BoissonService.getBoissonsById(this.panier[index].idProduit)
                     .then((data) => {
                         data.quantite = this.panier[index].quantite;
-                        this.panierPizza.push(data);
+                        this.panierBoisson.push(data);
                     })
 
             }
@@ -46,18 +54,16 @@ export default class CommandeController {
             if (this.panier[index].type === "dessert") {
                 this.DessertService.getdessertsById(this.panier[index].idProduit)
                     .then((data) => {
-                        console.log((data))
                         data.quantite = this.panier[index].quantite;
-                        this.panierPizza.push(data);
+                        this.panierDessert.push(data);
                     })
             }
             
-            if (this.panier[index].type === "entrée") {
+            if (this.panier[index].type === "entree") {
                 this.EntreeService.getEntreesById(this.panier[index].idProduit)
                     .then((data) => {
-                        console.log((data))
                         data.quantite = this.panier[index].quantite;
-                        this.panierPizza.push(data);
+                        this.panierEntree.push(data);
                     })
             }
 
@@ -65,12 +71,15 @@ export default class CommandeController {
 
 
     }
+
     livraison() {
-        console.log("cliquer sur la livraison");
+        this.aEmporter = false;
+        this.aLivrer = true;
     }
 
     emporter() {
-        console.log("cliquer sur à emporter");
+        this.aEmporter = true;
+        this.aLivrer = false;
     }
 
     envoyerCommande() {

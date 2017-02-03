@@ -20,12 +20,12 @@
 
                     <th><img ng-src="{{pizzaCommande.urlImage}}" class="img-thumbnail" width="250"></th>
                     <td> {{pizzaCommande.nom}} </td>
-                    <td> {{pizzaCommande.prix}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(pizzaCommande.prix)}}€ </td>
                     <td> {{pizzaCommande.quantite}} </td>
                 </tr>
             </tbody>
             <tfoot>
-               <td class="pull-right" > total = {{ $ctrl.total }}</td> 
+               <td class="pull-right" > total = {{ $ctrl.UtilService.getPrix($ctrl.total) }}€ </td> 
             </tfoot>
         </table>
         <a ng-href="/panier" class="pull-right btn btn-primary">Modifier</a>
@@ -34,8 +34,8 @@
 </div>
 <div>
 <table>
-    <td><img src="http://www.theatredunord.fr/wp-content/uploads/2015/09/Fiche-spectacle-VISUEL-COX-580x260-lectures-%C3%A0-emporter.jpg" width="500" height="300" ng-click="$ctrl.emporter()"></td>
-    <td><img src="http://www.lorrainepizza-luneville.com/img/livraison-de-pizza-chanteheux-zoom.jpg" width="500" height="300" ng-click="$ctrl.livraison()"></td>
+    <td><img ng-class="{cmdSelected:$ctrl.aEmporter}" src="http://www.theatredunord.fr/wp-content/uploads/2015/09/Fiche-spectacle-VISUEL-COX-580x260-lectures-%C3%A0-emporter.jpg" width="500" height="300" ng-click="$ctrl.emporter()"></td>
+    <td><img ng-class="{cmdSelected:$ctrl.aLivrer}" src="http://www.lorrainepizza-luneville.com/img/livraison-de-pizza-chanteheux-zoom.jpg" width="500" height="300" ng-click="$ctrl.livraison()"></td>
 </table>
 </div>
 <div class="container">

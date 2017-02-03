@@ -1,0 +1,13 @@
+.cmdSelected{
+    border: 1px solid darkblue;
+}
+
+.cmdHover{
+
+    width:150px;
+    height:140px;
+    filter:alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity:1;
+
+}

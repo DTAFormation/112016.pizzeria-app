@@ -23,6 +23,7 @@ import { PanierService } from './shared/service/panier.service';
 import { CommandeService } from './shared/service/commande.service';
 import { DessertService } from './shared/service/dessert.service';
 import { EntreeService } from './shared/service/entree.service';
+import { UtilService } from './shared/service/util.service';
 
 angular.module('pizzeria', [
     ngRoute,
@@ -49,6 +50,7 @@ angular.module('pizzeria', [
     .service('CommandeService', CommandeService)
     .service('DessertService', DessertService)
     .service('EntreeService', EntreeService)
+    .service('UtilService', UtilService)
 
 
     
