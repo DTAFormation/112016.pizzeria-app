@@ -1,7 +1,7 @@
 export class UtilService{
     constructor(){}
 
-    getPrix(prix){
-        return (prix+"€").replace('.',',');
+    getPrix(prix, langage, devise){
+        return prix.toLocaleString(langage,{style:'currency',currency:devise})
     }
 }

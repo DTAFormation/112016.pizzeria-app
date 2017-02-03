@@ -9,7 +9,7 @@
         </div>
         <div>    
         <span style="margin-left:75px">
-            <h4 style="display:inline-block">{{ $ctrl.product.prix.toLocaleString('fr-FR',{style:'currency', currency: 'EUR'}) }}</h4>
+            <h4 style="display:inline-block">{{ $ctrl.UtilService.getPrix($ctrl.product.prix,'fr','eur') }}</h4>
         </span>
         <button ng-click="$ctrl.ajouterPanier($ctrl.product)" 
             type="button" class="btn btn-primary">
