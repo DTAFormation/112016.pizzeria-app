@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.dessert;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ListerDessertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	DessertService boissonService;
+	DessertService dessertService;
 	private static final String VUE_LISTER_BOISSON = "/WEB-INF/views/desserts/listDesserts.jsp";
 
 	public ListerDessertController() {
@@ -31,7 +31,7 @@ public class ListerDessertController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Dessert> listerDesserts = boissonService.listerDesserts();
+		List<Dessert> listerDesserts = dessertService.listerDesserts();
 		request.setAttribute("listerDesserts", listerDesserts);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VUE_LISTER_BOISSON);
 		dispatcher.forward(request, response);

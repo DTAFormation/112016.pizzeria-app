@@ -49,6 +49,17 @@
             </c:choose>
             <c:choose>
                 <c:when
+                    test="${fn:contains(pageContext.request.requestURI, 'desserts')}">
+                    <li class="nav-item active" style="background-color: gray;"><a class="nav-link"
+                        href="<c:url value="/admin/desserts/list"/>">Desserts</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li class="nav-item"><a class="nav-link"
+                   href="<c:url value="/admin/desserts/list"/>">Desserts</a></li>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when
                     test="${fn:contains(pageContext.request.requestURI, 'clients')}">
                     <li class="nav-item active" style="background-color: gray;"><a class="nav-link"
                         href="<c:url value="/admin/clients/list"/>"> Clients </a></li>
