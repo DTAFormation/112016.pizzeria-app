@@ -1,6 +1,6 @@
 <!-- Modal menu detail -->
 <div class="modal fade" id="menuChoixModal" tabindex="-1" role="dialog" aria-labelledby="menuChoixModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -10,23 +10,25 @@
                 <img width="20%" ng-src="{{ $ctrl.menu.urlImage }}" class="img-responsive"/>
                 <table class="table">
                     <tr>
-                        <td>Choix</td>
+                        <td colspan="2">Choix</td>
                         <td>Quantité restante</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbEntree > 0 ">
-                        <td>Les entrées</td>
+                        <td colspan="2">
+                            ici prochainement un carrousel custom
+                        </td>
                         <td>{{ $ctrl.menu.nbEntree - $ctrl.entrees.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbPizza > 0 ">
-                        <td>Les pizzas</td>
+                        <td colspan="2">Les pizzas</td>
                         <td>{{ $ctrl.menu.nbPizza - $ctrl.pizzas.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbDessert > 0 ">
-                        <td>Les desserts</td>
+                        <td colspan="2">Les desserts</td>
                         <td>{{ $ctrl.menu.nbDessert - $ctrl.desserts.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbBoisson > 0 ">
-                        <td>Les boissons</td>
+                        <td colspan="2">Les boissons</td>
                         <td>{{ $ctrl.menu.nbBoisson - $ctrl.boissons.length }}</td>
                     </tr>
                 </table>

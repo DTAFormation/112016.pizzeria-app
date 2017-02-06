@@ -1,5 +1,3 @@
-import css from './menu-modal-choix.css';
-
 class ModalMenuChoixController {
     constructor(UtilService) {
         this.UtilService = UtilService;
