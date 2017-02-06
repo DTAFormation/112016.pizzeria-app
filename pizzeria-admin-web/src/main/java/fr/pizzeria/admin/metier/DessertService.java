@@ -33,7 +33,7 @@ public class DessertService {
 
 	}
 
-	/*** Supprime un client de la base de donnee ***/
+	/*** Supprime un dessert de la base de donnee ***/
 	public void deleteDessert(Integer id) {
 		Dessert dessert = em.find(Dessert.class, id);
 		if (dessert != null)
@@ -43,7 +43,7 @@ public class DessertService {
 	/*** Autres methodes ***/
 
 	/***
-	 * Recherche un client en base de donnees en base de donnee en fonction de
+	 * Recherche un dessert en base de donnees en base de donnee en fonction de
 	 * son id
 	 ***/
 	public Dessert getDessert(Integer id) {
