@@ -35,8 +35,10 @@
                     <td>
                         <label class="col-md-4 control-label" for="">Code Promotion</label>
                         <div class="col-md-4">
-                            <input id="" name="" type="text" placeholder="Code" class="form-control input-md">
+                            <input ng-model="code" id="promotion" name="promotion" type="text" placeholder="Code" class="form-control input-md">
+                            <button class="btn btn-danger" ng-onclick="$ctrl.VerifPromo()">Appliquer</button>
                         </div>
+
                     </td>
                 </tr>
                 <tr>
