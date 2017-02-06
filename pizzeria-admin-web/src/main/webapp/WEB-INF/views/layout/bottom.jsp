@@ -6,6 +6,6 @@ Fichier à inclure tout à la fin avant la fermeture de la balise body.
 Contient les scripts js
 --%>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
 <!-- Latest compiled and minified JavaScript -->
-<script src="<c:url value="/static/bootstrap/js/bootstrap.js"/>"></script>
+<%--<script src="<c:url value="/static/bootstrap/js/bootstrap.js"/>"></script>--%>

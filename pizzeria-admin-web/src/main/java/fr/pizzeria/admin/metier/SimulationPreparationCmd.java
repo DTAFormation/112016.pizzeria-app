@@ -27,7 +27,7 @@ public class SimulationPreparationCmd {
 	private Logger LOG  = Logger.getLogger(SimulationPreparationCmd.class.getName());
 	
 	
-	  @Schedule(second="*/5", minute="*", hour="*")
+	//  @Schedule(second="*/5", minute="*", hour="*")
 	  public void executerTraitement(Timer timer) {
 	    LOG.log(Level.INFO, "Changement d'état des commande.");
 	    changeStatus(getListCommandeAtraiter());
