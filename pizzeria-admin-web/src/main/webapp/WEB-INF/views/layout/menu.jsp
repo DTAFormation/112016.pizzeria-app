@@ -40,6 +40,19 @@
 						href="<c:url value="/admin/pizzas/list"/>">Pizzas</a></li>
 				</c:otherwise>
 			</c:choose>
+			
+			<c:choose>
+				<c:when
+					test="${fn:contains(pageContext.request.requestURI, 'entrees')}">
+
+					<li class="nav-item active" style="background-color: gray;"><a class="nav-link"
+						href="<c:url value="/admin/entrees/list"/>">Entrees</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/admin/entrees/list"/>">Entrees</a></li>
+				</c:otherwise>
+			</c:choose>
 
 			<c:choose>
 				<c:when
