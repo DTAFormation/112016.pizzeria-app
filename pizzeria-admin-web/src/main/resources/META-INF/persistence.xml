@@ -12,8 +12,5 @@
 		<class>fr.pizzeria.model.Utilisateur</class>
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Ingredient</class>
-		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-		</properties>
 	</persistence-unit>
 </persistence>

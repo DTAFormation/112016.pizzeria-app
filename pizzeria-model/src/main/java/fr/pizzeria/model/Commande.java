@@ -65,6 +65,12 @@ public class Commande {
 		this.pizzas = pizzas;
 	}
 
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", clientId=" + clientId + ", livreurId=" + livreurId + ", total=" + total
+				+ ", statut " + statut + ", date " + date + "La liste de pizza ensuite" + "]\n";
+	}
+
 	/**
 	 * @return the id
 	 */

@@ -59,6 +59,12 @@ public class Pizza {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Pizza [id=" + id + ", code=" + code + ", nom=" + nom + ", prix=" + prix + ", categorie " + categorie
+				+ ", urlImage " + urlImage + "]\n";
+	}
+
 	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza cat, String url) {
 		this();
 		this.code = code;

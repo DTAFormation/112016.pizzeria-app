@@ -33,8 +33,8 @@
 								<td><c:out value="${ commande.livreurId.nom }"/></td>
 								<td><select name="pizzas" id="pizzas"
 										style="width: 210px;" size="16">
-											<c:forEach var="pizza" items="${ pizzas }">
-												<option value="${ pizza.id }">
+											<c:forEach var="pizza" items="${ listePizzas }">
+												<option value=" Je suis la ${ pizza.id }">
 													<c:out value="${ pizza.nom }" />
 												</option>
 											</c:forEach>

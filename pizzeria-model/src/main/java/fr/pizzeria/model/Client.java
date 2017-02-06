@@ -52,6 +52,12 @@ public class Client extends Personne {
 		this.adresse = adresse;
 	}
 
+	@Override
+	public String toString() {
+		return "client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", motDePasse "
+				+ motDePasse + ", adresse " + adresse + "]\n";
+	}
+
 	// public List<Adresse> getAdresse() {
 	// return this.adresse;
 	// }
