@@ -67,7 +67,6 @@ class PizzaController{
 }
 
  export const Pizza = {
-        
         template :  require('./pizza.component.html'),
         controller:PizzaController
     }

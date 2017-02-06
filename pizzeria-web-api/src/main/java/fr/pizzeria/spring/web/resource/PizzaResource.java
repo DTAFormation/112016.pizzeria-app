@@ -3,6 +3,7 @@ package fr.pizzeria.spring.web.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,5 +30,10 @@ public class PizzaResource {
 	@RequestMapping(method = RequestMethod.POST)
 	public void ajoutPizza(@RequestBody Pizza pizza) {
 		pizzaDao.save(pizza);
+	}
+
+	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	public Pizza getPizza(@PathVariable Integer id) {
+		return pizzaDao.findById(id);
 	}
 }

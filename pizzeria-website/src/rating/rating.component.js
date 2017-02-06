@@ -5,13 +5,18 @@ class RatingController {
 
     save(form,rating){
         if(form.$invalid) return;
-        this.rating=rating;
+        this.modifierNote({
+            $event: rating
+        });
     }
 
 }
 
 export const Rating = {
-    
+    bindings:{
+        rating:'<',
+        modifierNote: '&'
+    },
     template: require('./rating.component.html'),
     controller: RatingController
 

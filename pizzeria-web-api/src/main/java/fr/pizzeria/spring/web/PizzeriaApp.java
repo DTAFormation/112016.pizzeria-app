@@ -96,7 +96,7 @@ public class PizzeriaApp {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
-			
+
 			Boisson boisson = new Boisson("coca", new BigDecimal(2.5),
 					"http://media.topito.com/wp-content/uploads/2014/12/coca-250x250.jpg", CategorieBoisson.GAZ);
 			Boisson boisson2 = new Boisson("oasis tropical", new BigDecimal(2.0),
@@ -107,10 +107,10 @@ public class PizzeriaApp {
 			boissonRessource.ajoutBoisson(boisson);
 			boissonRessource.ajoutBoisson(boisson2);
 			boissonRessource.ajoutBoisson(boisson3);
-			
-			entreeRessource.ajoutEntree(
-					new Entree("Verrine de crevette", new BigDecimal(12.25), "http://static.750g.com/images/200-160/667cadcb25da94adb772f1b48acfef42/verrines-de-crevettes-au-pamplemousse-et-a-la-pomme.png", CategorieEntree.POISSON)
-					);
+
+			entreeRessource.ajoutEntree(new Entree("Verrine de crevette", new BigDecimal(12.25),
+					"http://static.750g.com/images/200-160/667cadcb25da94adb772f1b48acfef42/verrines-de-crevettes-au-pamplemousse-et-a-la-pomme.png",
+					CategorieEntree.POISSON));
 
 			// client 1
 			pizzaResource.ajoutPizza(
@@ -125,25 +125,25 @@ public class PizzeriaApp {
 					.get();
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null)));
-			commandeRessource
-			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
+					pizzas, null, null, null)));
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null)));
-			commandeRessource
-			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
+					pizzas, null, null, null)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
-							new BigDecimal(9.9), 3, 1, CategoriePizza.SANS_VIANDE, new Date()));
+							new BigDecimal(9.9), 2, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
 			pizzaResource.ajoutPizza(
 					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
-							new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
+							new BigDecimal(9.52), 3, 2, CategoriePizza.SANS_VIANDE, new Date()));
 
 			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
-					new BigDecimal(9.52), 6, 2, CategoriePizza.SANS_VIANDE, new Date()));
+					new BigDecimal(9.52), 5, 2, CategoriePizza.SANS_VIANDE, new Date()));
 
 			pizzas = pizzaResource.listAllPizzas();
 
@@ -156,10 +156,10 @@ public class PizzeriaApp {
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout(
-					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout(
-					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON,
+					new Date(), pizzas, null, null, null)));
+			commandeRessource.ajout((new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(),
+					pizzas, null, null, null)));
 
 			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
 					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg");
