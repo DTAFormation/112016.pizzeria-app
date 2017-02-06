@@ -12,5 +12,10 @@
 		<class>fr.pizzeria.model.Utilisateur</class>
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Ingredient</class>
+		<properties>
+			<property  name = "hibernate.show_sql" value = "true"/>
+		</properties>
+
 	</persistence-unit>
+	
 </persistence>

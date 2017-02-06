@@ -6,7 +6,7 @@
 <jsp:include page="../layout/entete.jsp">
 	<jsp:param value="Page Lister Pizza" name="title" />
 </jsp:include>
-
+<script src="<c:url value="/static/js/options.js"/>"></script>
 <body>
 	<c:import url="../layout/menu.jsp" />
 	<div class="row">
@@ -86,8 +86,8 @@
 									<c:when test="${not empty form.erreurs['categorie'] }"> class="form-group row has-danger" </c:when>
 									<c:otherwise>class="form-group"</c:otherwise>
 								</c:choose>>
-								<label class="form-control-label" for="categorie">* Catégorie :</label> 
-								<select class="form-control" id="categorie"
+								<label class="form-control-label" for="categorie">*
+									Catégorie :</label> <select class="form-control" id="categorie"
 									name="categorie">
 									<c:forEach var="type" items="${ categories }">
 										<option value="${ type.key }"
@@ -150,6 +150,41 @@
 									</div>
 								</c:otherwise>
 							</c:choose>
+							<div class="row">
+								
+								<div class="form-group col-md-4 col-sm-6 col-xs-12">
+									<label class="form-control-label" for="ingredientDispo">
+										ingredients disponibles :</label> <select class="form-control"
+										id="ingredientDispo" name="ingredientDispo[]" ondblclick="javascript: deplacer( this.form.ingredientDispo, this.form.ingredientsPizza );">
+										<c:forEach var="ingredient" items="${ ingredientsDispo }">
+											<option value="${ ingredient.id }">
+												<c:out value="${ ingredient.nom }" />
+											</option>
+										</c:forEach>
+									</select>
+								</div>
+								<div class="form-group col-md-2 col-sm-3 col-xs-6">
+									<button type="button" class="btn btn-success" onclick="javascript: deplacer( this.form.ingredientDispo, this.form.ingredientsPizza );">Ajouter
+										--></button>
+								</div>
+								<div class="form-group col-md-2 col-sm-3 col-xs-6">
+									<button type="button" class="btn btn-danger" onclick="javascript: deplacer( this.form.ingredientsPizza, this.form.ingredientDispo );">Retirer
+										<--</button>
+								</div>
+								<div class="form-group col-md-4 col-sm-6 col-xs-12">
+									<label class="form-control-label" for="ingredientsPizza">
+										ingredients de la pizza :</label> <select class="form-control"
+										id="ingredientsPizza" name="ingredientsPizza[]" ondblclick="javascript: deplacer( this.form.ingredientsPizza, this.form.ingredientDispo );" >
+										<c:forEach var="ingredient" items="${ pizza.ingredients }">
+											<option value="${ ingredient.id }">
+												<c:out value="${ ingredient.nom }" />
+											</option>
+										</c:forEach>
+									</select>
+								</div>
+
+							</div>
+
 
 							<!-- Form group de validation -->
 							<div class="form-group">
