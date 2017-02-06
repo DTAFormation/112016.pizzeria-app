@@ -9,7 +9,7 @@
         </nav>
     </div>     
     <div class="row">
-        <product  ng-repeat=" entree in $ctrl.entrees track by $index" product="entree" on-select="$ctrl.ajouterPanier(entree)" on-afficher-modale="$ctrl.afficherModale(entree)">
+        <product  ng-repeat=" entree in $ctrl.entrees track by $index" product="entree" on-select="$ctrl.ajouterPanier(entree, $localStorage)" on-afficher-modale="$ctrl.afficherModale(entree)">
         </product>
     </div>
        <modal-pizza pizza="$ctrl.currentEntree">

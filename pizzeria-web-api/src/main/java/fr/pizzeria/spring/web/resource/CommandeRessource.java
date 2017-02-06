@@ -15,6 +15,7 @@ import fr.pizzeria.model.Boisson;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.CommandeClient;
+import fr.pizzeria.model.CommandeMenu;
 import fr.pizzeria.model.Dessert;
 import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
@@ -65,6 +66,7 @@ public class CommandeRessource {
 		ArrayList<Entree> entrees = new ArrayList<>();
 		ArrayList<Boisson> boissons = new ArrayList<>();
 		ArrayList<Dessert> desserts = new ArrayList<>();
+		ArrayList<CommandeMenu> menus = new ArrayList<>();
 		for (CommandeClient commandeproduit : commandeClient) {
 			switch(commandeproduit.getType()){
 			case "pizza":
@@ -75,7 +77,7 @@ public class CommandeRessource {
 				boissons.add(boissonResource.findAll().stream()
 						.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
 				break;
-			case "entrée":
+			case "entree":
 				entrees.add(entreeResource.findAll().stream()
 						.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
 				break;
@@ -90,7 +92,7 @@ public class CommandeRessource {
 
 		Livreur liveur = liveurDao.findAll().stream().filter(p -> p.getId().equals(1)).findFirst().get();
 		commandeDao.save(new Commande(client, liveur, commandeClient.get(0).getTotal(), Statut.EN_PREPARATION,
-				new Date(), pizzas, boissons, desserts, entrees));
+				new Date(), pizzas, boissons, desserts, entrees, menus));
 	}
 
 	public void ajout(Commande commande) {

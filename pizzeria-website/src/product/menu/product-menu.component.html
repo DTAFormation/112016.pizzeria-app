@@ -1,0 +1,18 @@
+<div class="col-lg-4 col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img class="cuicui" ng-src="{{ $ctrl.menu.urlImage }}" alt="{{ $ctrl.menu.nom }}" ng-click="$ctrl.afficherModale()" data-toggle="modal"
+            data-target="#menuModal" />
+        <div class="caption">
+
+            <h3>{{ $ctrl.menu.nom.toUpperCase() }}</h3>
+
+        </div>
+        <div>    
+        <span style="margin-left:75px">
+            <h4 style="display:inline-block">{{ $ctrl.UtilService.getPrix($ctrl.menu.prix,'fr','eur') }}</h4>
+        </span>
+        <button ng-click="$ctrl.afficherMenu($ctrl.menu)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#menuChoixModal">
+            Selectionner menu
+        </button> </div>
+    </div>
+</div>

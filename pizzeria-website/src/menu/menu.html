@@ -1,0 +1,12 @@
+<h3>Nos Menus</h3>
+
+<div class="container">
+    <div class="row">
+        <product-menu  ng-repeat=" menu in $ctrl.menus track by $index" menu="menu" on-afficher-menu="$ctrl.afficherMenu(menu)" on-afficher-modale="$ctrl.afficherModale(menu)">
+        </product-menu>
+    </div>
+       <modal-menu menu="$ctrl.currentMenu">
+       </modal-menu>
+       <modal-menu-choix menu="$ctrl.currentMenu">
+       </modal-menu-choix>
+</div>

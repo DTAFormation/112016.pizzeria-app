@@ -25,6 +25,7 @@ import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Dessert;
 import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
+import fr.pizzeria.model.Menu;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.Statut;
 import fr.pizzeria.spring.web.repository.ILivreurRepository;
@@ -33,6 +34,7 @@ import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
 import fr.pizzeria.spring.web.resource.DessertResource;
 import fr.pizzeria.spring.web.resource.EntreeResource;
+import fr.pizzeria.spring.web.resource.MenuResource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
 
 /**
@@ -89,6 +91,9 @@ public class PizzeriaApp {
 	private EntreeResource entreeRessource;
 
 	@Autowired
+	private MenuResource menuRessource;
+
+	@Autowired
 	ILivreurRepository liveurDao;
 
 	@PostConstruct
@@ -96,7 +101,14 @@ public class PizzeriaApp {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
-
+			
+			Menu menu = new Menu("Menu enfant", new BigDecimal(10.20), "http://www.mitango.restaurant/accueil/images/menu-kids.jpg", 0, 1, 1, 1);
+			Menu menu2 = new Menu("Menu famille", new BigDecimal(40.20), "http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 3, 3, 3, 3);
+			Menu menu3 = new Menu("Menu grosse faim", new BigDecimal(40.20), "http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 0, 2, 1, 1);
+			menuRessource.ajoutMenu(menu);
+			menuRessource.ajoutMenu(menu2);
+			menuRessource.ajoutMenu(menu3);
+			
 			Boisson boisson = new Boisson("coca", new BigDecimal(2.5),
 					"http://media.topito.com/wp-content/uploads/2014/12/coca-250x250.jpg", CategorieBoisson.GAZ);
 			Boisson boisson2 = new Boisson("oasis tropical", new BigDecimal(2.0),
@@ -124,14 +136,14 @@ public class PizzeriaApp {
 			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()
 					.get();
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
-					pizzas, null, null, null)));
+					new Date(), pizzas, null, null, null, null)));
+			commandeRessource
+			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null, null)));
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
-					pizzas, null, null, null)));
+					new Date(), pizzas, null, null, null, null)));
+			commandeRessource
+			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null, null)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
@@ -155,11 +167,11 @@ public class PizzeriaApp {
 					.get();
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
-					new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON,
-					new Date(), pizzas, null, null, null)));
-			commandeRessource.ajout((new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(),
-					pizzas, null, null, null)));
+					new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout(
+					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout(
+					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas, null, null, null, null)));
 
 			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
 					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg");
