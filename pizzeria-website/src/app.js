@@ -1,6 +1,7 @@
 import angular from 'angular'
 import ngRoute from 'angular-route'
 import ngStorage from 'ngstorage'
+import rating from 'angular-ui-bootstrap/src/rating';
 
 import { Home } from './home/home.component';
 import { Product } from './product/product.component';
@@ -11,6 +12,8 @@ import { BoissonService } from './shared/service/boisson.service';
 import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 import { Boisson } from './boisson/boisson.component';
+import { Rating } from './rating/rating.component';
+
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 import { MonCompte } from './moncompte/moncompte.component';
 import { Commande } from './commande/commande.component';
@@ -30,7 +33,8 @@ import { UtilService } from './shared/service/util.service';
 
 angular.module('pizzeria', [
         ngRoute,
-        'ngStorage'
+        'ngStorage',
+        rating
     ])
     .component('home', Home)
     .component('product', Product)
@@ -48,6 +52,7 @@ angular.module('pizzeria', [
     .component('navbar', Navbar)
     .component('inscription', Inscription)
     .component('suggestionPanier', SuggestionPanier)
+    .component('rating', Rating)
 
 .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)
