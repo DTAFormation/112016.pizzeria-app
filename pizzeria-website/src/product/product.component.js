@@ -24,10 +24,10 @@ class ProductController {
 
     modifierNote($event){
 
-        this.note = ((this.product.note * this.product.nbVotant) + angular.copy($event)) / (this.product.nbVotant + 1);
-        this.product.note = this.note;
-        this.product.nbVotant = this.product.nbVotant + 1;
-        this.PizzaService.setPizzaVote(this.product);
+        this.product.nbVotant++;
+        this.product.sommeEtoile += angular.copy($event);
+        this.product.note = Math.round(this.product.sommeEtoile  / this.product.nbVotant);
+        this.PizzaService.setPizzaVote(angular.copy(this.product));
 
     }
 }

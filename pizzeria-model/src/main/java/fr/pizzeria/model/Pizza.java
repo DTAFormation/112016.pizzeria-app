@@ -50,6 +50,8 @@ public class Pizza {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date")
 	private Date date;
+	@Column(name = "sommeEtoile", nullable = true)
+	private Integer sommeEtoile;
 
 	@ManyToMany
 	@JoinTable(name = "pizza_ingredient", joinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id"))
@@ -79,8 +81,8 @@ public class Pizza {
 		this.date = date;
 	}
 
-	public Pizza(String code, String nom, String url, BigDecimal prix, int note, int nbVotant,
-			CategoriePizza categoriePizza, Date date) {
+	public Pizza(String code, String nom, String url, BigDecimal prix, Integer note, Integer nbVotant,
+			CategoriePizza categoriePizza, Date date, Integer sommeEtoile) {
 		this.code = code;
 		this.nom = nom;
 		this.urlImage = url;
@@ -89,6 +91,7 @@ public class Pizza {
 		this.nbVotant = nbVotant;
 		this.categorie = categoriePizza;
 		this.date = date;
+		this.sommeEtoile = sommeEtoile;
 	}
 
 	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza cat, String url,
@@ -180,5 +183,13 @@ public class Pizza {
 
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public Integer getSommeEtoile() {
+		return sommeEtoile;
+	}
+
+	public void setSommeEtoile(Integer sommeEtoile) {
+		this.sommeEtoile = sommeEtoile;
 	}
 }

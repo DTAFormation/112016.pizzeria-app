@@ -127,7 +127,7 @@ public class PizzeriaApp {
 			// client 1
 			pizzaResource.ajoutPizza(
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
-							new BigDecimal(9.9), 4, 1, CategoriePizza.SANS_VIANDE, new Date()));
+							new BigDecimal(9.9), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
 
 			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
 
@@ -148,14 +148,14 @@ public class PizzeriaApp {
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
-							new BigDecimal(9.9), 2, 1, CategoriePizza.SANS_VIANDE, new Date()));
+							new BigDecimal(9.9), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
 
 			pizzaResource.ajoutPizza(
 					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
-							new BigDecimal(9.52), 3, 2, CategoriePizza.SANS_VIANDE, new Date()));
+							new BigDecimal(9.52), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
 
 			pizzaResource.ajoutPizza(new Pizza("CAL", "calzone", "http://www.captainpizza.fr/61/4-familiale-.jpg",
-					new BigDecimal(9.52), 5, 2, CategoriePizza.SANS_VIANDE, new Date()));
+					new BigDecimal(9.52), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
 
 			pizzas = pizzaResource.listAllPizzas();
 
