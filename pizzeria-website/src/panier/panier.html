@@ -16,9 +16,9 @@
                 <tr ng-repeat="produit in $ctrl.produitList track by $index">
                     <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></td>
                     <td>{{produit.type | uppercase}}</td>
-                    <td> {{produit.nom}} <br/> {{produit.ingredients}}</td>
+                    <td> {{produit.nom}} <br> <span ng-if="produit.type=='pizza'"> {{produit.ingredients}} </span></td>
                     <td> {{$ctrl.UtilService.getPrix(produit.prix,"fr","eur")}}</td>
-                    <td><input ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
+                    <td><input ng-if="produit.type!='menu'" ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
                     <td><button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>
                 </tr>
             </tbody>

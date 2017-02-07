@@ -22,6 +22,7 @@ class ProductMenuChoixController {
 
 export const ProductMenuChoix = {
     bindings: {
+        selectable: '<',
         product: '<',
         onAfficherModale: '&',
         onAjouterMenu: '&'

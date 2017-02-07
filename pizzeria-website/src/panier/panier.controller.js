@@ -121,14 +121,13 @@ export default class PanierController {
         this.promProduits.then(listeProd => {
 
             this.produitList = listeProd.filter(p => {
-
                 return _.find(this.panier, (e) => {
-
                     p.quantite = e.quantite;
                     return e.idProduit === p.id && e.type === p.type;
                 });
             });
-
+            
+                    console.log(this.produitList);
             this.calculTotal();
 
 

@@ -1,16 +1,16 @@
 <!-- Modal menu detail -->
-<div class="modal fade" id="menuChoixModal" tabindex="-1" role="dialog" aria-labelledby="menuChoixModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuChoixModal" tabindex="-1" role="dialog" aria-labelledby="menuChoixModalLabel">
+    <div class="modal-dialog modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button ng-click="$ctrl.reset()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">{{ $ctrl.menu.nom }}</h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <img ng-src="{{ $ctrl.menu.urlImage }}" class="img-responsive"/>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     Ce menu inclut :
                     <ul>
                         <li ng-if="$ctrl.menu.nbEntree > 0 ">{{ $ctrl.menu.nbEntree }} entrée<span ng-if=" $ctrl.menu.nbEntree > 1 ">s</span></li>
@@ -19,6 +19,7 @@
                         <li ng-if=" $ctrl.menu.nbBoisson > 0 ">{{ $ctrl.menu.nbBoisson }} boisson<span ng-if=" $ctrl.menu.nbBoisson > 1 ">s</span></li>
                     </ul>
                 </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Prix du menu : {{ $ctrl.UtilService.getPrix($ctrl.menu.prix,"fr","eur" ) }} </div>
                 <table class="table">
                     <tr>
                         <th colspan="5">Choix</th>
@@ -28,88 +29,114 @@
                         <td>
                             Entrées
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousEntry()">Previous</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousEntry()">Precedent</button>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageEntrees[0]" product="$ctrl.affichageEntrees[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[0])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbEntree - $ctrl.entreesChoix.length)==0" ng-if="$ctrl.affichageEntrees[0]" product="$ctrl.affichageEntrees[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[0])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageEntrees[1]" product="$ctrl.affichageEntrees[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[1])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbEntree - $ctrl.entreesChoix.length)==0" ng-if="$ctrl.affichageEntrees[1]" product="$ctrl.affichageEntrees[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[1])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageEntrees[2]" product="$ctrl.affichageEntrees[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[2])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbEntree - $ctrl.entreesChoix.length)==0" ng-if="$ctrl.affichageEntrees[2]" product="$ctrl.affichageEntrees[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[2])"></product-menu-choix>
                         </td>
                         <td>
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextEntry()">Next</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextEntry()">Suivant</button>
                         </td>
-                        <td>{{ $ctrl.menu.nbEntree - $ctrl.entreesChoix.length }}</td>
+                        <td>
+                            {{ $ctrl.menu.nbEntree - $ctrl.entreesChoix.length }}
+                            <br>
+                            <ul>
+                                <li ng-repeat="entree in $ctrl.entreesChoix track by $index"><button ng-click="$ctrl.retirerMenu('entree', $index)" type="button" class="close"><span aria-hidden="true">&times;</span></button>{{entree.nom}}</li>
+                            </ul>
+                        </td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbPizza > 0 ">
                         <td>
                             Pizzas
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousPizza()">Previous</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousPizza()">Precedent</button>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichagePizzas[0]" product="$ctrl.affichagePizzas[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[0])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbPizza - $ctrl.pizzasChoix.length)==0" ng-if="$ctrl.affichagePizzas[0]" product="$ctrl.affichagePizzas[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[0])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichagePizzas[1]" product="$ctrl.affichagePizzas[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[1])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbPizza - $ctrl.pizzasChoix.length)==0" ng-if="$ctrl.affichagePizzas[1]" product="$ctrl.affichagePizzas[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[1])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichagePizzas[2]" product="$ctrl.affichagePizzas[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[2])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbPizza - $ctrl.pizzasChoix.length)==0" ng-if="$ctrl.affichagePizzas[2]" product="$ctrl.affichagePizzas[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[2])"></product-menu-choix>
                         </td>
                         <td>
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextPizza()">Next</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextPizza()">Suivant</button>
                         </td>
-                        <td>{{ $ctrl.menu.nbPizza - $ctrl.pizzasChoix.length }}</td>
+                        <td>
+                            {{ $ctrl.menu.nbPizza - $ctrl.pizzasChoix.length }}
+                            <br>
+                            <ul>
+                                <li ng-repeat="pizza in $ctrl.pizzasChoix track by $index"><button ng-click="$ctrl.retirerMenu('pizza', $index)" type="button" class="close"><span aria-hidden="true">&times;</span></button>{{pizza.nom}}</li>
+                            </ul>
+                        </td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbDessert > 0 ">
                         <td>
                             Desserts
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousDessert()">Previous</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousDessert()">Precedent</button>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageDesserts[0]" product="$ctrl.affichageDesserts[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[0])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbDessert - $ctrl.dessertsChoix.length)==0" ng-if="$ctrl.affichageDesserts[0]" product="$ctrl.affichageDesserts[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[0])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageDesserts[1]" product="$ctrl.affichageDesserts[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[1])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbDessert - $ctrl.dessertsChoix.length)==0" ng-if="$ctrl.affichageDesserts[1]" product="$ctrl.affichageDesserts[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[1])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageDesserts[2]" product="$ctrl.affichageDesserts[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[2])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbDessert - $ctrl.dessertsChoix.length)==0" ng-if="$ctrl.affichageDesserts[2]" product="$ctrl.affichageDesserts[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[2])"></product-menu-choix>
                         </td>
                         <td>
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextDessert()">Next</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextDessert()">Suivant</button>
                         </td>
-                        <td>{{ $ctrl.menu.nbDessert - $ctrl.dessertsChoix.length }}</td>
+                        <td>
+                            {{ $ctrl.menu.nbDessert - $ctrl.dessertsChoix.length }}
+                            <br>
+                            <ul>
+                                <li ng-repeat="dessert in $ctrl.dessertsChoix track by $index"><button ng-click="$ctrl.retirerMenu('dessert', $index)" type="button" class="close"><span aria-hidden="true">&times;</span></button>{{dessert.nom}}</li>
+                            </ul>
+                        </td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbBoisson > 0 ">
                         <td>
                             Boissons
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousBoisson()">Previous</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.previousBoisson()">Precedent</button>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageBoissons[0]" product="$ctrl.affichageBoissons[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[0])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length)==0" ng-if="$ctrl.affichageBoissons[0]" product="$ctrl.affichageBoissons[0]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[0])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageBoissons[1]" product="$ctrl.affichageBoissons[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[1])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length)==0" ng-if="$ctrl.affichageBoissons[1]" product="$ctrl.affichageBoissons[1]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[1])"></product-menu-choix>
                         </td>
                         <td>
-                            <product-menu-choix ng-if="$ctrl.affichageBoissons[2]" product="$ctrl.affichageBoissons[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[2])"></product-menu-choix>
+                            <product-menu-choix selectable="($ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length)==0" ng-if="$ctrl.affichageBoissons[2]" product="$ctrl.affichageBoissons[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[2])"></product-menu-choix>
                         </td>
                         <td>
                             <br>
-                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextBoisson()">Next</button>
+                            <button type="button" class="btn btn-default"  ng-click="$ctrl.nextBoisson()">Suivant</button>
                         </td>
-                        <td>{{ $ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length }}</td>
+                        <td>{{ $ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length }}
+                            <br>
+                            <ul>
+                                <li ng-repeat="boisson in $ctrl.boissonsChoix track by $index"><button ng-click="$ctrl.retirerMenu('boisson', $index)" type="button" class="close"><span aria-hidden="true">&times;</span></button>{{boisson.nom}}</li>
+                            </ul>
+                        </td>
                     </tr>
                 </table>
-                <div>{{ $ctrl.UtilService.getPrix($ctrl.menu.prix,"fr","eur" ) }} </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="$ctrl.reset()" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button ng-click="$ctrl.valider()" type="button" class="btn btn-primary" data-dismiss="modal">Confirmer</button>
             </div>
         </div>
     </div>
