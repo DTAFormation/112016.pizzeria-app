@@ -6,6 +6,7 @@ import rating from 'angular-ui-bootstrap/src/rating';
 import { Home } from './home/home.component';
 import { Product } from './product/product.component';
 import { ProductMenu } from './product/menu/product-menu.component';
+import { ProductMenuChoix } from './product/menu/choix/product-menu-choix.component';
 import { ModalPizza } from './modal/modal.component';
 import { ModalMenu } from './modal/menu/modal-menu.component';
 import { ModalMenuChoix } from './modal/menu/choix/modal-menu-choix.component';
@@ -44,6 +45,7 @@ angular.module('pizzeria', [
     .component('home', Home)
     .component('product', Product)
     .component('productMenu', ProductMenu)
+    .component('productMenuChoix', ProductMenuChoix)
     .component('modalPizza', ModalPizza)
     .component('modalMenu', ModalMenu)
     .component('modalMenuChoix', ModalMenuChoix)
@@ -63,7 +65,7 @@ angular.module('pizzeria', [
     .component('suggestionPanier', SuggestionPanier)
     .component('rating', Rating)
 
-.service('PizzaService', PizzaService)
+    .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)
     .service('UserService', UserService)
     .service('PanierService', PanierService)
