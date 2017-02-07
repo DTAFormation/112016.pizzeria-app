@@ -16,7 +16,6 @@ class SuggestionController {
     }
 
     $onChanges(changes){
-        console.log(changes.produits);
         if(changes.produits.currentValue != undefined){
             this.createSuggestion();
         }
