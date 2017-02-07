@@ -55,7 +55,7 @@ public class AjouterLivreurController extends HttpServlet {
 		LOG.log(Level.INFO, "livreur add post");
 		livreurService.save(new Livreur((String) request.getParameter("nom"), (String) request.getParameter("prenom"),
 				(String) request.getParameter("email"), "1234"));
-		response.sendRedirect(request.getContextPath() + "/admin/livreurs/add");
+		response.sendRedirect(request.getContextPath() + "/admin/livreurs/list");
 	}
 
 }
