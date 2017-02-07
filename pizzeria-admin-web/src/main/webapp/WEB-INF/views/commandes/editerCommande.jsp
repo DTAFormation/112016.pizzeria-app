@@ -8,14 +8,15 @@
 </jsp:include>
 <script src="<c:url value="/static/js/options.js"/>"></script>
 
+
 <body>
 	<%@include file="../layout/menu.jsp"%>
 	<div class="row">
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block">
-					<h1>Editer commande</h1>
-					<form name="ajout_commande" method="POST">
+					<h1>Editer command</h1>
+					<form name="ajout_commande" method="POST" OnSubmit="javascript: valider( document.forms[0].choix );">
 						<div class="form-group">
 							<label class="form-control-label" for="client">Client :</label> <select
 								class="form-control" id="client" name="client">
@@ -56,7 +57,7 @@
 									<td><br></td>
 									<td rowspan="7"><select name="dispo[]" id="dispo"
 										style="width: 210px;" size="16" multiple="multiple"
-										OnDblClick="javascript: deplacer( this.form.dispo, this.form.choix );">
+										OnDblClick="javascript: choisirPizza( this.form.dispo, this.form.choix );">
 											<c:forEach var="pizza" items="${ pizzas }">
 												<option value="${ pizza.id }">
 													<c:out value="${ pizza.nom }" />
@@ -66,16 +67,16 @@
 									<td><br></td>
 									<td rowspan="7"><select name="choix[]" id="choix"
 										style="width: 210px;" size="16" multiple="multiple"
-										OnDblClick="javascript: deplacer( this.form.choix, this.form.dispo );">
+										OnDblClick="javascript: retirerPizza( this.form.choix );">
+									<c:forEach var="pizza" items="${ commande.pizzas }">
+												<option value="${ pizza.id }">
+													<c:out value="${ pizza.nom }" />
+												</option>
+											</c:forEach>
 									</select><br></td>
 									<td><br></td>
-								</tr>
-								<tr>
-									<td><br></td>
 									<td><input type="button" value="ajouter >"
-										OnClick="javascript: deplacer( this.form.dispo, this.form.choix );" /><br></td>
-									<td rowspan="2"><input type="button" value="Monter"
-										OnClick="javascript: deplacer_hautbas( this.form.choix, -1 );" /><br></td>
+										OnClick="javascript: choisirPizza( this.form.dispo, this.form.choix );" /><br></td>
 								</tr>
 								<tr>
 									<td><br></td>
@@ -85,14 +86,12 @@
 								<tr>
 									<td><br></td>
 									<td><input type="button" value="< retirer"
-										OnClick="javascript: deplacer( this.form.choix, this.form.dispo );" /><br></td>
-									<td rowspan="2"><input type="button" value="Descendre"
-										OnClick="javascript: deplacer_hautbas( this.form.choix, 1 );" /><br></td>
+										OnClick="javascript: retirerPizza( this.form.choix );" /><br></td>
 								</tr>
 								<tr>
 									<td><br></td>
 									<td><input type="button" value="<< retirer tout"
-										OnClick="javascript: deplacer_tout( this.form.choix, this.form.dispo );" /><br></td>
+										OnClick="javascript: retirerToutePizzas( this.form.choix );" /><br></td>
 								</tr>
 								<tr>
 									<td><br></td>
@@ -101,7 +100,7 @@
 								</tr>
 							</table>
 						</div>
-						<button type="submit" class="btn btn-primary">Ajouter</button>
+						<button type="submit" class="btn btn-primary">Modifier</button>
 						<a href="list" class="btn btn-secondary">Retour</a>
 					</form>
 				</div>
