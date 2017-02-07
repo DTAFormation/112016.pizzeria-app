@@ -1,6 +1,6 @@
 class NavbarController {
     constructor($rootScope) {
-        this.$rootScope = $rootScope
+        this.$rootScope = $rootScope;
         this.$rootScope.$on("userAuth", (event, user) => {
             this.userAuth = user
         })
@@ -8,17 +8,17 @@ class NavbarController {
 
     $onInit() {
         if(localStorage.getItem("userAuth")) {
-            this.userAuth = angular.fromJson(localStorage.getItem("userAuth"))
+            this.userAuth = angular.fromJson(localStorage.getItem("userAuth"));
         }
     }
 
     setUserAuth(user) {
-        this.userAuth = user
+        this.userAuth = user;
     }
 
     logoutUser() {
-        localStorage.removeItem("userAuth")
-        this.userAuth = {}
+        localStorage.removeItem("userAuth");
+        this.userAuth = {};
     }
     
 }
