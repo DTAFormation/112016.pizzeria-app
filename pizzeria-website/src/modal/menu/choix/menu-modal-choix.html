@@ -21,11 +21,13 @@
                 </div>
                 <table class="table">
                     <tr>
-                        <td colspan="5">Choix</td>
-                        <td>Quantité restante</td>
+                        <th colspan="5">Choix</th>
+                        <th>Quantité restante</th>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbEntree > 0 ">
                         <td>
+                            Entrées
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.previousEntry()">Previous</button>
                         </td>
                         <td>
@@ -38,12 +40,15 @@
                             <product-menu-choix ng-if="$ctrl.affichageEntrees[2]" product="$ctrl.affichageEntrees[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageEntrees[2])"></product-menu-choix>
                         </td>
                         <td>
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.nextEntry()">Next</button>
                         </td>
                         <td>{{ $ctrl.menu.nbEntree - $ctrl.entreesChoix.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbPizza > 0 ">
                         <td>
+                            Pizzas
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.previousPizza()">Previous</button>
                         </td>
                         <td>
@@ -56,12 +61,15 @@
                             <product-menu-choix ng-if="$ctrl.affichagePizzas[2]" product="$ctrl.affichagePizzas[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichagePizzas[2])"></product-menu-choix>
                         </td>
                         <td>
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.nextPizza()">Next</button>
                         </td>
                         <td>{{ $ctrl.menu.nbPizza - $ctrl.pizzasChoix.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbDessert > 0 ">
                         <td>
+                            Desserts
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.previousDessert()">Previous</button>
                         </td>
                         <td>
@@ -74,12 +82,15 @@
                             <product-menu-choix ng-if="$ctrl.affichageDesserts[2]" product="$ctrl.affichageDesserts[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageDesserts[2])"></product-menu-choix>
                         </td>
                         <td>
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.nextDessert()">Next</button>
                         </td>
                         <td>{{ $ctrl.menu.nbDessert - $ctrl.dessertsChoix.length }}</td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbBoisson > 0 ">
                         <td>
+                            Boissons
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.previousBoisson()">Previous</button>
                         </td>
                         <td>
@@ -92,6 +103,7 @@
                             <product-menu-choix ng-if="$ctrl.affichageBoissons[2]" product="$ctrl.affichageBoissons[2]" on-ajouter-menu="$ctrl.ajouterMenu($ctrl.affichageBoissons[2])"></product-menu-choix>
                         </td>
                         <td>
+                            <br>
                             <button type="button" class="btn btn-default"  ng-click="$ctrl.nextBoisson()">Next</button>
                         </td>
                         <td>{{ $ctrl.menu.nbBoisson - $ctrl.boissonsChoix.length }}</td>
