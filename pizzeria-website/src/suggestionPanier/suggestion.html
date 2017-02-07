@@ -8,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="produit in $ctrl.pizzas track by $index">
+            <tr ng-repeat="produit in $ctrl.pizzaSug track by $index">
                 <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="150"></td>
-                <td>{{produit.nom}}</br>Note:{{produit.note}}<span class="glyphicon glyphicon-asterisk"></span></td>
+                <td>{{produit.nom}}</br>Note:{{produit.note}}<span class="glyphicon glyphicon-star"></span></td>
             </tr>
         </tbody>
     </table>

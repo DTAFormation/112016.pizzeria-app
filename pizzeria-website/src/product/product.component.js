@@ -12,7 +12,7 @@ class ProductController {
     ajouterPanier(product) {
 
         this.PanierService.ajouterElement(product);
-
+       
     }
 
     afficherModale() {
