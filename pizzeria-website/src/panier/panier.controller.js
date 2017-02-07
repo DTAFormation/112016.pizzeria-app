@@ -14,8 +14,6 @@ export default class PanierController {
     }
 
     $onInit() {
-
-
         this.panier = this.PanierService.getPanier();
         //   this.promProduits = this.PizzaService.getPizzas();
         this.promProduits = this.PanierService.getProduits();

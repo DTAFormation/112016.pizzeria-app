@@ -34,9 +34,7 @@ export class PanierService {
     }
 
     initPanier() {
-
         this.$localStorage.jsonPanier = this.$localStorage.jsonPanier || [];
-
         return this.$localStorage.jsonPanier;
     }
 
@@ -44,16 +42,12 @@ export class PanierService {
 
         if (this.$localStorage.jsonPanier === undefined)
             this.initPanier();
-
         let panier = this.$localStorage.jsonPanier;
-
         let exist = _.find(panier, e => (e.idProduit === element.id && e.type === element.type));
-
         if (exist !== undefined) {
             ++exist.quantite;
         } else {
             let ajout = {};
-
             ajout.type = element.type;
             ajout.idProduit = element.id;
             ajout.quantite = 1;
@@ -62,15 +56,11 @@ export class PanierService {
 
     }
 
-
     resetPanier() {
-
         delete this.$localStorage.jsonPanier;
-
     }
 
     getPanier() {
-
         return this.$localStorage.jsonPanier || this.initPanier();
     }
 }

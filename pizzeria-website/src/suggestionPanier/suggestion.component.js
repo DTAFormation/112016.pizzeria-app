@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 class SuggestionController {
 
     constructor(PanierService, PizzaService, EntreeService, DessertService) {
@@ -8,16 +10,22 @@ class SuggestionController {
     }
 
     $onInit() {
-        //this.panier = this.PanierService.getPanier();
-        // this.promProduits = this.PanierService.getProduits();
-        this.pizzas = [{}]
         this.PizzaService.getPizzas()
             .then(pizzas => this.pizzas = pizzas);
-        this.promProduits = this.PanierService.getProduits();
+    }
+
+    $onChanges(changes){
+        console.log(changes.produits);
+        if(changes.produits.currentValue != undefined){
+            this.createSuggestion();
+        }
     }
 
     createSuggestion() {
-        console.log(this.promProduits);
+        this.pizz = this.produits.filter(produit => produit.type === 'pizza');
+        this.cat = this.pizz.map(piz => piz.categorie);
+        console.log(this.cat);
+        this.pizzas = this.pizzas.filter(pizza => pizza.categorie === this.cat[0]);
     }
 
     createSuggestion2() {
@@ -26,8 +34,9 @@ class SuggestionController {
 
 }
 export const SuggestionPanier = {
-
+    bindings:{
+        produits:'<'
+    },
     template: require('./suggestion.html'),
     controller: SuggestionController
-
 }
