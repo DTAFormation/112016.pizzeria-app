@@ -1,20 +1,19 @@
-const api ='http://localhost:3000/boissons'
+const api = 'http://localhost:3000/boissons'
 
-export class BoissonService{
-    constructor( $http) {
+export class BoissonService {
+    
+    constructor($http) {
         this.$http = $http;
         this.boisson = this.$http.get(api)
-        .then((response)=> response.data);
+            .then((response) => response.data);
     }
 
-    getBoissons(){
-
+    getBoissons() {
         return this.boisson;
     }
 
     getBoissonsById(id) {
-
-       return this.boisson.then(boisson => _.find(boisson, p => p.id === id));
-   }
+        return this.boisson.then(boisson => _.find(boisson, p => p.id === id));
+    }
 
 }

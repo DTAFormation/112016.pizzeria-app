@@ -1,37 +1,35 @@
-export class MenuController{
+export class MenuController {
 
-    constructor(MenuService, PanierService){
-            this.MenuService = MenuService;
-            this.PanierService = PanierService;
-        }
+    constructor(MenuService, PanierService) {
+        this.MenuService = MenuService;
+        this.PanierService = PanierService;
+    }
 
-       $onInit(){
+    $onInit() {
+        this.initMenu();
+    }
 
-         this.initMenu();
-       }
+    initMenu() {
+        this.MenuService.getMenus()
+            .then(menus => {
+                this.menus = menus;
+            })
+    }
 
-       initMenu(){
-            this.MenuService.getMenus()
-           .then(menus => {
-               this.menus = menus;
-           })
-           
-       }
-       
 
-     afficherModale(menu) {
+    afficherModale(menu) {
         this.currentMenu = menu;
     }
 
-    afficherMenu(menu){
+    afficherMenu(menu) {
         this.currentMenu = menu;
     }
 
-    ajouterProduit(produit){
+    ajouterProduit(produit) {
         this.MenuService.ajouterElement(produit);
     }
 
-     ajouterPanier(menu) {
-         this.PanierService.ajouterElement(menu);
-     }
+    ajouterPanier(menu) {
+        this.PanierService.ajouterElement(menu);
+    }
 }

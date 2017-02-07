@@ -17,19 +17,23 @@
                         <td colspan="2">
                             ici prochainement un carrousel custom
                         </td>
-                        <td>{{ $ctrl.menu.nbEntree - $ctrl.entrees.length }}</td>
+                        <!--<td>{{ $ctrl.menu.nbEntree - $ctrl.entrees.length }}</td>-->
+                        <td><p ng-repeat="entree in $ctrl.entrees track by $index">{{entree.nom}}</p></td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbPizza > 0 ">
-                        <td colspan="2">Les pizzas</td>
-                        <td>{{ $ctrl.menu.nbPizza - $ctrl.pizzas.length }}</td>
+                        <td colspan="2">Les pizzas : (choix 1)</td>
+                        <!--<td>{{ $ctrl.menu.nbPizza - $ctrl.pizzas.length }}</td>-->
+                        <td><p ng-repeat="pizza in $ctrl.pizzas track by $index">{{pizza.nom}}</p></td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbDessert > 0 ">
-                        <td colspan="2">Les desserts</td>
-                        <td>{{ $ctrl.menu.nbDessert - $ctrl.desserts.length }}</td>
+                        <td colspan="2">Les desserts : (choix 1)</td>
+                        <!--<td>{{ $ctrl.menu.nbDessert - $ctrl.desserts.length }}</td>-->
+                        <td><p ng-repeat="dessert in $ctrl.desserts track by $index">{{dessert.nom}}</p></td>
                     </tr>
                     <tr ng-if="$ctrl.menu.nbBoisson > 0 ">
-                        <td colspan="2">Les boissons</td>
-                        <td>{{ $ctrl.menu.nbBoisson - $ctrl.boissons.length }}</td>
+                        <td colspan="2">Les boissons : (choix 1)</td>
+                        <!--<td>{{ $ctrl.menu.nbBoisson - $ctrl.boissons.length }}</td>-->
+                        <td><p ng-repeat="boisson in $ctrl.boissons track by $index">{{boisson.nom}}</p></td>
                     </tr>
                 </table>
                 <div>{{ $ctrl.UtilService.getPrix($ctrl.menu.prix,"fr","eur" ) }} </div>

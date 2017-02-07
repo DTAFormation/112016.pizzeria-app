@@ -8,7 +8,7 @@ import { Product } from './product/product.component';
 import { ProductMenu } from './product/menu/product-menu.component';
 import { ModalPizza } from './modal/modal.component';
 import { ModalMenu } from './modal/menu/modal-menu.component';
-import { ModalMenuChoix } from './modal/menu/modal-menu-choix.component';
+import { ModalMenuChoix } from './modal/menu/choix/modal-menu-choix.component';
 import { Inscription } from './inscription/inscription.component';
 import { Login } from './login/login.component';
 import { BoissonService } from './shared/service/boisson.service';

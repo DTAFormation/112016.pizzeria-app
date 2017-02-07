@@ -1,6 +1,6 @@
-import {MenuController} from "./menu.controller";
+import { MenuController } from "./menu.controller";
 
-export  const Menu = {
+export const Menu = {
     template: require("./menu.html"),
     controller: MenuController
 }
