@@ -19,7 +19,7 @@
 					<form name="ajout_commande" method="POST" OnSubmit="javascript: valider( document.forms[0].choix );">
 						<div class="form-group">
 							<label class="form-control-label" for="client">Client :</label> <select
-								class="form-control" id="client" name="client">
+								class="form-control" id="clientId" name="clientId">
 								<c:forEach var="client" items="${ clients }">
 									<option value="${ client.id }">
 										<c:out value="${ client.nom }" />
@@ -29,7 +29,7 @@
 						</div>
 						<div class="form-group">
 							<label class="form-control-label" for="client">Livreur :</label>
-							<select class="form-control" id="livreur" name="livreur">
+							<select class="form-control" id="livreurId" name="livreurId">
 								<c:forEach var="livreur" items="${ livreurs }">
 									<option value="${ livreur.id }">
 										<c:out value="${ livreur.nom }" />

@@ -19,7 +19,6 @@ import fr.pizzeria.admin.metier.LivreurService;
 import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.model.Statut;
 
 @WebServlet("/admin/commandes/edit")
 public class EditerCommandeController extends HttpServlet {
@@ -60,9 +59,10 @@ public class EditerCommandeController extends HttpServlet {
 
 		Integer clientId = Integer.parseInt(req.getParameter("clientId"));
 		Integer livreurId = Integer.parseInt(req.getParameter("livreurId"));
-		Statut statut = Statut.valueOf(req.getParameter("statut"));
+
 		List<Pizza> pizzas = new ArrayList<>();
 		String[] parameterValues = req.getParameterValues("pizzas");
+
 		BigDecimal total = new BigDecimal(0);
 		for (String id : parameterValues) {
 			Pizza pizza = pizzaService.get(Integer.parseInt(id));
@@ -74,7 +74,7 @@ public class EditerCommandeController extends HttpServlet {
 		commande.setLivreurId(livreurService.get(livreurId));
 		commande.setPizzas(pizzas);
 		commande.setTotal(total);
-		commande.setStatut(statut);
+		// commande.setStatut(statut);
 
 		commandeService.update(commande, Integer.parseInt(idCommande));
 		resp.sendRedirect(req.getContextPath() + LIST_CONTROLLER);
