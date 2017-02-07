@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Modifier Entree" name="title" />
+	<jsp:param value="Modifier Entr&eacute;e" name="title" />
 </jsp:include>
 <body>
 
@@ -13,12 +13,12 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block well">
-					<c:set var="entree" scope="session" value="${param.entree}"/>
+					<c:set var="entree" scope="session" value="${param.entree}" />
 					<form class="form-horizontal" method="post">
 						<fieldset>
 
 							<!-- Form Name -->
-							<h2>Editer l'entree</h2>
+							<h2>Editer l'entrée</h2>
 
 							<!-- Text input-->
 							<div class="form-group">
@@ -30,19 +30,17 @@
 
 								</div>
 							</div>
-
 							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="prenom">Prix</label>
 								<div class="col-md-4">
 									<input id="prix" name="prix" type="number"
-										value="${entree.prenom}" class="form-control input-md"
-										required>
+										value="${entree.prix}" class="form-control input-md" required  step="any">
 								</div>
 							</div>
+
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="nom">Url
-									Image</label>
+								<label class="col-md-4 control-label" for="nom">UrlImage</label>
 								<div class="col-md-4">
 									<input id="image" name="image" type="text"
 										value="${entree.urlImage}" class="form-control input-md"

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Entrees" name="title" />
+	<jsp:param value="Entr&eacute;es" name="title" />
 </jsp:include>
 <body>
 	<%@include file="../layout/menu.jsp"%>
@@ -13,7 +13,7 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block">
-					<h2>Entrees</h2>
+					<h2>Entrées</h2>
 					<a href="<c:url value="create"/>" class="btn btn-primary">Ajouter</a>
 
 					<table id=tableEntree class="table table-striped">
@@ -34,7 +34,7 @@
 									<td>${entree.id}</td>
 									<td><img width="80px" height="50px" src="<c:url value="${ entree.urlImage }"/>"></td>
 									<td>${entree.nom}</td>
-									<td>${entree.prix}</td>
+									<td>${entree.prix} &euro;</td>
 									<td><a
 										href="<c:url value="/admin/entrees/update?id=${entree.id}"/>"
 										class="btn btn-success">Editer</a></td>

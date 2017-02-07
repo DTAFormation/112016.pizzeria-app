@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Ajouter Entree" name="title" />
+	<jsp:param value="Ajouter Entr&eacute;e" name="title" />
 </jsp:include>
 
 <body>
@@ -14,7 +14,7 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card well">
 				<div class="card-block"></div>
-				<h2>Nouvelle Entree</h2>
+				<h2>Nouvelle Entrée</h2>
 
 				<form method="post" class="form-horizontal">
 					<fieldset>
@@ -31,7 +31,7 @@
 							<label class="col-md-4 control-label" for="nom">Prix</label>
 							<div class="col-md-4">
 								<input id="prix" name="prix" type="number"
-									class="form-control input-md" required>
+									class="form-control input-md" required step="any">
 							</div>
 						</div>
 
