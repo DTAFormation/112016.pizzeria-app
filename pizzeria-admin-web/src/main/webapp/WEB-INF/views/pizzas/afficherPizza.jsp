@@ -14,7 +14,7 @@
 			<div class="card">
 				<div class="card-block">
 					<div>
-						<form method="post"
+						<form method="post" OnSubmit="javascript: valider( document.forms[0].ingredientsPizza );"
 							<c:choose>
 								<c:when test="${ not empty pizza.date }">
 									action="edit"
@@ -154,7 +154,7 @@
 								
 								<div class="form-group col-md-4 col-sm-6 col-xs-12">
 									<label class="form-control-label" for="ingredientDispo">
-										ingredients disponibles :</label> <select class="form-control"
+										ingredients disponibles :</label> <select class="form-control" size="5" multiple="multiple"
 										id="ingredientDispo" name="ingredientDispo[]" ondblclick="javascript: deplacer( this.form.ingredientDispo, this.form.ingredientsPizza );">
 										<c:forEach var="ingredient" items="${ ingredientsDispo }">
 											<option value="${ ingredient.id }">
@@ -173,7 +173,7 @@
 								</div>
 								<div class="form-group col-md-4 col-sm-6 col-xs-12">
 									<label class="form-control-label" for="ingredientsPizza">
-										ingredients de la pizza :</label> <select class="form-control"
+										ingredients de la pizza :</label> <select class="form-control"  size="5" multiple="multiple"
 										id="ingredientsPizza" name="ingredientsPizza[]" ondblclick="javascript: deplacer( this.form.ingredientsPizza, this.form.ingredientDispo );" >
 										<c:forEach var="ingredient" items="${ pizza.ingredients }">
 											<option value="${ ingredient.id }">

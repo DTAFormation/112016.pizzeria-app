@@ -33,7 +33,7 @@ public class EditerPizzaController extends HttpServlet {
 	private PizzaService pizzaService;
 	@EJB
 	private IngredientService ingredientService;
-	private Logger LOG = Logger.getLogger(getClass().getName());
+	private static final Logger LOG = Logger.getLogger(EditerPizzaController.class.getName());
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

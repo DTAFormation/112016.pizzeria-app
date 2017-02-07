@@ -15,6 +15,7 @@
 
 function choisirPizza(liste_depart, liste_arrivee){
 	for( i = 0; i < liste_depart.options.length; i++ ){
+		 console.log("selected : ",liste_depart.options[i].selected)
 		if( liste_depart.options[i].selected && liste_depart.options[i] != "" )	{
 			o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
 			liste_arrivee.options[liste_arrivee.options.length] = o;
@@ -51,42 +52,45 @@ function valider( liste ){
 
 function deplacer( liste_depart, liste_arrivee )
 {
-	
 	let exist  = false;
-	 console.log('exist : ', exist)
-
+	let done = false;
+	let selected = true;
+	
 		 for( i = 0; i < liste_depart.options.length; i++ )
 		 	{
 			 exist = verifSiExist(liste_depart[i].value, liste_arrivee)
+			  console.log("exist ", exist);	 
 			 if(!exist){
 				 if( liste_depart.options[i].selected && liste_depart.options[i] != "" )
-				 	{					 
+				 	{	
 					 o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
 					 liste_arrivee.options[liste_arrivee.options.length] = o;
 					 liste_depart.options[i] = null;
-					 i = i - 1 ;
-					
+					 i = i - 1 ;	
+					 done = true;
 				 	}
 				 else
 				 	{
-					 alert( "aucun element selectionne" );
+					 selected = false;				
 				 	}
-
+			 }else{
+				 if(selected == liste_depart.options[i].selected){
+					 alert( "l'ingrédient est déja présent");	 	
+					 break;
+				 }
+			
 			 }	
-
-	 }
-	 
-	 if(exist){
-		 alert( "l'ingrédient est déja présent");
-		 
-	 }
+		 }
+		 console.log("selected alert :", selected)
+		 if(!selected && !done){
+			 alert( "aucun element selectionne" );
+		 }	
 	 
 }
 
 function verifSiExist(item, list2){
 
 	 for ( j = 0; j < list2.options.length; j++) {
-			console.log(list2.options[j].value)
 		 if(list2.options[j].value == item){
 			 return true;
 		 }
