@@ -11,7 +11,6 @@ export default class PanierController {
         this.hip = 0;
         this.promo = 0; //implementer les promotions en BDD
         this.code;
-        this.nbProduitList = this.produitList.length;
     }
 
     $onInit() {
