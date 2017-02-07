@@ -64,6 +64,10 @@ class PizzaController{
 
     }
 
+    updateProduct($event){
+        this.PizzaService.setPizzaVote(angular.copy($event));
+    }
+
 }
 
  export const Pizza = {

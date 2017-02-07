@@ -2,11 +2,10 @@ import css from './product.component.css';
 
 class ProductController {
 
-    constructor(PanierService, UtilService, PizzaService) {
+    constructor(PanierService, UtilService) {
 
         this.PanierService = PanierService;
         this.UtilService = UtilService;
-        this.PizzaService = PizzaService;
 
     }
 
@@ -27,7 +26,9 @@ class ProductController {
         this.product.nbVotant++;
         this.product.sommeEtoile += angular.copy($event);
         this.product.note = Math.round(this.product.sommeEtoile  / this.product.nbVotant);
-        this.PizzaService.setPizzaVote(angular.copy(this.product));
+        this.updateProduct({
+            $event: this.product
+        })
 
     }
 }
@@ -35,7 +36,8 @@ class ProductController {
 export const Product = {
     bindings: {
         product: '<',
-        onAfficherModale: '&'
+        onAfficherModale: '&',
+        updateProduct: '&'
     },
 
     template: require('./product.component.html'),

@@ -9,7 +9,7 @@
         </nav>
     </div>     
     <div class="row">
-        <product ng-repeat="pizza in $ctrl.pizzas track by $index" product="pizza" on-select="$ctrl.ajouterPanier(pizza, $localStorage)" on-afficher-modale="$ctrl.afficherModale(pizza)">
+        <product ng-repeat="pizza in $ctrl.pizzas track by $index" product="pizza" update-product="$ctrl.updateProduct($event)" on-select="$ctrl.ajouterPanier(pizza, $localStorage)" on-afficher-modale="$ctrl.afficherModale(pizza)">
         </product>
     </div>
     <modal-pizza pizza="$ctrl.currentPizza">
