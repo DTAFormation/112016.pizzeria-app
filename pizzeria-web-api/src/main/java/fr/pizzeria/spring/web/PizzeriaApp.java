@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import fr.pizzeria.model.Boisson;
 import fr.pizzeria.model.CategorieBoisson;
+import fr.pizzeria.model.CategorieDessert;
 import fr.pizzeria.model.CategorieEntree;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
@@ -101,14 +102,17 @@ public class PizzeriaApp {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
-			
-			Menu menu = new Menu("Menu enfant", new BigDecimal(10.20), "http://www.mitango.restaurant/accueil/images/menu-kids.jpg", 0, 1, 1, 1);
-			Menu menu2 = new Menu("Menu famille", new BigDecimal(40.20), "http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 3, 3, 3, 3);
-			Menu menu3 = new Menu("Menu grosse faim", new BigDecimal(40.20), "http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 0, 2, 1, 1);
+
+			Menu menu = new Menu("Menu enfant", new BigDecimal(10.20),
+					"http://www.mitango.restaurant/accueil/images/menu-kids.jpg", 0, 1, 1, 1);
+			Menu menu2 = new Menu("Menu famille", new BigDecimal(40.20),
+					"http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 3, 3, 3, 3);
+			Menu menu3 = new Menu("Menu grosse faim", new BigDecimal(40.20),
+					"http://www.lesmarinesdesuresnes.fr/wp-content/uploads/logo-menu.jpg", 0, 2, 1, 1);
 			menuRessource.ajoutMenu(menu);
 			menuRessource.ajoutMenu(menu2);
 			menuRessource.ajoutMenu(menu3);
-			
+
 			Boisson boisson = new Boisson("coca", new BigDecimal(2.5),
 					"http://media.topito.com/wp-content/uploads/2014/12/coca-250x250.jpg", CategorieBoisson.GAZ);
 			Boisson boisson2 = new Boisson("oasis tropical", new BigDecimal(2.0),
@@ -127,7 +131,7 @@ public class PizzeriaApp {
 			// client 1
 			pizzaResource.ajoutPizza(
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
-							new BigDecimal(9.9), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
+							new BigDecimal(9.9), 0, 0, CategoriePizza.VIANDE, new Date(), 0));
 
 			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
 
@@ -137,18 +141,18 @@ public class PizzeriaApp {
 					.get();
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null, null)));
-			commandeRessource
-			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
+					pizzas, null, null, null, null)));
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null, null)));
-			commandeRessource
-			.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.PRET, new Date(),
+					pizzas, null, null, null, null)));
 
 			// ----------------------------------------
 			pizzaResource.ajoutPizza(
 					new Pizza("PEP", "peperoni", "http://timmatic.com/i/2016/12/pepperoni-pizza-wallpaper-wide.jpg",
-							new BigDecimal(9.9), 0, 0, CategoriePizza.SANS_VIANDE, new Date(), 0));
+							new BigDecimal(9.9), 0, 0, CategoriePizza.VIANDE, new Date(), 0));
 
 			pizzaResource.ajoutPizza(
 					new Pizza("REI", "reine", "http://astucelle.com/wp-content/uploads/2016/11/image-41.jpeg",
@@ -168,16 +172,17 @@ public class PizzeriaApp {
 
 			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(443.9), Statut.EN_PREPARATION,
 					new Date(), pizzas, null, null, null, null)));
-			commandeRessource.ajout(
-					(new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON, new Date(), pizzas, null, null, null, null)));
-			commandeRessource.ajout(
-					(new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout((new Commande(firstClient, null, new BigDecimal(25.9), Statut.EN_LIVRAISON,
+					new Date(), pizzas, null, null, null, null)));
+			commandeRessource.ajout((new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(),
+					pizzas, null, null, null, null)));
 
 			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
-					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg");
+					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg", CategorieDessert.GLUTEN);
 
 			Dessert dessert2 = new Dessert("crêpe Bretonne", new BigDecimal(200.0),
-					"http://www.recettes-bretonnes.fr/wp-content/Photos/millefeuille-crepe.jpg");
+					"http://www.recettes-bretonnes.fr/wp-content/Photos/millefeuille-crepe.jpg",
+					CategorieDessert.SANS_GLUTEN);
 
 			dessertRessource.ajoutDessert(dessert);
 			dessertRessource.ajoutDessert(dessert2);

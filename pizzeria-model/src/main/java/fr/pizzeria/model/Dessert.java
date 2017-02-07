@@ -26,13 +26,14 @@ public class Dessert {
 
 	}
 
-	public Dessert(String nom, BigDecimal prix, String urlImage) {
+	public Dessert(String nom, BigDecimal prix, String urlImage, CategorieDessert categorie) {
 		super();
 
 		this.nom = nom;
 		this.prix = prix;
 		this.urlImage = urlImage;
 		this.setType("dessert");
+		this.categorie = categorie;
 	}
 
 	public Integer getId() {
