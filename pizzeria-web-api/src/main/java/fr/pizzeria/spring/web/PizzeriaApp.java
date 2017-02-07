@@ -9,9 +9,12 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -40,7 +43,7 @@ import fr.pizzeria.spring.web.resource.PizzaResource;
  */
 @SpringBootApplication
 @EntityScan(basePackageClasses = Pizza.class)
-
+@EnableAutoConfiguration
 public class PizzeriaApp {
 
 	/**
@@ -59,6 +62,7 @@ public class PizzeriaApp {
 			}
 		};
 	}
+	
 
 	/**
 	 * Démarrage de l'application Web.
@@ -117,7 +121,7 @@ public class PizzeriaApp {
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
 							new BigDecimal(9.9), 4, 1, CategoriePizza.SANS_VIANDE, new Date()));
 
-			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
+			clientResource.ajoutClient(new Client("Toto", "Boris", "toto@toto.com", "1234", "Anywhere"));
 
 			List<Pizza> pizzas = pizzaResource.listAllPizzas();
 

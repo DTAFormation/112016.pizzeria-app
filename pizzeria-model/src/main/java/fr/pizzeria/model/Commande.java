@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,8 +52,8 @@ public class Commande {
 	@JoinTable(name = "commande_entree", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "entree_id", referencedColumnName = "id"))
 	private List<Entree> entrees;
 
-	@ManyToMany
-	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
 	private List<Pizza> pizzas;
 	
 	@ManyToMany
@@ -64,10 +65,20 @@ public class Commande {
 	private List<Dessert> desserts;
 	
 	
-
 	public Commande() {
-
+		
 	}
+
+	public Commande(Client idClient, Livreur idLivreur, BigDecimal total, Statut statut, Date date,
+            List<Pizza> pizzas) {
+        super();
+        this.clientId = idClient;
+        this.livreurId = idLivreur;
+        this.total = total;
+        this.statut = statut;
+        this.date = date;
+        this.pizzas = pizzas;
+    }
 
 	public Commande(Client idClient, Livreur idLivreur, BigDecimal total, Statut statut, Date date,
 			List<Pizza> pizzas, List<Boisson> boissons, List<Dessert> desserts, List<Entree> entrees) {
@@ -81,11 +92,6 @@ public class Commande {
 		this.boissons = boissons;
 		this.entrees = entrees;
 		this.desserts = desserts;
-	}
-
-	public Commande(Client client, Livreur liveur, BigDecimal total2, Statut enPreparation, Date date2,
-			ArrayList<Pizza> pizzas2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

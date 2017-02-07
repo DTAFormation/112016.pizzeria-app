@@ -20,16 +20,18 @@ export class UserService {
     connectUser(user) {
        return this.$http.post(`${ api }/signin`, user)
             .then(response => {
-                let user = response.data
+                console.log(response.data)
                 if(!response.data) {
                     return null
                 } else {
                     let userAuthConcat = {
-                        id: user.id,
-                        nom: user.nom,
-                        prenom: user.prenom
+                        id : response.data.user_id,
+                        nom : response.data.user_nom,
+                        prenom : response.data.user_prenom
                     }
+                    console.log(userAuthConcat)
                     localStorage.userAuth = angular.toJson(userAuthConcat)
+                    localStorage.userToken = response.data.user_token
                     return userAuthConcat
                 }
             })
