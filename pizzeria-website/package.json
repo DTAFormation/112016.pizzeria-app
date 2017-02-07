@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base public --hot --inline --history-api-fallback",
+    "start": "webpack-dev-server --port 9000 --content-base public --hot --inline --history-api-fallback",
     "api": "json-server data.json"
   },
   "author": "",

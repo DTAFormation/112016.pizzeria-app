@@ -1,6 +1,7 @@
 package fr.pizzeria.admin.web;
 
-import java.io.IOException;
+import fr.pizzeria.admin.metier.UtilisateurService;
+import fr.pizzeria.model.Utilisateur;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import fr.pizzeria.admin.metier.UtilisateurService;
-import fr.pizzeria.model.Utilisateur;
+import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet{
@@ -27,6 +26,7 @@ public class LoginController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		if( request.getSession().getAttribute("user") != null ){
 			response.sendRedirect(response.encodeRedirectURL("./admin/home"));
 		} else {

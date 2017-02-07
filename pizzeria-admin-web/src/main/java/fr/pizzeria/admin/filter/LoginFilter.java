@@ -1,9 +1,11 @@
 package fr.pizzeria.admin.filter;
 
+import fr.pizzeria.admin.metier.CommandeService;
 import fr.pizzeria.admin.metier.UtilisateurService;
 import fr.pizzeria.model.Utilisateur;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,9 @@ public class LoginFilter implements Filter {
 	@EJB
 	private UtilisateurService utilisateurService;
 
+	@Inject
+	private CommandeService commandeService;
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {}
 
@@ -26,6 +31,8 @@ public class LoginFilter implements Filter {
 		Utilisateur user = (Utilisateur) session.getAttribute("user");
 
 		if(user!=null){
+
+		    session.setAttribute("lastCommands", commandeService.getThreeLasts());
 			session.setAttribute("user", user);
 			chain.doFilter(request, response);
 		} else {
