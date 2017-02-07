@@ -28,8 +28,10 @@ import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Menu;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.Promotion;
 import fr.pizzeria.model.Statut;
 import fr.pizzeria.spring.web.repository.ILivreurRepository;
+import fr.pizzeria.spring.web.repository.IPromotionRepository;
 import fr.pizzeria.spring.web.resource.BoissonResource;
 import fr.pizzeria.spring.web.resource.ClientResource;
 import fr.pizzeria.spring.web.resource.CommandeRessource;
@@ -37,6 +39,7 @@ import fr.pizzeria.spring.web.resource.DessertResource;
 import fr.pizzeria.spring.web.resource.EntreeResource;
 import fr.pizzeria.spring.web.resource.MenuResource;
 import fr.pizzeria.spring.web.resource.PizzaResource;
+import fr.pizzeria.spring.web.resource.PromotionRessource;
 
 /**
  * Application PizzeriaApp démarré via Spring Boot.
@@ -97,11 +100,22 @@ public class PizzeriaApp {
 	@Autowired
 	ILivreurRepository liveurDao;
 
+	@Autowired
+	private PromotionRessource promotionRessource;
+	
+	
 	@PostConstruct
 	public void setDatabase() {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String mode = bundle.getString("post.construct.mode");
 		if ("dev".equals(mode)) {
+			
+			Promotion promo1 = new Promotion("special Noel","noel2017", "monetaire", 10);
+			Promotion promo2 = new Promotion("special lundi","I<3monday", "monetaire", 20);
+			Promotion promo3 = new Promotion("special saint valentin","<3<3", "pourcentage", 10);
+			promotionRessource.ajoutPromotion(promo1);
+			promotionRessource.ajoutPromotion(promo2);
+			promotionRessource.ajoutPromotion(promo3);
 
 			Menu menu = new Menu("Menu enfant", new BigDecimal(10.20),
 					"http://www.mitango.restaurant/accueil/images/menu-kids.jpg", 0, 1, 1, 1);

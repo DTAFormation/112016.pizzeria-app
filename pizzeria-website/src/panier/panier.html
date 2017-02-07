@@ -28,8 +28,8 @@
                     <td>
                         <label class="col-md-4 control-label" for="">Code Promotion</label>
                         <div class="col-md-4">
-                            <input ng-model="code" id="promotion" name="promotion" type="text" placeholder="Code" class="form-control input-md">
-                            <button class="btn btn-danger" ng-onclick="$ctrl.VerifPromo()">Appliquer</button>
+                            <input ng-model="$ctrl.code" id="promotion" name="promotion" type="text" placeholder="Code" class="form-control input-md">
+                            <button class="btn btn-danger" ng-click="$ctrl.VerifPromo()">Appliquer</button> {{$ctrl.message}}
                         </div>
 
                     </td>
