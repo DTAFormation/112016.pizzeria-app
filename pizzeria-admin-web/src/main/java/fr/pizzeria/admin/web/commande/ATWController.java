@@ -1,5 +1,9 @@
 package fr.pizzeria.admin.web.commande;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+
 /**
  * Created by Fawzi NASSIM on 07/02/2017.
  * API TO WEBSOCKET Controller
@@ -7,5 +11,9 @@ package fr.pizzeria.admin.web.commande;
  * WHEN CHANGED ARE MADE BY ANGULAR CLIENTS
  * THEN, PUSHES DATA THROUGH WEBSOCKET TO NOTICE EVERY ADMIN Connected
  */
-public class ATWController {
+
+@WebServlet("/admin/commandes/add")
+public class ATWController extends HttpServlet {
+
+
 }
