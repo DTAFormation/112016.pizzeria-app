@@ -35,11 +35,8 @@ public class CommandeService {
 	}
 
 	public void update(Commande commande, Integer id) {
-		findAll().forEach(Commande -> {
-			if (Commande.getId() == id) {
-				em.merge(commande);
-			}
-		});
+		em.merge(commande);
+
 	}
 
 	public void changeStatut(Integer id, Statut statut) {
@@ -58,5 +55,9 @@ public class CommandeService {
 			statuts.put(c.name(), c.getLabel());
 		});
 		return statuts;
+	}
+
+	public Commande getCommande(Integer id) {
+		return em.find(Commande.class, id);
 	}
 }
