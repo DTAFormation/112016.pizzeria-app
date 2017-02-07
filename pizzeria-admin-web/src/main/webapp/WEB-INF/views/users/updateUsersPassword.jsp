@@ -58,11 +58,11 @@ function validation(f) {
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block well">
-					<c:set var="client" scope="session" value="${param.client}" />
+					<c:set var="user" scope="session" value="${param.user}" />
 					<form class="form-horizontal" method="post"
 						onSubmit="return validation(this)">
 
-						<h2>Changer le mot de passe du client</h2>
+						<h2>Changer le mot de passe de l'utilisateur</h2>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Mot de Passe</label>
@@ -115,7 +115,7 @@ function validation(f) {
 							<div class="col-md-4">
 
 								<input type="submit" class="btn btn-primary"> <a
-									href="<c:url value="/admin/clients/list"/>"
+									href="<c:url value="/admin/users/list"/>"
 									class="btn btn-danger">Annuler</a>
 							</div>
 						</div>

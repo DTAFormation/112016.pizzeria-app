@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web.client;
+package fr.pizzeria.admin.web.utilisateur;
 
 import java.io.IOException;
 
@@ -10,23 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.metier.ClientService;
-import fr.pizzeria.model.Client;
+import fr.pizzeria.admin.metier.UtilisateurService;
+import fr.pizzeria.model.Utilisateur;
 
-@WebServlet("/admin/clients/update/password")
-public class UpdateClientPasswordController extends HttpServlet {
+@WebServlet("/admin/users/update/password")
+public class UpdateUserPassword extends HttpServlet {
 
 	@EJB
-	private ClientService clientService;
+	private UtilisateurService uService;
 
-	private static final String VUE_UPDATE_CLIENT_PASSWORD = "/WEB-INF/views/clients/updateClientsPassword.jsp";
+	private static final String VUE_UPDATE_USER_PASSWORD = "/WEB-INF/views/users/updateUsersPassword.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
-		Client c = clientService.retrieveClient(id);
-		req.setAttribute("client", c);
-		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_UPDATE_CLIENT_PASSWORD);
+		Utilisateur u = uService.getUtilisateurById(id);
+		req.setAttribute("user", u);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_UPDATE_USER_PASSWORD);
 		dispatcher.forward(req, resp);
 	}
 
@@ -36,11 +36,10 @@ public class UpdateClientPasswordController extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String mdp = req.getParameter("hashOutputText").toUpperCase();
 
-		Client c = new Client();
-		c.setMotDePasse(mdp);
-		clientService.updateClientPass(id, c);
+		Utilisateur u = new Utilisateur();
+		u.setMotDePasse(mdp);
+		uService.updateClientPass(id, u);
 
-		resp.sendRedirect(req.getContextPath() + "/admin/clients/list");
+		resp.sendRedirect(req.getContextPath() + "/admin/users/list");
 	}
-
 }
