@@ -68,23 +68,25 @@ public class CommandeRessource {
 		ArrayList<Dessert> desserts = new ArrayList<>();
 		ArrayList<CommandeMenu> menus = new ArrayList<>();
 		for (CommandeClient commandeproduit : commandeClient) {
-			switch(commandeproduit.getType()){
-			case "pizza":
-				pizzas.add(pizzaResource.listAllPizzas().stream()
-						.filter(p -> p.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "boisson":
-				boissons.add(boissonResource.findAll().stream()
-						.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "entree":
-				entrees.add(entreeResource.findAll().stream()
-						.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "dessert":
-				desserts.add(dessertResource.findAll().stream()
-						.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
+			for (int i=0; i<commandeproduit.getQuantite(); i++) {
+				switch(commandeproduit.getType()){
+				case "pizza":
+					pizzas.add(pizzaResource.listAllPizzas().stream()
+							.filter(p -> p.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "boisson":
+					boissons.add(boissonResource.findAll().stream()
+							.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "entree":
+					entrees.add(entreeResource.findAll().stream()
+							.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "dessert":
+					desserts.add(dessertResource.findAll().stream()
+							.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				}
 			}
 		}
 		Client client = clientDao.findAll().stream().filter(p -> p.getId().equals(commandeClient.get(0).getIdProduit()))
