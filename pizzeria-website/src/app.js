@@ -16,6 +16,7 @@ import { Panier } from './panier/panier.component';
 import { Pizza } from './pizza/pizza.component';
 import { Boisson } from './boisson/boisson.component';
 import { Rating } from './rating/rating.component';
+import { PageBox } from './pageBox/page-box.component';
 
 import { CommandeEnvoye } from './commandeEnvoye/commande-envoye.component';
 import { MonCompte } from './moncompte/moncompte.component';
@@ -62,6 +63,7 @@ angular.module('pizzeria', [
     .component('inscription', Inscription)
     .component('suggestionPanier', SuggestionPanier)
     .component('rating', Rating)
+    .component('pageBox', PageBox)
 
 .service('PizzaService', PizzaService)
     .service('BoissonService', BoissonService)

@@ -24,7 +24,6 @@ class NavbarController {
 }
 
 export const Navbar = {
-
     template: require('./navbar.html'),
     controller: NavbarController
 }

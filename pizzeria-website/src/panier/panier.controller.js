@@ -11,15 +11,16 @@ export default class PanierController {
         this.hip = 0;
         this.promo = 0; //implementer les promotions en BDD
         this.code;
+        this.nbProduitList = this.produitList.length;
     }
 
     $onInit() {
-
 
         this.panier = this.PanierService.getPanier();
         //   this.promProduits = this.PizzaService.getPizzas();
         this.promProduits = this.PanierService.getProduits();
         this.refreshPanier();
+
     }
 
 
@@ -32,16 +33,13 @@ export default class PanierController {
         this.total = 0;
 
         switch (this.promo) {
-
             case 0:
-
                 this.produitList.forEach((p) => {
                     this.total += p.prix * p.quantite;
                 });
                 break;
 
             default:
-
                 this.produitList.forEach((p) => {
                     this.total += p.prix * p.quantite;
                 });
@@ -57,12 +55,14 @@ export default class PanierController {
 
         this.CommandeService.majQuantiteCache(produit);
         this.calculTotal();
+
     }
 
     supprimerDuPanier(produit) {
 
         this.CommandeService.supprimerProduitDuCache(produit);
         this.refreshPanier();
+
     }
 
     refreshPanier() {
@@ -79,9 +79,6 @@ export default class PanierController {
             });
 
             this.calculTotal();
-
-
-
             this.CommandeService.majCommande(this.panier, this.total);
 
         });
