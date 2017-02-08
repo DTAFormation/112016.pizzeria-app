@@ -20,7 +20,7 @@
                         {{produit.nom}}
                         <br>
                         <span ng-if="produit.type=='pizza'"> {{produit.ingredients}} </span>
-                        <span ng-if="produit.type=='menu'"></span>
+                        <span ng-if="produit.type=='menu'">
                         <ul ng-if="produit.entrees.length>0">
                             <li ng-repeat="entree in produit.entrees track by $index">{{entree.quantite}} {{entree.nom}}</li>
                         </ul>
@@ -33,6 +33,7 @@
                         <ul ng-if="produit.boissons.length>0">
                             <li ng-repeat="boisson in produit.boissons track by $index">{{boisson.quantite}} {{boisson.nom}}</li>
                         </ul>
+                        </span>
                     </td>
                     <td> {{$ctrl.UtilService.getPrix(produit.prix,"fr","eur")}}</td>
                     <td><input ng-if="produit.type!='menu'" ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
