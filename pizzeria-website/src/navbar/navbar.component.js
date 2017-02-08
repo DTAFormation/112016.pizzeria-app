@@ -20,7 +20,9 @@ class NavbarController {
     logoutUser() {
         localStorage.removeItem("userAuth");
         this.userAuth = {};
-        this.$location.path('/')
+        if(this.$location.path().includes('/moncompte/')){
+            this.$location.path('/')
+        }
     }
     
 }
