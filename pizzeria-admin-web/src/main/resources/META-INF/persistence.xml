@@ -12,5 +12,6 @@
 		<class>fr.pizzeria.model.Utilisateur</class>
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Ingredient</class>
+		<class>fr.pizzeria.model.Entree</class>
 	</persistence-unit>
 </persistence>
