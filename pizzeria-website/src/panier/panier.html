@@ -34,7 +34,6 @@
                             <li ng-repeat="boisson in produit.boissons track by $index">{{boisson.quantite}} {{boisson.nom}}</li>
                         </ul>
                     </td>
-                    <td ng-class="{active:produit.type!='menu'}"></td>
                     <td> {{$ctrl.UtilService.getPrix(produit.prix,"fr","eur")}}</td>
                     <td><input ng-if="produit.type!='menu'" ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
                     <td><button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>
