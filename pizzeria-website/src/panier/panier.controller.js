@@ -11,7 +11,6 @@ export default class PanierController {
         this.BoissonService = BoissonService;
         this.PromotionService = PromotionService;
         this.DessertService = DessertService;
-        this.hip = 0;
         this.promotionMontant;
         this.promotionType;
         this.code;
@@ -86,7 +85,9 @@ export default class PanierController {
                 });
 
 
+
         }
+        this.CommandeService.majCommande(this.panier, this.total);
     }
 
     majQuantite(produit) {
@@ -108,9 +109,9 @@ export default class PanierController {
             this.produitList = listeProd.filter(p => {
                 return _.find(this.panier, (e) => {
                     p.quantite = e.quantite;
-                    if(e.pizzas!==undefined){
+                    if (e.pizzas !== undefined) {
                         p.pizzas = [];
-                        e.pizzas.forEach(product =>{
+                        e.pizzas.forEach(product => {
                             this.PizzaService.getPizzaById(product.idProduit).then(productP => {
                                 let productL = productP;
                                 productL.quantite = product.quantite;
@@ -118,9 +119,9 @@ export default class PanierController {
                             });
                         });
                     }
-                    if(e.entrees!==undefined){
+                    if (e.entrees !== undefined) {
                         p.entrees = [];
-                        e.entrees.forEach(product =>{
+                        e.entrees.forEach(product => {
                             this.EntreeService.getEntreesById(product.idProduit).then(productP => {
                                 let productL = productP;
                                 productL.quantite = product.quantite;
@@ -128,9 +129,9 @@ export default class PanierController {
                             });
                         });
                     }
-                    if(e.desserts!==undefined){
+                    if (e.desserts !== undefined) {
                         p.desserts = [];
-                        e.desserts.forEach(product =>{
+                        e.desserts.forEach(product => {
                             this.DessertService.getdessertsById(product.idProduit).then(productP => {
                                 let productL = productP;
                                 productL.quantite = product.quantite;
@@ -138,9 +139,9 @@ export default class PanierController {
                             });
                         });
                     }
-                    if(e.boissons!==undefined){
+                    if (e.boissons !== undefined) {
                         p.boissons = [];
-                        e.boissons.forEach(product =>{
+                        e.boissons.forEach(product => {
                             this.BoissonService.getBoissonsById(product.idProduit).then(productP => {
                                 let productL = productP;
                                 productL.quantite = product.quantite;
@@ -152,8 +153,6 @@ export default class PanierController {
                 });
             });
             this.calculTotal();
-
-
             this.CommandeService.majCommande(this.panier, this.total);
 
         });
