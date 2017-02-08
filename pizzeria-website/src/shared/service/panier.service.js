@@ -64,6 +64,7 @@ export class PanierService {
         menuPanier.type = "menu";
         menuPanier.idProduit = menu.id;
         menuPanier.quantite = 1;
+        menuPanier.entrees = [];
         if(entrees!= undefined){
             for(var key in entrees){
                 let existEntree = _.find(menuPanier.entrees, e => (e.idProduit === entrees[key].id && e.type === entrees[key].type));
@@ -74,11 +75,11 @@ export class PanierService {
                     entree.type = entrees[key].type;
                     entree.idProduit = entrees[key].id;
                     entree.quantite = 1;
-                    menuPanier.entrees = [];
                     menuPanier.entrees.push(entree);
                 }
             }
         }
+        menuPanier.pizzas = [];
         if(pizzas!= undefined){
             for(var key in pizzas){
                 let existPizza = _.find(menuPanier.pizzas, e => (e.idProduit === pizzas[key].id && e.type === pizzas[key].type));
@@ -89,12 +90,11 @@ export class PanierService {
                     pizza.type = pizzas[key].type;
                     pizza.idProduit = pizzas[key].id;
                     pizza.quantite = 1;
-                    menuPanier.pizzas = [];
                     menuPanier.pizzas.push(pizza);
                 }
             }
         }
-                console.log(menuPanier.pizzas);
+        menuPanier.desserts = [];
         if(desserts!= undefined){
             for(var key in desserts){
                 let existDessert = _.find(menuPanier.desserts, e => (e.idProduit === desserts[key].id && e.type === desserts[key].type));
@@ -105,11 +105,11 @@ export class PanierService {
                     dessert.type = desserts[key].type;
                     dessert.idProduit = desserts[key].id;
                     dessert.quantite = 1;
-                    menuPanier.desserts = [];
                     menuPanier.desserts.push(dessert);
                 }
             }
         }
+        menuPanier.boissons = [];
         if(boissons!= undefined){
             for(var key in boissons){
                 let existBoisson = _.find(menuPanier.boissons, e => (e.idProduit === boissons[key].id && e.type === boissons[key].type));
@@ -120,7 +120,6 @@ export class PanierService {
                     boisson.type = boissons[key].type;
                     boisson.idProduit = boissons[key].id;
                     boisson.quantite = 1;
-                    menuPanier.boissons = [];
                     menuPanier.boissons.push(boisson);
                 }
             }
