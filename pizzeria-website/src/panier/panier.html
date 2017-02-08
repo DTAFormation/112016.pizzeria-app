@@ -6,7 +6,7 @@
                 <tr>
                     <th></th>
                     <th></th>
-                    <th> Nom & Ingrédients</th>
+                    <th> Nom </th>
                     <th> Prix </th>
                     <th> Quantité </th>
                     <th></th>
@@ -16,7 +16,25 @@
                 <tr ng-repeat="produit in $ctrl.produitList track by $index">
                     <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="250"></td>
                     <td>{{produit.type | uppercase}}</td>
-                    <td> {{produit.nom}} <br> <span ng-if="produit.type=='pizza'"> {{produit.ingredients}} </span></td>
+                    <td>
+                        {{produit.nom}}
+                        <br>
+                        <span ng-if="produit.type=='pizza'"> {{produit.ingredients}} </span>
+                        <span ng-if="produit.type=='menu'"></span>
+                        <ul ng-if="produit.entrees.length>0">
+                            <li ng-repeat="entree in produit.entrees track by $index">{{entree.quantite}} {{entree.nom}}</li>
+                        </ul>
+                        <ul ng-if="produit.pizzas.length>0">
+                            <li ng-repeat="pizza in produit.pizzas track by $index">{{pizza.quantite}} {{pizza.nom}}</li>
+                        </ul>
+                        <ul ng-if="produit.desserts.length>0">
+                            <li ng-repeat="dessert in produit.desserts track by $index">{{dessert.quantite}} {{dessert.nom}}</li>
+                        </ul>
+                        <ul ng-if="produit.boissons.length>0">
+                            <li ng-repeat="boisson produit.boissons track by $index">{{boisson.quantite}} {{boisson.nom}}</li>
+                        </ul>
+                    </td>
+                    <td ng-class="{active:produit.type!='menu'}"></td>
                     <td> {{$ctrl.UtilService.getPrix(produit.prix,"fr","eur")}}</td>
                     <td><input ng-if="produit.type!='menu'" ng-click="$ctrl.majQuantite(produit)" ng-change="$ctrl.majQuantite(produit)" type="number" name="quantity" min="1" max="99" ng-model="produit.quantite"></td>
                     <td><button ng-click="$ctrl.supprimerDuPanier(produit)" type="button" class="btn btn-danger"><span>Supprimer</span></button></td>

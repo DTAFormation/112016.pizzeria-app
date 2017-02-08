@@ -68,14 +68,14 @@ export class PanierService {
             for(var key in entrees){
                 let existEntree = _.find(menuPanier, e => (e.idProduit === entrees[key].id && e.type === entrees[key].type));
                 if (existEntree !== undefined) {
-                    ++existEntree.quantite;
+                    ++existEntrees.quantite;
                 } else {
                     let entree = {};
                     entree.type = entrees[key].type;
                     entree.idProduit = entrees[key].id;
                     entree.quantite = 1;
-                    menuPanier.entree = [];
-                    menuPanier.entree.push(entree);
+                    menuPanier.entrees = [];
+                    menuPanier.entrees.push(entree);
                 }
             }
         }
@@ -83,14 +83,14 @@ export class PanierService {
             for(var key in pizzas){
                 let existPizza = _.find(menu, e => (e.idProduit === pizzas[key].id && e.type === pizzas[key].type));
                 if (existPizza !== undefined) {
-                    ++existPizza.quantite;
+                    ++existPizzas.quantite;
                 } else {
                     let pizza = {};
                     pizza.type = pizzas[key].type;
                     pizza.idProduit = pizzas[key].id;
                     pizza.quantite = 1;
-                    menuPanier.pizza = [];
-                    menuPanier.pizza.push(pizza);
+                    menuPanier.pizzas = [];
+                    menuPanier.pizzas.push(pizza);
                 }
             }
         }
@@ -98,14 +98,14 @@ export class PanierService {
             for(var key in desserts){
                 let existDessert = _.find(menu, e => (e.idProduit === desserts[key].id && e.type === desserts[key].type));
                 if (existDessert !== undefined) {
-                    ++existDessert.quantite;
+                    ++existDesserts.quantite;
                 } else {
                     let dessert = {};
                     dessert.type = desserts[key].type;
                     dessert.idProduit = desserts[key].id;
                     dessert.quantite = 1;
-                    menuPanier.dessert = [];
-                    menuPanier.dessert.push(dessert);
+                    menuPanier.desserts = [];
+                    menuPanier.desserts.push(dessert);
                 }
             }
         }
@@ -113,14 +113,14 @@ export class PanierService {
             for(var key in boissons){
                 let existBoisson = _.find(menu, e => (e.idProduit === boissons[key].id && e.type === boissons[key].type));
                 if (existBoisson !== undefined) {
-                    ++existBoisson.quantite;
+                    ++existBoissons.quantite;
                 } else {
                     let boisson = {};
                     boisson.type = boissons[key].type;
                     boisson.idProduit = boissons[key].id;
                     boisson.quantite = 1;
-                    menuPanier.boisson = [];
-                    menuPanier.boisson.push(boisson);
+                    menuPanier.boissons = [];
+                    menuPanier.boissons.push(boisson);
                 }
             }
         }

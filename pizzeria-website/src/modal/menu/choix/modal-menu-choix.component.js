@@ -313,6 +313,17 @@ class ModalMenuChoixController {
     valider(){
         this.PanierService.ajouterMenu(this.menu, this.entreesChoix, this.pizzasChoix, this.dessertsChoix, this.boissonsChoix);
         this.reset();
+        $('#menuChoixModal').modal('toggle');
+    }
+
+    menuOk(){
+        if(this.menu !== undefined){
+            this.var1 = this.menu.nbEntree - this.entreesChoix.length;
+            this.var2 = this.menu.nbPizza - this.pizzasChoix.length;
+            this.var3 = this.menu.nbDessert - this.dessertsChoix.length;
+            this.var4 = this.menu.nbBoisson - this.boissonsChoix.length;
+        }
+            return this.var1+this.var2+this.var3+this.var4!==0;
     }
 
 }
