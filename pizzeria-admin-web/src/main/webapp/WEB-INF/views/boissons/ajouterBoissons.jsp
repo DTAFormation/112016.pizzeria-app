@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="prenom">Prix</label>
 							<div class="col-md-4">
-								<input id="prix" name="prix" type="text"
+								<input id="prix" name="prix" type="number" step="any"
 									placeholder=" Prix de la boisson" class="form-control input-md"
 									required>
 							</div>
