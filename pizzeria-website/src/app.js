@@ -62,7 +62,6 @@ angular.module('pizzeria', [
     .component('menu', Menu)
     .component('inscription', Inscription)
     .component('navbar', Navbar)
-    .component('inscription', Inscription)
     .component('suggestionPanier', SuggestionPanier)
     .component('rating', Rating)
 
