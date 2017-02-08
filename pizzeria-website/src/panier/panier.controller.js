@@ -2,9 +2,10 @@ import _ from 'lodash'
 
 export default class PanierController {
 
-    constructor(UtilService, PanierService, PizzaService, CommandeService, BoissonService, DessertService, PromotionService) {
+    constructor(UtilService, PanierService, EntreeService, PizzaService, CommandeService, BoissonService, DessertService, PromotionService) {
         this.UtilService = UtilService;
         this.PanierService = PanierService;
+        this.EntreeService = EntreeService;
         this.PizzaService = PizzaService;
         this.CommandeService = CommandeService;
         this.BoissonService = BoissonService;
@@ -120,7 +121,7 @@ export default class PanierController {
                     if(e.entrees!==undefined){
                         p.entrees = [];
                         e.entrees.forEach(product =>{
-                            this.EntreeService.getEntreeById(product.idProduit).then(productP => {
+                            this.EntreeService.getEntreesById(product.idProduit).then(productP => {
                                 let productL = productP;
                                 productL.quantite = product.quantite;
                                 p.entrees.push(productL);

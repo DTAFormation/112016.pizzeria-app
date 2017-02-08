@@ -66,9 +66,9 @@ export class PanierService {
         menuPanier.quantite = 1;
         if(entrees!= undefined){
             for(var key in entrees){
-                let existEntree = _.find(menuPanier, e => (e.idProduit === entrees[key].id && e.type === entrees[key].type));
+                let existEntree = _.find(menuPanier.entrees, e => (e.idProduit === entrees[key].id && e.type === entrees[key].type));
                 if (existEntree !== undefined) {
-                    ++existEntrees.quantite;
+                    ++existEntree.quantite;
                 } else {
                     let entree = {};
                     entree.type = entrees[key].type;
@@ -81,9 +81,9 @@ export class PanierService {
         }
         if(pizzas!= undefined){
             for(var key in pizzas){
-                let existPizza = _.find(menu, e => (e.idProduit === pizzas[key].id && e.type === pizzas[key].type));
+                let existPizza = _.find(menuPanier.pizzas, e => (e.idProduit === pizzas[key].id && e.type === pizzas[key].type));
                 if (existPizza !== undefined) {
-                    ++existPizzas.quantite;
+                    ++existPizza.quantite;
                 } else {
                     let pizza = {};
                     pizza.type = pizzas[key].type;
@@ -94,11 +94,12 @@ export class PanierService {
                 }
             }
         }
+                console.log(menuPanier.pizzas);
         if(desserts!= undefined){
             for(var key in desserts){
-                let existDessert = _.find(menu, e => (e.idProduit === desserts[key].id && e.type === desserts[key].type));
+                let existDessert = _.find(menuPanier.desserts, e => (e.idProduit === desserts[key].id && e.type === desserts[key].type));
                 if (existDessert !== undefined) {
-                    ++existDesserts.quantite;
+                    ++existDessert.quantite;
                 } else {
                     let dessert = {};
                     dessert.type = desserts[key].type;
@@ -111,9 +112,9 @@ export class PanierService {
         }
         if(boissons!= undefined){
             for(var key in boissons){
-                let existBoisson = _.find(menu, e => (e.idProduit === boissons[key].id && e.type === boissons[key].type));
+                let existBoisson = _.find(menuPanier.boissons, e => (e.idProduit === boissons[key].id && e.type === boissons[key].type));
                 if (existBoisson !== undefined) {
-                    ++existBoissons.quantite;
+                    ++existBoisson.quantite;
                 } else {
                     let boisson = {};
                     boisson.type = boissons[key].type;

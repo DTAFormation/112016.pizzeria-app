@@ -31,7 +31,7 @@
                             <li ng-repeat="dessert in produit.desserts track by $index">{{dessert.quantite}} {{dessert.nom}}</li>
                         </ul>
                         <ul ng-if="produit.boissons.length>0">
-                            <li ng-repeat="boisson produit.boissons track by $index">{{boisson.quantite}} {{boisson.nom}}</li>
+                            <li ng-repeat="boisson in produit.boissons track by $index">{{boisson.quantite}} {{boisson.nom}}</li>
                         </ul>
                     </td>
                     <td ng-class="{active:produit.type!='menu'}"></td>
