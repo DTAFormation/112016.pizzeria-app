@@ -109,7 +109,7 @@
 									<div class="form-group has-danger">
 										<label class="form-control-label" for="prix">* Prix :</label>
 										<span class="input-group-addon">$</span> <input
-											pattern="\d+(\.)?\d+" required type="text" name="prix"
+											pattern="\d+(\.)?\d+" required type="number" step="any" name="prix"
 											id="prix" value="<c:out value="${ pizza.prix }"/>"
 											class="form-control form-control-danger" />
 										<div class="form-control-feedback">
@@ -121,7 +121,7 @@
 								<c:otherwise>
 									<div class="form-group">
 										<label class="form-control-label" for="prix">* Prix :</label>
-										<input pattern="\d+(\.)?\d+" required type="text" name="prix"
+										<input pattern="\d+(\.)?\d+" required type="number" step="any" name="prix"
 											id="prix" value="<c:out value="${ pizza.prix }"/>"
 											class="form-control" />
 									</div>
