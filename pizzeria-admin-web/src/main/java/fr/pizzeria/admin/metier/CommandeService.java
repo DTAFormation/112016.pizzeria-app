@@ -56,8 +56,4 @@ public class CommandeService {
 		});
 		return statuts;
 	}
-
-	public Commande getCommande(Integer id) {
-		return em.find(Commande.class, id);
-	}
 }

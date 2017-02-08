@@ -46,7 +46,6 @@ public class EditerCommandeController extends HttpServlet {
 		req.setAttribute("pizzas", pizzaService.findAll());
 		req.setAttribute("clients", clientService.listerClients());
 		req.setAttribute("livreurs", livreurService.findAll());
-		req.setAttribute("commande", commandeService.findAll().get(3));
 		req.setAttribute("commande", commandeService.findAll().get(id));
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(VUE_AJOUTER_COMMANDE);
@@ -57,6 +56,7 @@ public class EditerCommandeController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idCommande = req.getParameter("id");
+
 		Commande commande = commandeService.get(Integer.parseInt(idCommande));
 
 		Integer clientId = Integer.parseInt(req.getParameter("clientId"));

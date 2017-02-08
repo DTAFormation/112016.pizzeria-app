@@ -26,12 +26,14 @@
 							<td>Total</td>
 							<td>Statut</td>
 						</tr>
-				
+					
 						<c:forEach var="commande" items="${listeCommandes}">
 							<tr>
 								<td><c:out value="${ commande.id }"/></td>
-								<td><c:out value="${ commande.clientId.nom }"/></td>
-								<td><c:out value="${ commande.livreurId.nom }"/></td>
+								
+								<td><c:out value="${ commande.clientId.nom}"/></td>
+								<td><c:out value="${ commande.livreurId.nom}"/></td>
+								
 								<td> <select name="pizzas" id="pizzas"
 										style="width: 210px;" size="6">
 											<c:forEach var="pizza" items="${ commande.pizzas }">
@@ -40,9 +42,11 @@
 												</option>
 											</c:forEach>
 									</select></td>
+								
 								<td><c:out value="${ commande.total }"/></td>
 								<td><c:out value="${ commande.statut.label }"/></td>
 								<td><a href="<c:url value="/admin/commandes/edit?id=${commande.id}"/>" class="btn btn-primary">Editer</a></td>
+								
 								<td>
 									<form method="post" action="delete">
 										<input type="hidden" name="id" value="${commande.id}">
