@@ -1,7 +1,7 @@
 import css from './commande.component.css';
 
 export default class CommandeController {
-    constructor(CommandeService, PizzaService, PanierService, BoissonService, DessertService, EntreeService, UtilService) {
+    constructor(CommandeService, MenuService, PizzaService, PanierService, BoissonService, DessertService, EntreeService, UtilService) {
 
         this.CommandeService = CommandeService;
         this.PizzaService = PizzaService;
@@ -10,11 +10,13 @@ export default class CommandeController {
         this.PanierService = PanierService;
         this.EntreeService = EntreeService;
         this.UtilService = UtilService;
+        this.MenuService = MenuService;
         this.total=0;
         this.panierPizza = [];
         this.panierBoisson = [];
         this.panierEntree = [];
         this.panierDessert = [];
+        this.panierMenu = [];
         this.idClient = 2;
         this.aEmporter = false;
         this.aLivrer = true;
@@ -64,6 +66,14 @@ export default class CommandeController {
                     .then((data) => {
                         data.quantite = this.panier[index].quantite;
                         this.panierEntree.push(data);
+                    })
+            }
+            
+            if (this.panier[index].type === "menu") {
+                this.MenuService.getMenuById(this.panier[index].idProduit)
+                    .then((data) => {
+                        data.quantite = this.panier[index].quantite;
+                        this.panierMenu.push(data);
                     })
             }
 

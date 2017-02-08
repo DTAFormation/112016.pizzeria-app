@@ -45,6 +45,12 @@ public class CommandeRessource {
 	private DessertResource dessertResource;
 
 	@Autowired
+	private CommandeMenuRessource commandeMenuResource;
+	
+	@Autowired
+	private MenuResource menuResource;
+
+	@Autowired
 	IClientRepository clientDao;
 
 	@Autowired
@@ -85,6 +91,10 @@ public class CommandeRessource {
 				case "dessert":
 					desserts.add(dessertResource.findAll().stream()
 							.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "menu":
+					/*menus.add(menuResource.findAll().stream()
+							.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());*/
 					break;
 				}
 			}
