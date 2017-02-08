@@ -29,15 +29,18 @@
                         <label class="col-md-4 control-label" for="">Code Promotion</label>
                         <div class="col-md-4">
                             <input ng-model="$ctrl.code" id="promotion" name="promotion" type="text" placeholder="Code" class="form-control input-md">
-                            <button class="btn btn-danger" ng-click="$ctrl.VerifPromo()">Appliquer</button> {{$ctrl.message}}
+                            <button class="btn btn-success" ng-click="$ctrl.VerifPromo()">Appliquer</button>
                         </div>
-
+                    </td>
+                    <td colspan="6" style="text-align:center;">
+                        <div>{{$ctrl.message}}</div>
                     </td>
                 </tr>
                 <tr>
-                    <th colspan="6" style="text-align:right;">TOTAL {{$ctrl.UtilService.getPrix($ctrl.total,"fr","eur")}} TTC
+                    <td colspan="6" style="text-align:right; font-weight: bold;">
+                        TOTAL {{$ctrl.UtilService.getPrix($ctrl.total,"fr","eur")}} TTC
                         <br><a class="btn btn-primary" href="/commande">Valider la Commande</a>
-                    </th>
+                    </td>
                 </tr>
             </tfoot>
         </table>

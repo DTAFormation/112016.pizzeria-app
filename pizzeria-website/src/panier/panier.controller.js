@@ -9,67 +9,50 @@ export default class PanierController {
         this.CommandeService = CommandeService;
         this.BoissonService = BoissonService;
         this.PromotionService = PromotionService;
-        this.hip = 0;
         this.promotionMontant;
         this.promotionType;
-        // this.promotionIsValid;
         this.code;
         this.message;
     }
 
     $onInit() {
         this.panier = this.PanierService.getPanier();
-        //   this.promProduits = this.PizzaService.getPizzas();
         this.promProduits = this.PanierService.getProduits();
         this.refreshPanier();
         this.promotions = this.PromotionService.getPromotions();
-        // console.log("=====>hello");
 
     }
 
 
     VerifPromo() {
-        //console.log("====>Verif Promo " + this.code);
         if (typeof this.code !== 'undefined') {
-            // console.log("====>Voici le code  Promo: " + this.code);
             this.promotions.
             then(listePromotion => {
                 this.listePromotion = listePromotion;
-                console.log(this.listePromotion);
                 this.promotion = listePromotion.find(p => p.code === this.code);
-                //console.log("====>Promotion est: " + this.promotion);
                 if (typeof this.promotion !== 'undefined') {
-                    this.message = "Code Valide";
-                    //this.promotionIsValid = true;
-                    console.log("====>Code promo valide ");
                     this.promotionMontant = this.promotion.montant;
                     this.promotionType = this.promotion.type;
-                    // console.log("!!!!!!!!!" + this.promotionType);
-                    // console.log(this.promotion);
+                    if (this.promotionType === "monetaire") {
+                        this.message = "Code Valide -" + this.promotionMontant + " € sur votre commande";
+                    } else {
+                        this.message = "Code Valide -" + this.promotionMontant + " % sur votre commande soit " +
+                            (((this.promotionMontant / 100) * this.total)).toFixed(2) + " € d'économie";
+                    }
                     this.calculTotal();
                 } else {
                     this.message = "Code Invalide";
-                    //this.promotionIsValid = false;
-                    console.log("====>Code promo invalide ");
                 }
             })
-        } else {
-            console.log("====>pas de code Promo");
-            //this.promotionIsValid = false;
-        }
+        } else {}
     }
 
     calculTotal() {
 
         this.total = 0;
-
-        console.log("Montant: " + this.promotionMontant);
-        console.log("Type: " + this.promotionType);
-
         switch (this.promotionType) {
 
             case "monetaire":
-                console.log("Monetaire");
 
                 this.produitList.forEach((p) => {
                     this.total += p.prix * p.quantite;
@@ -82,7 +65,7 @@ export default class PanierController {
 
                 break;
             case "pourcentage":
-                console.log("Pourcentage");
+
                 this.produitList.forEach((p) => {
                     this.total += p.prix * p.quantite;
                 });
@@ -129,7 +112,6 @@ export default class PanierController {
             
                     console.log(this.produitList);
             this.calculTotal();
-
 
 
             this.CommandeService.majCommande(this.panier, this.total);
