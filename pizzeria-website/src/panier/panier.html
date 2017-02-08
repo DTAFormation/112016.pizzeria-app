@@ -66,9 +66,9 @@
     </div>
 
     <div>
-        <suggestion-panier produits="$ctrl.produitList"></suggestion-panier>
+        <suggestion-panier ng-if="$ctrl.produitList.length > 0" produits="$ctrl.produitList"></suggestion-panier>
     </div>
-
+    
     <div ng-if="!$ctrl.produitList.length">
         Votre Panier est vide
     </div>
