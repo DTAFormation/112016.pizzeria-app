@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 
+import fr.pizzeria.spring.web.filter.AuthentificationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
@@ -62,7 +64,6 @@ public class PizzeriaApp {
 			}
 		};
 	}
-	
 
 	/**
 	 * Démarrage de l'application Web.
@@ -93,7 +94,7 @@ public class PizzeriaApp {
 	private EntreeResource entreeRessource;
 
 	@Autowired
-	ILivreurRepository liveurDao;
+	private ILivreurRepository liveurDao;
 
 	@PostConstruct
 	public void setDatabase() {

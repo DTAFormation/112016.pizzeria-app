@@ -58,11 +58,24 @@ angular.module('pizzeria', [
     .service('EntreeService', EntreeService)
     .service('UtilService', UtilService)
 
+    .factory('AuthInterceptor', function($q) {
+        return {
+            'request' : function(config) {
+                if(localStorage.userToken) {
+                    config.headers['Token'] = localStorage.userToken
+                }
+                return config || $q.when(config)
+            }
+        }
+    })
 
 
-.config(function($routeProvider, $locationProvider) {
 
-    $locationProvider.html5Mode(true);
+.config(function($routeProvider, $locationProvider, $httpProvider) {
+
+    $locationProvider.html5Mode(true)
+
+    $httpProvider.interceptors.push('AuthInterceptor')
 
     $routeProvider
         .when('/', {

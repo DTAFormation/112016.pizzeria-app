@@ -34,12 +34,19 @@ public class ClientAuth {
 	
 	public String decrypt(String encrypt) {
 		try {
+			System.out.println("Token : " + encrypt);
 			Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
 			cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(SECRET_KEY, KEY_ALGORITHM));
-			return new String(cipher.doFinal(Base64.decodeBase64(encrypt)), StandardCharsets.UTF_8);
+			String decryptedToken = new String(cipher.doFinal(Base64.decodeBase64(encrypt)), StandardCharsets.UTF_8);
+			System.out.println("Token after decrypt : " + decryptedToken);
+			return decryptedToken;
 		} catch (Exception e) {
 			log.warn(e.getMessage(), e);
 			throw new RuntimeException();
 		}
 	}
+
+	public void print() {
+	    System.out.println("bite");
+    }
 }

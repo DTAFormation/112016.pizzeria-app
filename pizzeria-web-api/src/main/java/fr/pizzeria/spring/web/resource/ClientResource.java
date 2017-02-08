@@ -45,7 +45,7 @@ public class ClientResource {
 	public Map<String,String> connecterClient(@RequestBody Client user) {
 		Map<String, String> map = new HashMap<>();
 		Client client = clientDao.findByEmailAndMotDePasse(user.getEmail(), user.getMotDePasse());
-		if(client != null) {
+		if (client != null) {
 			map.put("user_id", client.getId().toString());
 			map.put("user_nom", client.getNom());
 			map.put("user_prenom", client.getPrenom());
