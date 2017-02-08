@@ -13,13 +13,34 @@
 
 
 
+//function choisirPizza(liste_depart, liste_arrivee){
+//	for( i = 0; i < liste_depart.options.length; i++ ){
+//		 console.log("selected : ",liste_depart.options[i].selected)
+//		if( liste_depart.options[i].selected && liste_depart.options[i] != "" )	{
+//			o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
+//			liste_arrivee.options[liste_arrivee.options.length] = o;
+//		}
+//	}
+//}
+
+
 function choisirPizza(liste_depart, liste_arrivee){
+	let exist  = false;
+	let done = false;
+	let selected = true;
+	
 	for( i = 0; i < liste_depart.options.length; i++ ){
-		 console.log("selected : ",liste_depart.options[i].selected)
-		if( liste_depart.options[i].selected && liste_depart.options[i] != "" )	{
-			o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
-			liste_arrivee.options[liste_arrivee.options.length] = o;
-		}
+		 exist = verifSiExist(liste_depart[i].value, liste_arrivee)
+		 if(!exist){
+			 if( liste_depart.options[i].selected && liste_depart.options[i] != "" )	{
+					o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
+					liste_arrivee.options[liste_arrivee.options.length] = o;
+				}
+		 }else if(!exist && liste_depart.options[i].selected){
+			 alert( "l'ingrédient est déja présent");	 	
+			 break;
+		 }
+		
 	}
 }
 
@@ -59,7 +80,6 @@ function deplacer( liste_depart, liste_arrivee )
 		 for( i = 0; i < liste_depart.options.length; i++ )
 		 	{
 			 exist = verifSiExist(liste_depart[i].value, liste_arrivee)
-			  console.log("exist ", exist);	 
 			 if(!exist){
 				 if( liste_depart.options[i].selected && liste_depart.options[i] != "" )
 				 	{	
@@ -68,24 +88,47 @@ function deplacer( liste_depart, liste_arrivee )
 					 liste_depart.options[i] = null;
 					 i = i - 1 ;	
 					 done = true;
+					 selected = true;
 				 	}
 				 else
 				 	{
 					 selected = false;				
 				 	}
 			 }else{
-				 if(selected == liste_depart.options[i].selected){
+				 if(liste_depart.options[i].selected){
+					 
 					 alert( "l'ingrédient est déja présent");	 	
 					 break;
 				 }
 			
 			 }	
 		 }
-		 console.log("selected alert :", selected)
 		 if(!selected && !done){
 			 alert( "aucun element selectionne" );
 		 }	
 	 
+}
+
+function toutDeplacer(liste_depart, liste_arrivee){
+	let exist  = false;
+	
+		 for( i = 0; i < liste_depart.options.length; i++ )
+		 	{
+			 exist = verifSiExist(liste_depart[i].value, liste_arrivee)
+			 if(!exist){
+				 if(liste_depart.options[i] != "" )
+				 	{	
+					 o = new Option( liste_depart.options[i].text, liste_depart.options[i].value );
+					 liste_arrivee.options[liste_arrivee.options.length] = o;
+					 liste_depart.options[i] = null;
+					 i = i - 1 ;	
+					 done = true;
+				 	}
+
+			 }			
+			 	
+		 }
+	
 }
 
 function verifSiExist(item, list2){

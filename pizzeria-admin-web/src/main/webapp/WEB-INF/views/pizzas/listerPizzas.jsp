@@ -38,7 +38,7 @@
 								<td><c:out value="${ pizza.code }" /></td>
 								<td><c:out value="${ pizza.nom }" /></td>
 								<td><c:out value="${ pizza.categorie }" /></td>
-								<td><c:out value="${ pizza.prix }" /></td>
+								<td><c:out value="${ pizza.prix } €" /></td>
 								<td><c:out value="${ pizza.note }" /></td>
 								<td><c:out value="${ pizza.date }" /></td>
 								<td><c:forEach var="ingredient"
