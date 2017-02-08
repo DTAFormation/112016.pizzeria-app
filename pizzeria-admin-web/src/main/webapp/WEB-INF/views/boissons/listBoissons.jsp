@@ -37,7 +37,8 @@
 									<td>${boissons.id} </td>
 									<td>${boissons.nom}</td>
 									<td>${boissons.prix} €</td>
-									<td>${boissons.urlImage}</td>
+									<td><img width="80px" height="50px" src="<c:url value="${ boissons.urlImage }"/>"></td>
+									
 									<td>${boissons.categorie.nomCateg}</td>
 									<td><a
 										href="<c:url value="/admin/boissons/edit?id=${boissons.id}"/>"

@@ -36,7 +36,7 @@
 									<td>${dessert.id} </td>
 									<td>${dessert.nom}</td>
 									<td>${dessert.prix}</td>
-									<td>${dessert.urlImage}</td>
+									<td><img width="80px" height="50px" src="<c:url value="${ dessert.urlImage }"/>"></td>
 									<td><a
 										href="<c:url value="/admin/desserts/edit?id=${dessert.id}"/>"
 										class="btn btn-success">Editer</a></td>
