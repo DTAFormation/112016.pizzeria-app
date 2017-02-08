@@ -36,7 +36,7 @@
 								<tr>
 									<td>${boissons.id} </td>
 									<td>${boissons.nom}</td>
-									<td>${boissons.prix}</td>
+									<td>${boissons.prix} €</td>
 									<td>${boissons.urlImage}</td>
 									<td>${boissons.categorie.nomCateg}</td>
 									<td><a
