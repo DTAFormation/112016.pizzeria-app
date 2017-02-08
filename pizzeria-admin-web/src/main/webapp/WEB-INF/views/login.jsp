@@ -55,6 +55,7 @@ function validation(f) {
 		<form method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Se connecter</h2>
 
+
 			<label for="inputEmail" class="sr-only">Adresse email</label> <input
 				type="email" name="email" id="inputEmail" class="form-control"
 				placeholder="Adresse email" required> <label
@@ -98,6 +99,7 @@ function validation(f) {
 			</c:if>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Se
 				connecter</button>
+
 		</form>
 	</div>
 
