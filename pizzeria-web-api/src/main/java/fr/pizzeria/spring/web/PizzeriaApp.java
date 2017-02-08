@@ -202,7 +202,7 @@ public class PizzeriaApp {
 			dessertRessource.ajoutDessert(dessert);
 			dessertRessource.ajoutDessert(dessert2);
 			dessertRessource.ajoutDessert(d3);
-
+			dessertRessource.ajoutDessert(new Dessert("Cookie", new BigDecimal(1.80),"http://mobiledevmemo.com/wp-content/uploads/2014/12/173572251_Chocolate-chip-cookie.jpg",CategorieDessert.SANS_GLUTEN));
 			liveurDao.save(new Livreur("Toto", "jooj", "tomtom@gmail.com", "123456"));
 			liveurDao.save(new Livreur("Toto2", "jooj2", "tomtom22@gmail.com", "123456"));
 
