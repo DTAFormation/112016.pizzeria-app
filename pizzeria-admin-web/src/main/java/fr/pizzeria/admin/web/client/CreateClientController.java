@@ -14,13 +14,13 @@ import fr.pizzeria.admin.metier.ClientService;
 import fr.pizzeria.model.Client;
 
 @WebServlet("/admin/clients/create")
-public class CreateClientController extends HttpServlet{
-	
+public class CreateClientController extends HttpServlet {
+
 	@EJB
 	private ClientService clientService;
-	
+
 	private static final String VUE_CREER_CLIENT = "/WEB-INF/views/clients/createClients.jsp";
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_CREER_CLIENT);
@@ -33,17 +33,18 @@ public class CreateClientController extends HttpServlet{
 		String nom = req.getParameter("nom").toUpperCase();
 		String prenom = req.getParameter("prenom").toLowerCase();
 		String email = req.getParameter("email");
-		String mdp = req.getParameter("mdp");
-		
-		Client c = new Client();		
+		String adresse = req.getParameter("adresse");
+		String mdp = req.getParameter("hashOutputText").toUpperCase();
+
+		Client c = new Client();
 		c.setNom(nom);
 		c.setPrenom(prenom);
 		c.setEmail(email);
 		c.setMotDePasse(mdp);
-		clientService.createClient(c);	
-		
-		resp.sendRedirect(req.getContextPath()+"/admin/clients/list");		
-		//resp.setStatus(201);
+		c.setAdresse(adresse);
+		clientService.createClient(c);
+
+		resp.sendRedirect(req.getContextPath() + "/admin/clients/list");
 	}
 
 }

@@ -13,42 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.admin.metier.ClientService;
 import fr.pizzeria.model.Client;
 
-@WebServlet("/admin/clients/update")
-public class UpdateClientController extends HttpServlet {
+@WebServlet("/admin/clients/update/password")
+public class UpdateClientPasswordController extends HttpServlet {
 
 	@EJB
 	private ClientService clientService;
 
-	private static final String VUE_UPDATE_CLIENT = "/WEB-INF/views/clients/updateClients.jsp";
+	private static final String VUE_UPDATE_CLIENT_PASSWORD = "/WEB-INF/views/clients/updateClientsPassword.jsp";
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		Client c = clientService.retrieveClient(id);
 		req.setAttribute("client", c);
-
-		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_UPDATE_CLIENT);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(VUE_UPDATE_CLIENT_PASSWORD);
 		dispatcher.forward(req, resp);
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Integer id = Integer.parseInt(req.getParameter("id"));
-		String nom = req.getParameter("nom").toUpperCase();
-		String prenom = req.getParameter("prenom").toLowerCase();
-		String email = req.getParameter("email");
-
-		String adresse = req.getParameter("adresse");
+		String mdp = req.getParameter("hashOutputText").toUpperCase();
 
 		Client c = new Client();
-		c.setNom(nom);
-		c.setPrenom(prenom);
-		c.setEmail(email);
-		c.setAdresse(adresse);
-		clientService.updateClient(id, c);
+		c.setMotDePasse(mdp);
+		clientService.updateClientPass(id, c);
 
 		resp.sendRedirect(req.getContextPath() + "/admin/clients/list");
 	}

@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 import javax.ejb.Timer;
 import javax.ejb.TimerService;
@@ -24,7 +23,7 @@ public class SimulationPreparationCmd {
 	private CommandeService commandeService;
 	private Logger LOG = Logger.getLogger(SimulationPreparationCmd.class.getName());
 
-	@Schedule(second = "*/5", minute = "*", hour = "*")
+	// @Schedule(second="*/5", minute="*", hour="*")
 
 	public void executerTraitement(Timer timer) {
 		LOG.log(Level.INFO, "Changement d'état des commande.");
@@ -43,7 +42,6 @@ public class SimulationPreparationCmd {
 
 	// incrementer les commandes d'un 'état a l'autre
 	private void changeStatus(List<Commande> listeCommande) {
-
 		LOG.log(Level.INFO, "Traitement de la liste des commande");
 		if (listeCommande.size() != 0) {
 			listeCommande.forEach(p -> {

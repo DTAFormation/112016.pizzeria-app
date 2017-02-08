@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Modifier Client" name="title" />
+	<jsp:param value="Modifier Entr&eacute;e" name="title" />
 </jsp:include>
 <body>
 
@@ -13,58 +13,40 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block well">
-					<c:set var="client" scope="session" value="${param.client}" />
+					<c:set var="entree" scope="session" value="${param.entree}" />
 					<form class="form-horizontal" method="post">
 						<fieldset>
 
 							<!-- Form Name -->
-							<h2>Editer le client</h2>
+							<h2>Editer l'entrée</h2>
 
 							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="nom">Nom</label>
 								<div class="col-md-4">
-									<input id="nom" name="nom" type="text" value="${client.nom}"
+									<input id="nom" name="nom" type="text" value="${entree.nom}"
 										placeholder="Nom du client" class="form-control input-md"
 										required>
 
 								</div>
 							</div>
-
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="prenom">Prénom</label>
+								<label class="col-md-4 control-label" for="prenom">Prix</label>
 								<div class="col-md-4">
-									<input id="prenom" name="prenom" type="text"
-										value="${client.prenom}" placeholder=" Prénom du client"
-										class="form-control input-md" required>
+									<input id="prix" name="prix" type="number"
+										value="${entree.prix}" class="form-control input-md" required  step="any">
 								</div>
 							</div>
 
-							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="email">Email</label>
+								<label class="col-md-4 control-label" for="nom">UrlImage</label>
 								<div class="col-md-4">
-									<input id="email" name="email" type="email"
-										value="${client.email}" placeholder=" Email du client"
-										class="form-control input-md" required>
-								</div>
-							</div>
-							<!-- Text input-->
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="adresse">Adresse</label>
-								<div class="col-md-4">
-									<input id="adresse" name="adresse" type="text"
-									value="${client.adresse}"
-									class="form-control input-md"
+									<input id="image" name="image" type="text"
+										value="${entree.urlImage}" class="form-control input-md"
 										required>
 								</div>
 							</div>
-
-							<a
-								href="<c:url value="/admin/clients/update/password?id=${client.id}"/>"
-								class="btn btn-primary">Editer Mot De Passe</a>
-
 
 							<!-- Button -->
 							<div class="form-group">
