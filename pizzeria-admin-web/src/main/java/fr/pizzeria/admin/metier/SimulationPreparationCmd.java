@@ -12,6 +12,7 @@ import javax.ejb.TimerService;
 import javax.inject.Inject;
 
 import fr.pizzeria.model.Commande;
+import fr.pizzeria.model.Statut;
 
 @Stateless
 public class SimulationPreparationCmd {
@@ -24,6 +25,7 @@ public class SimulationPreparationCmd {
 	private Logger LOG = Logger.getLogger(SimulationPreparationCmd.class.getName());
 
 	@Schedule(second = "*/5", minute = "*", hour = "*")
+
 	public void executerTraitement(Timer timer) {
 		LOG.log(Level.INFO, "Changement d'état des commande.");
 		changeStatus(getListCommandeAtraiter());
@@ -41,21 +43,37 @@ public class SimulationPreparationCmd {
 
 	// incrementer les commandes d'un 'état a l'autre
 	private void changeStatus(List<Commande> listeCommande) {
-		/*
-		 * LOG.log(Level.INFO, "Traitement de la liste des commande");
-		 * if(listeCommande.size()!=0){ listeCommande.forEach(p -> {
-		 * LOG.log(Level.INFO, "Commande : " + p.getId() + "statut : " +
-		 * p.getStatut()); switch(p.getStatut()){ case EN_PREPARATION:
-		 * p.setStatut(Statut.EN_CUISSON); break; case EN_CUISSON:
-		 * p.setStatut(Statut.PRET); break; case PRET:
-		 * p.setStatut(Statut.EN_LIVRAISON); break; case EN_LIVRAISON:
-		 * p.setStatut(Statut.LIVRER); break; case LIVRER: break; default:
-		 * p.setStatut(Statut.EN_PREPARATION); break; }
-		 * commandeService.changeStatut( p.getId(), p.getStatut());
-		 * LOG.log(Level.INFO, "Commande : " + p.getId() + "statut : " +
-		 * p.getStatut()); }); }else{ LOG.log(Level.INFO,
-		 * "La liste de commande est vide."); } LOG.log(Level.INFO,
-		 * "Traitement terminé.");
-		 */ }
+
+		LOG.log(Level.INFO, "Traitement de la liste des commande");
+		if (listeCommande.size() != 0) {
+			listeCommande.forEach(p -> {
+				LOG.log(Level.INFO, "Commande : " + p.getId() + "statut : " + p.getStatut());
+				switch (p.getStatut()) {
+				case EN_PREPARATION:
+					p.setStatut(Statut.EN_CUISSON);
+					break;
+				case EN_CUISSON:
+					p.setStatut(Statut.PRET);
+					break;
+				case PRET:
+					p.setStatut(Statut.EN_LIVRAISON);
+					break;
+				case EN_LIVRAISON:
+					p.setStatut(Statut.LIVRER);
+					break;
+				case LIVRER:
+					break;
+				default:
+					p.setStatut(Statut.EN_PREPARATION);
+					break;
+				}
+				commandeService.changeStatut(p.getId(), p.getStatut());
+				LOG.log(Level.INFO, "Commande : " + p.getId() + "statut : " + p.getStatut());
+			});
+		} else {
+			LOG.log(Level.INFO, "La liste de commande est vide.");
+		}
+		LOG.log(Level.INFO, "Traitement terminé.");
+	}
 
 }
