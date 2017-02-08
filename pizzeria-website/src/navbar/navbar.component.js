@@ -1,9 +1,10 @@
 class NavbarController {
-    constructor($rootScope) {
+    constructor($rootScope, $location) {
         this.$rootScope = $rootScope;
         this.$rootScope.$on("userAuth", (event, user) => {
             this.userAuth = user
         })
+        this.$location = $location;
     }
 
     $onInit() {
@@ -19,6 +20,7 @@ class NavbarController {
     logoutUser() {
         localStorage.removeItem("userAuth");
         this.userAuth = {};
+        this.$location.path('/')
     }
     
 }

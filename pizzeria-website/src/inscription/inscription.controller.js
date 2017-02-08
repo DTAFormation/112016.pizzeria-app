@@ -15,10 +15,9 @@
     authentification(user){
         this.UserService.connectUser(user)
             .then(user=> {
-                    this.$rootScope.$emit("userAuth", user)
-                    this.$location.path('/moncompte/' + user.id)
-                
-            })
+                this.$rootScope.$emit("userAuth", user);
+                this.$location.path('/moncompte/' + user.id);
+        })
     }
 }
 

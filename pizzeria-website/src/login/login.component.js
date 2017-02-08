@@ -17,7 +17,7 @@ class LoginController {
                     this.message = "Email ou Mot de passe incorrect"
                 } else {
                     this.$rootScope.$emit("userAuth", user)
-                    this.$location.path('/pizza')
+                    this.$location.path('/moncompte/' + user.id)
                 }
             })
     }
