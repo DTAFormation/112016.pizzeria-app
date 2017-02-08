@@ -141,6 +141,22 @@
                     <td>{{ $ctrl.UtilService.getPrix(boisson.prix,"fr","eur") }}</td>
                 </tr>
             </tbody>
+            <thead ng-if="$ctrl.haveMenu()">
+                <tr>
+                    <th></th>
+                    <th>Menu(s)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-if="$ctrl.haveMenu()">
+                <tr ng-repeat="menu in $ctrl.menus">
+                    <td>
+                        <img ng-src="{{ menu.urlImage }}" alt="{{ menu.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ menu.nom }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(menu.prix,"fr","eur") }}</td>
+                </tr>
+            </tbody>
         </table>
 </div>
 </div>
