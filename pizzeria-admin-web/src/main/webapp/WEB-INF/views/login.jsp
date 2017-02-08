@@ -12,9 +12,9 @@
 		<form method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Se connecter</h2>
 	        <label for="inputEmail" class="sr-only">Adresse email</label>
-	        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse email" required>
+	        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse email" required value="">
 	        <label for="inputPassword" class="sr-only">Mot de passe</label>
-	        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+	        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required value="">
 	        <c:if test="${ not empty erreur }">
 		        <div class="form-control-feedback">Erreur: <c:out value="${ erreur }"/></div>
 	        </c:if>

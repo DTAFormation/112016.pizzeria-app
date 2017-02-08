@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Boisson {
@@ -18,6 +19,7 @@ public class Boisson {
 	private String nom;
 	private BigDecimal prix;
 	private String urlImage;
+	@Transient
 	private String type;
 	@Enumerated(EnumType.STRING)
 	private CategorieBoisson categorie;
