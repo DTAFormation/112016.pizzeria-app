@@ -191,15 +191,17 @@ public class PizzeriaApp {
 			commandeRessource.ajout((new Commande(secondClient, null, new BigDecimal(535.9), Statut.LIVRER, new Date(),
 					pizzas, null, null, null, null)));
 
-			Dessert dessert = new Dessert("tiramisu", new BigDecimal(250.0),
+			Dessert dessert = new Dessert("tiramisu", new BigDecimal(2.50),
 					"http://sf1.viepratique.fr/wp-content/uploads/sites/2/2014/05/217170.jpg", CategorieDessert.GLUTEN);
 
-			Dessert dessert2 = new Dessert("crêpe Bretonne", new BigDecimal(200.0),
+			Dessert dessert2 = new Dessert("crêpe Bretonne", new BigDecimal(2.00),
 					"http://www.recettes-bretonnes.fr/wp-content/Photos/millefeuille-crepe.jpg",
 					CategorieDessert.SANS_GLUTEN);
+			Dessert d3 =  new Dessert("Crumble fruits rouges", new BigDecimal(2.40),"http://img-3.journaldesfemmes.com/GAMtWkdxTGj4DNksByg-Edt-I0s=/750x/smart/image-icu/370448_7659566846.jpg",CategorieDessert.GLUTEN);
 
 			dessertRessource.ajoutDessert(dessert);
 			dessertRessource.ajoutDessert(dessert2);
+			dessertRessource.ajoutDessert(d3);
 
 			liveurDao.save(new Livreur("Toto", "jooj", "tomtom@gmail.com", "123456"));
 			liveurDao.save(new Livreur("Toto2", "jooj2", "tomtom22@gmail.com", "123456"));
