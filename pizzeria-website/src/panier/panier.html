@@ -19,7 +19,8 @@
                     <td>
                         {{produit.nom}}
                         <br>
-                        <span ng-if="produit.type=='pizza'"> {{produit.ingredients}} </span>
+                        <div ng-if="produit.type=='pizza'"> 
+                            <span ng-repeat="ing in produit.ingredients"> {{ing.nom}}</span> </div>
                         <span ng-if="produit.type=='menu'">
                         <ul ng-if="produit.entrees.length>0">
                             <li ng-repeat="entree in produit.entrees track by $index">{{entree.quantite}} {{entree.nom}}</li>
