@@ -18,7 +18,7 @@ class NavbarController {
 
     logoutUser() {
         localStorage.removeItem("userAuth")
-        localStorage.removeItem("Token")
+        localStorage.removeItem("userToken")
         this.userAuth = {}
     }
     

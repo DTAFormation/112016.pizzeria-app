@@ -58,18 +58,26 @@ angular.module('pizzeria', [
     .service('EntreeService', EntreeService)
     .service('UtilService', UtilService)
 
-    .factory('AuthInterceptor', function($q) {
+    .factory('AuthInterceptor', function($q, $location) {
         return {
             'request' : function(config) {
+                config.headers['Access-Control-Allow-Origin'] = "*"
                 if(localStorage.userToken) {
-                    config.headers['Token'] = localStorage.userToken
+                    console.log("token : " + localStorage.userToken)
+                    config.headers.Token = localStorage.userToken
                 }
                 return config || $q.when(config)
+            },
+            'responseError': function(rejection) {
+                console.log("Acces non authoriser : ")
+                console.table(rejection)
+                if(rejection.status === -1){
+                    $location.path('/login');
+                }
+                return $q.reject("Non autorisé");
             }
         }
     })
-
-
 
 .config(function($routeProvider, $locationProvider, $httpProvider) {
 

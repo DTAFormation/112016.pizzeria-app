@@ -1,15 +1,23 @@
 const api = 'http://localhost:3000/client';
 
 export class UserService {
-    constructor($http, $timeout) {
+    constructor($http, $timeout, $location) {
         this.$http = $http
         this.$timeout = $timeout
+        this.$location = $location
         this.user = {}
     }
 
     getUser(id) {
         return this.$http.get(`${ api }/${ id }`)
-            .then(response => response.data)
+            .then(function(response) {
+                return response.data;
+            }).catch(function(e) {
+                console.log('Error: ', e);
+                throw e;
+            }).finally(function() {
+                console.log('This finally block');
+            });
     }
 
     saveUser(user) {
@@ -18,7 +26,7 @@ export class UserService {
     }
 
     connectUser(user) {
-       return this.$http.post(`${ api }/signin`, user)
+       return this.$http.post(`http://localhost:3000/login`, user)
             .then(response => {
                 console.log(response.data)
                 if(!response.data) {
@@ -29,7 +37,6 @@ export class UserService {
                         nom : response.data.user_nom,
                         prenom : response.data.user_prenom
                     }
-                    console.log(userAuthConcat)
                     localStorage.userAuth = angular.toJson(userAuthConcat)
                     localStorage.userToken = response.data.user_token
                     return userAuthConcat
