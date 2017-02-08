@@ -2,11 +2,13 @@ import _ from 'lodash'
 
 class SuggestionController {
 
-    constructor(PanierService, PizzaService, EntreeService, DessertService) {
+    constructor(PanierService, MenuService, BoissonService,  PizzaService, EntreeService, DessertService) {
         this.PanierService = PanierService;
         this.EntreeService = EntreeService;
         this.DessertService = DessertService;
         this.PizzaService = PizzaService;
+        this.MenuService = MenuService;
+        this.BoissonService = BoissonService;
         this.pizzaSug = [];
     }
 
