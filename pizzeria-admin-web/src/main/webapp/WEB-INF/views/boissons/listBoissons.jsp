@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Clients" name="title" />
+	<jsp:param value="Boissons" name="title" />
 </jsp:include>
 <body>
 	<%@include file="../layout/menu.jsp"%>
@@ -13,38 +13,38 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block">
-					<h2>Clients</h2>
+					<h2>Boissons</h2>
 					<a
-						href="<c:url value="create"/>"
+						href="<c:url value="/admin/boissons/add"/>"
 						class="btn btn-primary">Ajouter</a>
 
-					<table id=tableClient class="table table-striped">
+					<table id=tableBoisson class="table table-striped">
 
 						<caption></caption>
 						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Nom</th>
-								<th>Prénom</th>
-								<th>Email</th>
-								<th>Adresse</th>
+								<th>Prix</th>
+								<th>Url Image</th>
+								<th>Categorie</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<c:forEach var="clients" items="${listeClients}">
+							<c:forEach var="boissons" items="${listerBoissons}">
 								<tr>
-									<td>${clients.id}</td>
-									<td>${clients.nom}</td>
-									<td>${clients.prenom}</td>
-									<td>${clients.email}</td>
-									<td>${clients.adresse}</td>
+									<td>${boissons.id} </td>
+									<td>${boissons.nom}</td>
+									<td>${boissons.prix} €</td>
+									<td>${boissons.urlImage}</td>
+									<td>${boissons.categorie.nomCateg}</td>
 									<td><a
-										href="<c:url value="/admin/clients/update?id=${clients.id}"/>"
+										href="<c:url value="/admin/boissons/edit?id=${boissons.id}"/>"
 										class="btn btn-success">Editer</a></td>
 									<td>
-										<form method="post">
-											<input type="hidden" name="id" value="${clients.id}">
+										<form method="post" action="delete">
+											<input type="hidden" name="id" value="${boissons.id}">
 											<button type="submit" class="btn btn-danger">Supprimer</button>
 										</form>
 									</td>

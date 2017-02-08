@@ -3,15 +3,12 @@ package fr.pizzeria.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 @Entity
-public class Boisson {
+public class Entree {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,29 +16,31 @@ public class Boisson {
 	private String nom;
 	private BigDecimal prix;
 	private String urlImage;
-	@Transient
 	private String type;
-	@Enumerated(EnumType.STRING)
-	private CategorieBoisson categorie;
 
-	public Boisson() {
-
+	public Entree() {
+		setType("entrée");
 	}
 
-	public Boisson(String nom, BigDecimal prix, String urlImage, CategorieBoisson categorie) {
+	public Entree(String nom, BigDecimal prix, String urlImage) {
 		super();
-
-		this.nom = nom;
-		this.prix = prix;
-		this.urlImage = urlImage;
-		this.categorie = categorie;
-		this.setType("boisson");
+		this.setNom(nom);
+		this.setPrix(prix);
+		this.setUrlImage(urlImage);
+		setType("entrée");
 	}
 
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 *            the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -66,16 +65,8 @@ public class Boisson {
 		return urlImage;
 	}
 
-	public void setUrl_Image(String urlImage) {
+	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
-	}
-
-	public CategorieBoisson getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(CategorieBoisson categorie) {
-		this.categorie = categorie;
 	}
 
 	public String getType() {

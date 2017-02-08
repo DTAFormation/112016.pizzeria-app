@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../layout/entete.jsp">
-	<jsp:param value="Clients" name="title" />
+	<jsp:param value="Entr&eacute;es" name="title" />
 </jsp:include>
 <body>
 	<%@include file="../layout/menu.jsp"%>
@@ -13,38 +13,34 @@
 		<div class="col-lg-9 col-md-9">
 			<div class="card">
 				<div class="card-block">
-					<h2>Clients</h2>
-					<a
-						href="<c:url value="create"/>"
-						class="btn btn-primary">Ajouter</a>
+					<h2>Entrées</h2>
+					<a href="<c:url value="create"/>" class="btn btn-primary">Ajouter</a>
 
-					<table id=tableClient class="table table-striped">
+					<table id=tableEntree class="table table-striped">
 
 						<caption></caption>
 						<thead>
 							<tr>
 								<th>Id</th>
+								<th>Image</th>
 								<th>Nom</th>
-								<th>Prénom</th>
-								<th>Email</th>
-								<th>Adresse</th>
+								<th>Prix</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<c:forEach var="clients" items="${listeClients}">
+							<c:forEach var="entree" items="${listeEntrees}">
 								<tr>
-									<td>${clients.id}</td>
-									<td>${clients.nom}</td>
-									<td>${clients.prenom}</td>
-									<td>${clients.email}</td>
-									<td>${clients.adresse}</td>
+									<td>${entree.id}</td>
+									<td><img width="80px" height="50px" src="<c:url value="${ entree.urlImage }"/>"></td>
+									<td>${entree.nom}</td>
+									<td>${entree.prix} &euro;</td>
 									<td><a
-										href="<c:url value="/admin/clients/update?id=${clients.id}"/>"
+										href="<c:url value="/admin/entrees/update?id=${entree.id}"/>"
 										class="btn btn-success">Editer</a></td>
 									<td>
 										<form method="post">
-											<input type="hidden" name="id" value="${clients.id}">
+											<input type="hidden" name="id" value="${entree.id}">
 											<button type="submit" class="btn btn-danger">Supprimer</button>
 										</form>
 									</td>

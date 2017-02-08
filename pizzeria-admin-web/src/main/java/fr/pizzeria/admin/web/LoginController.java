@@ -15,19 +15,20 @@ import fr.pizzeria.admin.metier.UtilisateurService;
 import fr.pizzeria.model.Utilisateur;
 
 @WebServlet("/login")
-public class LoginController extends HttpServlet{
+public class LoginController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6060577627904685097L;
-	
+
 	@EJB
 	private UtilisateurService utilisateurService;
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if( request.getSession().getAttribute("user") != null ){
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession().getAttribute("user") != null) {
 			response.sendRedirect(response.encodeRedirectURL("./admin/home"));
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/login.jsp");
@@ -36,14 +37,15 @@ public class LoginController extends HttpServlet{
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password = request.getParameter("hashOutputText").toUpperCase();
 		Utilisateur user = utilisateurService.connexion(email, password);
-		if(user != null) {
+		if (user != null) {
 			session.setAttribute("user", user);
-			response.sendRedirect(response.encodeRedirectURL("./admin/home"));			
+			response.sendRedirect(response.encodeRedirectURL("./admin/home"));
 		} else {
 			request.setAttribute("erreur", "Email ou mot de passe incorect");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/login.jsp");
