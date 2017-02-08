@@ -33,7 +33,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="prix">Prix</label>
 								<div class="col-md-4">
-									<input id="prix" name="prix" type="text"
+									<input id="prix" name="prix" type="number"
 										value="${dessert.prix}" placeholder=" Prix du dessert"
 										class="form-control input-md" required>
 								</div>
