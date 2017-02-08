@@ -15,8 +15,10 @@
     authentification(user){
         this.UserService.connectUser(user)
             .then(user=> {
+                if(!user){console.log('probleme')}else{
                 this.$rootScope.$emit("userAuth", user);
                 this.$location.path('/moncompte/' + user.id);
+                console.log(user);}
         })
     }
 }
