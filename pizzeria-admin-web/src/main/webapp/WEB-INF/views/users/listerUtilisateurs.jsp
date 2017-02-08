@@ -26,7 +26,6 @@
 								<th>Nom</th>
 								<th>Prénom</th>
 								<th>Email</th>
-								<th>Mot de passe</th>
 								<th>Profil</th></tr>
 						</thead>
 					
@@ -36,7 +35,6 @@
 							<td><c:out value="${user.nom}"/></td>
 							<td><c:out value="${user.prenom }"/></td>
 							<td><c:out value="${user.email}"/></td>
-							<td><c:out value="${user.motDePasse}"/></td>
 							<td><c:out value="${user.profil}"/></td>
 								 					
 									<td>
