@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,7 +47,7 @@ public class Commande {
 	@Column(name = "date")
 	private Date date;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
 	private List<Pizza> pizzas;
 
@@ -63,6 +64,12 @@ public class Commande {
 		this.statut = statut;
 		this.date = date;
 		this.pizzas = pizzas;
+	}
+
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", clientId=" + clientId + ", livreurId=" + livreurId + ", total=" + total
+				+ ", statut " + statut + ", date " + date + "La liste de pizza ensuite" + "]\n";
 	}
 
 	/**

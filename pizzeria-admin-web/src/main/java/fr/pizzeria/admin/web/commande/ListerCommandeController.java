@@ -22,10 +22,10 @@ public class ListerCommandeController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -6842105758155239511L;
-
 	private static final String VUE_LISTER_COMMANDES = "/WEB-INF/views/commandes/listerCommandes.jsp";
 
-	@Inject private CommandeService commandeService;
+	@Inject
+	private CommandeService commandeService;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

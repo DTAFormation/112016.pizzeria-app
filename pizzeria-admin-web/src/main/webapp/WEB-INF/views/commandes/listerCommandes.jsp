@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 	<jsp:include page="../layout/entete.jsp">
@@ -31,10 +32,10 @@
 								<td><c:out value="${ commande.id }"/></td>
 								<td><c:out value="${ commande.clientId.nom }"/></td>
 								<td><c:out value="${ commande.livreurId.nom }"/></td>
-								<td><select name="pizzas" id="pizzas"
-										style="width: 210px;" size="16">
-											<c:forEach var="pizza" items="${ pizzas }">
-												<option value="${ pizza.id }">
+								<td> <select name="pizzas" id="pizzas"
+										style="width: 210px;" size="6">
+											<c:forEach var="pizza" items="${ commande.pizzas }">
+												<option value="${ pizza.nom }">
 													<c:out value="${ pizza.nom }" />
 												</option>
 											</c:forEach>
