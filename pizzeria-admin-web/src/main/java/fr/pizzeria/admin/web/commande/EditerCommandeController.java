@@ -46,7 +46,7 @@ public class EditerCommandeController extends HttpServlet {
 		req.setAttribute("pizzas", pizzaService.findAll());
 		req.setAttribute("clients", clientService.listerClients());
 		req.setAttribute("livreurs", livreurService.findAll());
-		req.setAttribute("commande", commandeService.findAll().get(id));
+		req.setAttribute("commande", commandeService.findAll().get(id - 1));
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(VUE_AJOUTER_COMMANDE);
 		dispatcher.forward(req, resp);
