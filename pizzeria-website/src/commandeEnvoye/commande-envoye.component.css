@@ -1,4 +1,4 @@
-commande-envoye div.check {
+commande-envoye div.current {
     border: solid 1px red;
     width: 200px;
     height: 200px;
@@ -7,15 +7,24 @@ commande-envoye div.check {
     font-weight: bold;
 }
 
-commande-envoye div.unchek{
+commande-envoye div.checked{
     border: solid 1px black;
     background-color: gray;
+    color: white;
     width: 200px;
     height: 200px;
     text-align:center;
     padding-top: 80px;
 }
 
+commande-envoye div.unchecked{
+    border: dashed 1px black;
+    background-color: #bababa;
+    width: 200px;
+    height: 200px;
+    text-align:center;
+    padding-top: 80px;
+}
 span.glyph{
     padding-top: 80px;
     padding-left: 50px;

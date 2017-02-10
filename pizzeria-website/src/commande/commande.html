@@ -9,7 +9,7 @@
                     <th>
 
                     </th>
-                    <th> Nom & Ingerdients </th>
+                    <th> Nom </th>
                     <th> Prix </th>
                     <th> Quantité </th>
                 </tr>
@@ -43,6 +43,13 @@
                     <td> {{dessertCommande.nom}} </td>
                     <td> {{$ctrl.UtilService.getPrix(dessertCommande.prix,"fr","eur")}} </td>
                     <td> {{dessertCommande.quantite}} </td>
+                </tr>
+                <tr ng-repeat="menuCommande in $ctrl.panierMenu ">
+
+                    <th><img ng-src="{{menuCommande.urlImage}}" class="img-thumbnail" width="250"></th>
+                    <td> {{menuCommande.nom}} </td>
+                    <td> {{$ctrl.UtilService.getPrix(menuCommande.prix,"fr","eur")}} </td>
+                    <td> {{menuCommande.quantite}} </td>
                 </tr>
             </tbody>
             <tfoot>

@@ -1,53 +1,87 @@
-
+<h2>Etat de votre commande</h2>
 <div class="container" >
-    <div class="row">
-        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_PREPARATION'">
-            <span> En cours de préparation </span>
+    <div class="row" ng-if="$ctrl.statut === 'EN_PREPARATION'">
+        <div class="col-md-2 current" >
+            <span> Préparation </span>
         </div>
-         <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'EN_PREPARATION'">
-           <span>En cours de préparation</span>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Cuisson </span>
         </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Conditionnement </span>
+        </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Livraison </span>
+        </div>
+    </div>
 
-            <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+    <div class="row" ng-if="$ctrl.statut === 'EN_CUISSON'">
+        <div class="col-md-2 checked" >
+            <span> Préparation terminée</span>
+        </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 current" >
+            <span> Cuisson terminée</span>
+        </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Conditionnement </span>
+        </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Livraison </span>
+        </div>
+    </div>
 
-        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_CUISSON'">
-            <span>En cours de cuisson</span>
+    <div class="row" ng-if="$ctrl.statut === 'PRET' || $ctrl.statut === 'EN_LIVRAISON'">
+        <div class="col-md-2 checked" >
+            <span> Préparation terminée</span>
         </div>
-        <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'EN_CUISSON'">
-            <span>En cours de cuisson</span>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 checked" >
+            <span> Cuisson terminée</span>
         </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 current" >
+            <span> Commande prête à partir </span>
+        </div>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 unchecked" >
+            <span> Livraison </span>
+        </div>
+    </div>
 
-            <span class="glyphicon  glyphicon-chevron-right col-md-1  glyph"></span>
-
-        <div class="col-md-2 check" ng-if="$ctrl.statut === 'EN_LIVRAISON'">
-            <span>En cours de livraison</span> 
+    <div class="row" ng-if="$ctrl.statut === 'LIVRER'">
+        <div class="col-md-2 checked" >
+            <span> Préparation terminée</span>
         </div>
-         <div class="col-md-2 check" ng-if="$ctrl.statut === 'PRET' ">
-            <span>Commande prête</span> 
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 checked" >
+            <span> Cuisson terminée</span>
         </div>
-        <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'PRET' && $ctrl.statut !== 'EN_LIVRAISON' ">
-            <span>Commande prête / emporter</span> 
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 checked" >
+            <span> Commande livrée </span>
         </div>
-
-            <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
-
-        <div class="col-md-2 check" ng-if="$ctrl.statut === 'LIVRER'">
-           <span>Commande Livrer</span>
-        </div>
-         <div class="col-md-2 unchek" ng-if="$ctrl.statut !== 'LIVRER'">
-           <span>Commande Livrer</span>
+        <span class="glyphicon  glyphicon-chevron-right col-md-1 glyph"></span>
+        <div class="col-md-2 current" >
+            <span> Bon appétit! </span>
         </div>
     </div>
 </div>
+</br>
+<div class="container col-md-2"></div>
+<div class="container col-md-8">
+<table class="table table-striped">
 
- <table class="table table-striped">
             <thead ng-if="$ctrl.haveEntree()">
                 <tr>
-                    <th>Entrée</th>
-                    <th>nom</th>
-                    <th>prix</th>
                     <th></th>
-                    <th>note</th>
+                    <th>Entrée(s)</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody ng-if="$ctrl.haveEntree()">
@@ -57,17 +91,13 @@
                     </td>
                     <td>{{ entree.nom }}</td>
                     <td>{{ $ctrl.UtilService.getPrix(entree.prix,"fr","eur") }}</td>
-                    <td></td>
-                    <td>{{ entree.note }}</td>
                 </tr>
             </tbody>
             <thead ng-if="$ctrl.havePizza()">
                 <tr>
-                    <th>pizza</th>
-                    <th>nom</th>
-                    <th>prix</th>
-                    <th>categorie</th>
-                    <th>note</th>
+                    <th></th>
+                    <th>Pizza(s)</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody ng-if="$ctrl.havePizza()">
@@ -77,17 +107,13 @@
                     </td>
                     <td>{{ pizza.nom }}</td>
                     <td>{{ $ctrl.UtilService.getPrix(pizza.prix,"fr","eur") }}</td>
-                    <td>{{ pizza.categorie }}</td>
-                    <td>{{ pizza.note }}</td>
                 </tr>
             </tbody>
             <thead ng-if="$ctrl.haveDessert()">
                 <tr>
-                    <th>Dessert</th>
-                    <th>nom</th>
-                    <th>prix</th>
                     <th></th>
-                    <th>note</th>
+                    <th>Dessert(s)</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody ng-if="$ctrl.haveDessert()">
@@ -97,16 +123,12 @@
                     </td>
                     <td>{{ dessert.nom }}</td>
                     <td>{{ $ctrl.UtilService.getPrix(dessert.prix,"fr","eur") }}</td>
-                    <td></td>
-                    <td>{{ dessert.note }}</td>
                 </tr>
             </tbody>
             <thead ng-if="$ctrl.haveBoisson()">
                 <tr>
-                    <th>Boisson</th>
-                    <th>nom</th>
-                    <th>prix</th>
                     <th></th>
+                    <th>Boisson(s)</th>
                     <th></th>
                 </tr>
             </thead>
@@ -117,10 +139,24 @@
                     </td>
                     <td>{{ boisson.nom }}</td>
                     <td>{{ $ctrl.UtilService.getPrix(boisson.prix,"fr","eur") }}</td>
-                    <td></td>
-                    <td></td>
+                </tr>
+            </tbody>
+            <thead ng-if="$ctrl.haveMenu()">
+                <tr>
+                    <th></th>
+                    <th>Menu(s)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-if="$ctrl.haveMenu()">
+                <tr ng-repeat="menu in $ctrl.menus">
+                    <td>
+                        <img ng-src="{{ menu.urlImage }}" alt="{{ menu.nom }}" width="30px" height="30px"/>
+                    </td>
+                    <td>{{ menu.nom }}</td>
+                    <td>{{ $ctrl.UtilService.getPrix(menu.prix,"fr","eur") }}</td>
                 </tr>
             </tbody>
         </table>
-
+</div>
 </div>

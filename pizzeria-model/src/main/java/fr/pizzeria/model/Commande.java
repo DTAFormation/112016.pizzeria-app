@@ -1,21 +1,21 @@
 package fr.pizzeria.model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -52,8 +52,8 @@ public class Commande {
 	@JoinTable(name = "commande_entree", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "entree_id", referencedColumnName = "id"))
 	private List<Entree> entrees;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
+	@ManyToMany
+	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
 	private List<Pizza> pizzas;
 	
 	@ManyToMany
@@ -64,24 +64,15 @@ public class Commande {
 	@JoinTable(name = "commande_dessert", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dessert_id", referencedColumnName = "id"))
 	private List<Dessert> desserts;
 	
-	
+	@OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
+	private List<CommandeMenu> menus;
+
 	public Commande() {
-		
+
 	}
 
 	public Commande(Client idClient, Livreur idLivreur, BigDecimal total, Statut statut, Date date,
-            List<Pizza> pizzas) {
-        super();
-        this.clientId = idClient;
-        this.livreurId = idLivreur;
-        this.total = total;
-        this.statut = statut;
-        this.date = date;
-        this.pizzas = pizzas;
-    }
-
-	public Commande(Client idClient, Livreur idLivreur, BigDecimal total, Statut statut, Date date,
-			List<Pizza> pizzas, List<Boisson> boissons, List<Dessert> desserts, List<Entree> entrees) {
+			List<Pizza> pizzas, List<Boisson> boissons, List<Dessert> desserts, List<Entree> entrees, List<CommandeMenu> menus) {
 		super();
 		this.clientId = idClient;
 		this.livreurId = idLivreur;
@@ -92,6 +83,7 @@ public class Commande {
 		this.boissons = boissons;
 		this.entrees = entrees;
 		this.desserts = desserts;
+		this.menus = menus;
 	}
 
 	/**
@@ -219,9 +211,19 @@ public class Commande {
 		return desserts;
 	}
 
-	public void setDesserts(List<Dessert> dessert) {
+	public void setDesserts(List<Dessert> desserts) {
 		this.desserts = desserts;
 	}
+
+	public List<CommandeMenu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<CommandeMenu> menus) {
+		this.menus = menus;
+	}
+	
+	
 	
 	
 }

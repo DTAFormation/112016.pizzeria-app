@@ -1,0 +1,25 @@
+<!-- Modal menu detail -->
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <h4 class="modal-title" id="myModalLabel">{{ $ctrl.menu.nom }}</h4>
+            </div>
+            <div class="modal-body">
+                <img ng-src="{{ $ctrl.menu.urlImage }}" class="img-responsive"/>
+                <div>
+                  Ce menu inclut :
+                  <ul>
+                    <li ng-if="$ctrl.menu.nbEntree > 0 ">{{ $ctrl.menu.nbEntree }} entrée<span ng-if=" $ctrl.menu.nbEntree > 1 ">s</span></li>
+                    <li ng-if=" $ctrl.menu.nbPizza > 0 ">{{ $ctrl.menu.nbPizza }} pizza<span ng-if=" $ctrl.menu.nbPizza > 1 ">s</span></li>
+                    <li ng-if=" $ctrl.menu.nbDessert > 0 ">{{ $ctrl.menu.nbDessert }} dessert<span ng-if=" $ctrl.menu.nbDessert > 1 ">s</span></li>
+                    <li ng-if=" $ctrl.menu.nbBoisson > 0 ">{{ $ctrl.menu.nbBoisson }} boisson<span ng-if=" $ctrl.menu.nbBoisson > 1 ">s</span></li>
+                  </ul>
+                </div>
+                <div>{{ $ctrl.UtilService.getPrix($ctrl.menu.prix,"fr","eur" ) }} </div>
+            </div>
+        </div>
+    </div>
+</div>

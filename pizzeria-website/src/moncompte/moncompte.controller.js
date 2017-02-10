@@ -32,7 +32,7 @@ export default class MonCompteController {
             this.CommandeService.getCommandesByUserId(this.id)
                 .then(commandes => {
                     lodash(commandes.map(commande => {
-                    commande.date = Date(commande.date)
+                    commande.date = Date(commande.date).toString().replace(/\S+\s(\S+)\s(\d+)\s(\d+)\s.*/,'$2-$1-$3');
                     this.commandes.push(commande)
                     }))
                     .flatten()

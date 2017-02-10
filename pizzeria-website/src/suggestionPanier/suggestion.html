@@ -1,4 +1,3 @@
-<a href="#" ng-click="$ctrl.createSuggestion2()">blablabla</a>
 <h3>Vous pourriez aimer</h3>
 <div class="container">
     <table class="table">
@@ -9,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="produit in $ctrl.pizzas track by $index">
+            <tr ng-repeat="produit in $ctrl.pizzaSug track by $index">
                 <td><img ng-src="{{produit.urlImage}}" class="img-thumbnail" width="150"></td>
-                <td>{{produit.nom}}</br>Note:{{produit.note}}<span class="glyphicon glyphicon-asterisk"></span></td>
+                <td>{{produit.nom}}</br>Note:{{produit.note}}<span class="glyphicon glyphicon-star"></span></td>
             </tr>
         </tbody>
     </table>

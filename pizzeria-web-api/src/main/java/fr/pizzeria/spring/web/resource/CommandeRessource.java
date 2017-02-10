@@ -15,6 +15,7 @@ import fr.pizzeria.model.Boisson;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.CommandeClient;
+import fr.pizzeria.model.CommandeMenu;
 import fr.pizzeria.model.Dessert;
 import fr.pizzeria.model.Entree;
 import fr.pizzeria.model.Livreur;
@@ -44,6 +45,12 @@ public class CommandeRessource {
 	private DessertResource dessertResource;
 
 	@Autowired
+	private CommandeMenuRessource commandeMenuResource;
+	
+	@Autowired
+	private MenuResource menuResource;
+
+	@Autowired
 	IClientRepository clientDao;
 
 	@Autowired
@@ -65,24 +72,31 @@ public class CommandeRessource {
 		ArrayList<Entree> entrees = new ArrayList<>();
 		ArrayList<Boisson> boissons = new ArrayList<>();
 		ArrayList<Dessert> desserts = new ArrayList<>();
+		ArrayList<CommandeMenu> menus = new ArrayList<>();
 		for (CommandeClient commandeproduit : commandeClient) {
-			switch(commandeproduit.getType()){
-			case "pizza":
-				pizzas.add(pizzaResource.listAllPizzas().stream()
-						.filter(p -> p.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "boisson":
-				boissons.add(boissonResource.findAll().stream()
-						.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "entrée":
-				entrees.add(entreeResource.findAll().stream()
-						.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
-			case "dessert":
-				desserts.add(dessertResource.findAll().stream()
-						.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
-				break;
+			for (int i=0; i<commandeproduit.getQuantite(); i++) {
+				switch(commandeproduit.getType()){
+				case "pizza":
+					pizzas.add(pizzaResource.listAllPizzas().stream()
+							.filter(p -> p.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "boisson":
+					boissons.add(boissonResource.findAll().stream()
+							.filter(b -> b.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "entree":
+					entrees.add(entreeResource.findAll().stream()
+							.filter(e -> e.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "dessert":
+					desserts.add(dessertResource.findAll().stream()
+							.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());
+					break;
+				case "menu":
+					/*menus.add(menuResource.findAll().stream()
+							.filter(d -> d.getId().equals(commandeproduit.getIdProduit())).findFirst().get());*/
+					break;
+				}
 			}
 		}
 		Client client = clientDao.findAll().stream().filter(p -> p.getId().equals(commandeClient.get(0).getIdProduit()))
@@ -90,7 +104,7 @@ public class CommandeRessource {
 
 		Livreur liveur = liveurDao.findAll().stream().filter(p -> p.getId().equals(1)).findFirst().get();
 		commandeDao.save(new Commande(client, liveur, commandeClient.get(0).getTotal(), Statut.EN_PREPARATION,
-				new Date(), pizzas, boissons, desserts, entrees));
+				new Date(), pizzas, boissons, desserts, entrees, menus));
 	}
 
 	public void ajout(Commande commande) {

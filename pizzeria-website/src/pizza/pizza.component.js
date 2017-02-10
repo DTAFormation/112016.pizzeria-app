@@ -64,10 +64,13 @@ class PizzaController{
 
     }
 
+    updateProduct($event){
+        this.PizzaService.setPizzaVote(angular.copy($event));
+    }
+
 }
 
  export const Pizza = {
-        
         template :  require('./pizza.component.html'),
         controller:PizzaController
     }

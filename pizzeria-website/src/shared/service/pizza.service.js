@@ -23,7 +23,6 @@ export class PizzaService {
 
     }
 
-
     getPizzas() {
 
         return this.pizzas;
@@ -34,5 +33,10 @@ export class PizzaService {
 
        return this.pizzas.then(pizzas => _.find(pizzas, p => p.id === id));
    }
+
+   setPizzaVote(product){
+      return this.$http.post(api, product)
+         .then(success => success.data)
+    }
 
 }

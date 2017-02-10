@@ -72,7 +72,7 @@ public class AjouterCommandeController extends HttpServlet{
 			total = total.add(pizza.getPrix());
 		}
 		
-		commandeService.save(new Commande(clientService.retrieveClient(clientId), livreurService.get(livreurId), total, Statut.EN_PREPARATION, new Date(), pizzas));
+		commandeService.save(new Commande(clientService.retrieveClient(clientId), livreurService.get(livreurId), total, Statut.EN_PREPARATION, new Date(), pizzas, null, null, null, null));
 		
 		LOG.log(Level.INFO, "Commande Sauvegardée.");
 		} else {

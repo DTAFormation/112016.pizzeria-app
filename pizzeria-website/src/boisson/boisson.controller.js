@@ -22,7 +22,7 @@ export default class BoissonController{
 
      afficherModale(boisson) {
         this.currentBoisson = boisson;
-    }
+     }
 
      ajouterPanier(boisson) {
          this.PanierService.ajouterElement(boisson);
