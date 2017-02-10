@@ -47,6 +47,7 @@ public class AuthentificationFilter implements Filter {
 				System.out.println("Client Authentifié: " + client.getEmail());
 				chain.doFilter(req, resp);
 			} else {
+				response.setHeader("Access-Control-Allow-Origin", "*");
 		 		response.setStatus(401);
 			}
 		}

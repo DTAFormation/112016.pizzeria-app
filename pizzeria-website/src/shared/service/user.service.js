@@ -1,10 +1,11 @@
 const api = 'http://localhost:3000/client';
 
 export class UserService {
-    constructor($http, $timeout, $location) {
+    constructor($http, $timeout, $location, $q) {
         this.$http = $http
         this.$timeout = $timeout
         this.$location = $location
+        this.$q = $q
         this.user = {}
     }
 
@@ -14,7 +15,7 @@ export class UserService {
                 return response.data;
             }).catch(function(e) {
                 console.log('Error: ', e);
-                throw e;
+                return e
             }).finally(function() {
                 console.log('This finally block');
             });

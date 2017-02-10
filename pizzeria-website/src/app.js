@@ -67,19 +67,12 @@ angular.module('pizzeria', [
                     config.headers.Token = localStorage.userToken
                 }
                 return config || $q.when(config)
-            },
-            'responseError': function(rejection) {
-                console.log("Acces non authoriser : ")
-                console.table(rejection)
-                if(rejection.status === -1){
-                    $location.path('/login');
-                }
-                return $q.reject("Non autorisé");
             }
         }
     })
+.config(function($routeProvider, $locationProvider, $httpProvider, $qProvider) {
 
-.config(function($routeProvider, $locationProvider, $httpProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
 
     $locationProvider.html5Mode(true)
 
