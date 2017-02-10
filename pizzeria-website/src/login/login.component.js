@@ -7,6 +7,10 @@ class LoginController {
 
     $onInit() {
         this.message = '';
+        this.user = JSON.parse(localStorage.getItem('userAuth'))
+        if(this.user) {
+            this.$location.path('/moncompte')
+        }
     }
 
     authentification(form, user){
@@ -17,7 +21,7 @@ class LoginController {
                     this.message = "Email ou Mot de passe incorrect"
                 } else {
                     this.$rootScope.$emit("userAuth", user)
-                    this.$location.path('/moncompte/' + user.id)
+                    this.$location.path('/moncompte')
                 }
             })
     }

@@ -9,6 +9,7 @@ export class CommandeService {
         this.PizzaService = PizzaService;
         this.PanierService = PanierService;
     }
+
     ResetCommande(){
         this.PanierService.resetPanier();
         delete this.$localStorage.commandeEnCours;
@@ -47,8 +48,8 @@ export class CommandeService {
     }
 
 
-    getCommandesByUserId(id) {
-        return this.$http.get(`${api}/${id}`)
+    getCommandesByUserId() {
+        return this.$http.get(`${api}`)
             .then(response => response.data);
     }
 

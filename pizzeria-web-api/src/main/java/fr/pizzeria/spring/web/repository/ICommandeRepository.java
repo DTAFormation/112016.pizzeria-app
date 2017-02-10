@@ -8,8 +8,10 @@ import fr.pizzeria.model.Commande;
 
 public interface ICommandeRepository extends JpaRepository<Commande, Integer> {
 
-	List<Commande> findByClientId_Id(Integer id);
+	List<Commande> findByClientId(Integer id);
 
 	List<Commande> findById(Integer id);
+
+	Commande findByIdAndClientId(Integer id, Integer clientId);
 
 }

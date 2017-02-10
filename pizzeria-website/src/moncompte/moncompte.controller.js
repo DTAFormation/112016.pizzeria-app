@@ -15,30 +15,28 @@ export default class MonCompteController {
         
         this.disable = true;
         this.commandes = [];
-
-        if(this.id){
-            this.UserService.getUser(this.id)
+        this.user = JSON.parse(localStorage.getItem('userAuth'))
+        if(this.user){
+            this.UserService.getUser(this.user.id)
                 .then(user => {
                     if(user[0]) {
-                        console.log(user[0])
                         this.user = user[0]
                     } else {
-                        console.log('redirection')
                         this.$location.path("/login")
                     }
                 })
 
                 
-            this.CommandeService.getCommandesByUserId(this.id)
+            this.CommandeService.getCommandesByUserId()
                 .then(commandes => {
                     lodash(commandes.map(commande => {
                     commande.date = Date(commande.date).toString().replace(/\S+\s(\S+)\s(\d+)\s(\d+)\s.*/,'$2-$1-$3');
-                    this.commandes.push(commande)
+                        this.commandes.push(commande)
                     }))
                     .flatten()
                 })
         } else {
-            this.$location.path('/')
+            this.$location.path('/login')
         }
         
 
@@ -47,25 +45,24 @@ export default class MonCompteController {
     updateInfo() {
 
         this.disable = false;
-
     }
 
     saveUser(form, user) {
         if (form.$invalid) return;
         this.UserService.saveUser(user)
-            .then(() => this.$location.path('/moncompte/' + user.id));
+            .then(() =>  {
+                this.UserService.connecterUser(user)
+                this.$location.path('/moncompte')
+            });
 
         this.disable = true;
     }
 
     annulerUpdate() {
-
-       
-        this.UserService.getUser(this.id)
+        this.UserService.getUser(this.user)
             .then(user => this.user = user[0]);
 
         this.disable = true;
-
     }
 
 }

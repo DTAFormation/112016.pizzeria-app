@@ -147,8 +147,8 @@ public class PizzeriaApp {
 					new Pizza("MAR", "margerita", "http://mister-check.e-monsite.com/medias/images/pizza2.jpg",
 							new BigDecimal(9.9), 0, 0, CategoriePizza.VIANDE, new Date(), 0));
 
-			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv", "liv@gmail.com", "123456", "Cerise"));
-
+			clientResource.ajoutClient(new Client("ASDRUBAL", "Liv","liv@gmail.com", "123456", "Cerise"));
+			clientResource.ajoutClient(new Client("TOTO", "Tata", "toto@toto.com", "1234", "Perpignan"));
 			List<Pizza> pizzas = pizzaResource.listAllPizzas();
 
 			Client firstClient = clientResource.findAll().stream().filter(client -> client.getId() == 1).findFirst()

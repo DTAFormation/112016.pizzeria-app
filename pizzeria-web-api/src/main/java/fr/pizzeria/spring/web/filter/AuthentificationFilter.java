@@ -3,6 +3,8 @@ package fr.pizzeria.spring.web.filter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -24,6 +26,8 @@ import fr.pizzeria.spring.web.resource.auth.ClientAuth;
 @Component
 public class AuthentificationFilter implements Filter {
 
+    private Logger LOG  = Logger.getLogger(AuthentificationFilter.class.getName());
+
 	@Autowired
 	private ClientResource cResource;
 
@@ -43,11 +47,12 @@ public class AuthentificationFilter implements Filter {
 			
 			if(clientTrouve.isPresent()) {
 				Client client = clientTrouve.get();
-				System.out.println("Client : " + client.getNom());
-				System.out.println("Client Authentifié: " + client.getEmail());
+				req.setAttribute("userAuth", client);
+                LOG.log(Level.INFO, "Client enregistrer dans l'entête : " + client.getEmail());
 				chain.doFilter(req, resp);
 			} else {
 				response.setHeader("Access-Control-Allow-Origin", "*");
+				LOG.log(Level.INFO, "Client non authentifier essai d'acceder à des données sécurisé");
 		 		response.setStatus(401);
 			}
 		}

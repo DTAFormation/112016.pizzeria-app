@@ -16,11 +16,11 @@ export default class CommandeEnvoyeController {
 
         this.CommandeService.getCommandeById(this.id)
             .then(commande => {
-                this.statut = commande[0].statut;
-                this.pizzas =  commande[0].pizzas
-                this.boissons = commande[0].boissons;
-                this.desserts = commande[0].desserts;
-                this.entrees = commande[0].entrees;
+                this.statut = commande.statut;
+                this.pizzas =  commande.pizzas
+                this.boissons = commande.boissons;
+                this.desserts = commande.desserts;
+                this.entrees = commande.entrees;
                 this.stop = this.$interval(
                     (function(self) {
                         return function() {
@@ -32,13 +32,13 @@ export default class CommandeEnvoyeController {
     }
 
     verifyCommandeState(){
-        if(this.statut === "LIVRER"){
+        if(this.statut === "LIVRER" && this.$location.path().contains('/commandeEnvoyee/' + this.id)){
             this.$interval.cancel(this.stop);
         }
         this.CommandeService.getCommandeById(this.id)
             .then(commande => {
-                if(this.statut != commande[0].statut){
-                    this.statut = commande[0].statut;
+                if(this.statut != commande.statut){
+                    this.statut = commande.statut;
                 }
             });
     }

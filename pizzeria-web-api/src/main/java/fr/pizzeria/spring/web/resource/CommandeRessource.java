@@ -3,7 +3,10 @@ package fr.pizzeria.spring.web.resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import fr.pizzeria.spring.web.filter.AuthentificationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +28,13 @@ import fr.pizzeria.spring.web.repository.IClientRepository;
 import fr.pizzeria.spring.web.repository.ICommandeRepository;
 import fr.pizzeria.spring.web.repository.ILivreurRepository;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/commandes")
 public class CommandeRessource {
+
+    private Logger LOG  = Logger.getLogger(AuthentificationFilter.class.getName());
 
 	@Autowired
 	ICommandeRepository commandeDao;
@@ -56,14 +63,16 @@ public class CommandeRessource {
 	@Autowired
 	ILivreurRepository liveurDao;
 
-	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
-	public List<Commande> getCommandes(@PathVariable Integer id) {
-		return commandeDao.findByClientId_Id(id);
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Commande> getCommandes(HttpServletRequest request) {
+		Client client = (Client) request.getAttribute("userAuth");
+		return commandeDao.findByClientId(client.getId());
 	}
 
-	@RequestMapping(path = "/commande/{id}", method = RequestMethod.GET)
-	public List<Commande> getClient(@PathVariable Integer id) {
-		return commandeDao.findById(id);
+	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	public Commande getCommande(@PathVariable Integer id, HttpServletRequest request) {
+	    Client client = (Client) request.getAttribute("userAuth");
+		return commandeDao.findByIdAndClientId(id, client.getId());
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

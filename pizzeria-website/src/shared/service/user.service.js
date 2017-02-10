@@ -5,12 +5,10 @@ export class UserService {
         this.$http = $http
         this.$timeout = $timeout
         this.$location = $location
-        this.$q = $q
-        this.user = {}
     }
 
-    getUser(id) {
-        return this.$http.get(`${ api }/${ id }`)
+    getUser(user) {
+        return this.$http.get(api, user)
             .then(function(response) {
                 return response.data;
             }).catch(function(e) {
